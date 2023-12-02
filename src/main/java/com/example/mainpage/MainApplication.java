@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
+//comment
 public class MainApplication extends Application {
     private static List<Gym> gyms;
 
