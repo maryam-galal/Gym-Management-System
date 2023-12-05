@@ -1,88 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.MainController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.MainController">
    <children>
-      <AnchorPane prefHeight="703.0" prefWidth="954.0">
+      <ImageView fitHeight="647.0" fitWidth="944.0" layoutY="-9.0" pickOnBounds="true">
+         <image>
+            <Image url="@GymBackground.jpg" />
+         </image>
+      </ImageView>
+      <Pane prefHeight="135.0" prefWidth="944.0">
          <children>
-            <ImageView fitHeight="704.0" fitWidth="959.0" layoutX="15.0" pickOnBounds="true">
+            <Label fx:id="gymName" layoutX="59.0" layoutY="40.0" text="gym name">
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="0.39259257912635803" blue="0.7165431976318359" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.47593915462493896" green="0.4000000059604645" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="12.0" layoutY="44.0" pickOnBounds="true">
                <image>
-                  <Image url="@bacckground.jpg" />
+                  <Image url="@gymIcon-removebg-preview.png" />
                </image>
             </ImageView>
-            <Text fill="#fff7f7" layoutX="589.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="139.73669052124023">
+            <MenuButton layoutX="649.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Address" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="Address" mnemonicParsing="false" text="action1" />
+              </items>
                <font>
-                  <Font size="33.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
-            </Text>
-            <Text fill="WHITE" layoutX="589.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName" wrappingWidth="162.4000000000001">
+            </MenuButton>
+            <MenuButton layoutX="804.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Contact Us" textFill="WHITE">
+              <items>
+                <MenuItem fx:id="phoneNumber" mnemonicParsing="false" text="action1" />
+              </items>
                <font>
-                  <Font size="32.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
-            </Text>
-            <TextField layoutX="761.0" layoutY="486.0">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </TextField>
-            <Button layoutX="675.0" layoutY="607.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="107.0" text="Log In">
-               <font>
-                  <Font name="System Bold" size="21.0" />
-               </font>
-            </Button>
-            <Button fx:id="InfoButton" alignment="TOP_LEFT" layoutX="24.0" mnemonicParsing="false" onMouseClicked="#InfoPanelDisplay" prefHeight="106.0" prefWidth="260.0" style="-fx-background-color: transparent;" text="GYM INFO" textFill="#f7f7f7">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Button>
-            <PasswordField layoutX="763.0" layoutY="548.0" prefHeight="27.0" prefWidth="162.0">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </PasswordField>
-            <ScrollPane fx:id="infoPanel" layoutX="14.0" prefHeight="704.0" prefWidth="280.0" visible="false">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="269.0">
-                     <children>
-                        <Label fx:id="nameLabel" layoutX="14.0" layoutY="88.0" text="Label" textFill="#2e2929">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="addressLabel" layoutX="14.0" layoutY="139.0" text="Label">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="phoneNoLabel" layoutX="14.0" layoutY="197.0" text="Label">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="backbutton" layoutX="-1.0" mnemonicParsing="false" onMouseClicked="#handleBackButtonClick" prefHeight="43.0" prefWidth="74.0" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <ImageView fitHeight="48.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@backbutton.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </ScrollPane>
+            </MenuButton>
          </children>
-      </AnchorPane>
+      </Pane>
+      <Button fx:id="loginButton" layoutX="355.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#userLogIn" prefHeight="94.0" prefWidth="160.0" style="-fx-background-color: transparent;" text="Log In" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Button>
    </children>
-</StackPane>
+</AnchorPane>
