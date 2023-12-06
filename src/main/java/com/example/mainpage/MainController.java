@@ -1,42 +1,50 @@
 package com.example.mainpage;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Label;
+
+import java.io.IOException;
 import java.util.List;
-public class MainController {
-    @FXML
-    private Button InfoButton;
-    @FXML
-    private Button backbutton;
-    @FXML
-    private ScrollPane infoPanel;
-    @FXML
-    private Label addressLabel;
+import javafx.scene.control.MenuItem;
+import javafx.fxml.Initializable;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+public class MainController implements Initializable{
 
     @FXML
-    private Label nameLabel;
+    private MenuItem Address;
+    @FXML
+    private MenuItem phoneNumber;
+    @FXML
+    private Label gymName;
+    @FXML
+    private Button signupButton;
+    @FXML
+    private Button loginButton;
 
-    @FXML
-    private Label phoneNoLabel;
-    @FXML
-    void InfoPanelDisplay(MouseEvent event) {
-        InfoButton.setVisible(false);
-        infoPanel.setVisible(true);
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // Assuming you have a list of gyms in MainApplication
         List<Gym> gyms = MainApplication.getGyms();
-        if (!gyms.isEmpty()) {
-            Gym firstGym = gyms.get(0);
-            nameLabel.setText("Name: " + firstGym.getName());
-            addressLabel.setText("Address: " + firstGym.getAddress());
-            phoneNoLabel.setText("Phone Number: " + firstGym.getPhoneNumber());
-        }
 
+        if (!gyms.isEmpty()) {
+            // Display information of the first gym in the list
+            Gym firstGym = gyms.get(0);
+            Address.setText(firstGym.getAddress());
+            phoneNumber.setText(firstGym.getPhoneNumber());
+            gymName.setText(firstGym.getName());
+        }
     }
     @FXML
-    void handleBackButtonClick(MouseEvent event) {
-        InfoButton.setVisible(true);
-        infoPanel.setVisible(false);
+    void userLogIn(MouseEvent event) throws IOException {
+        MainApplication logMain=new MainApplication();
+        logMain.changeScene("LogInPage.fxml");
+    }
+
+    @FXML
+    void userSignup(MouseEvent event) {
+
     }
 }

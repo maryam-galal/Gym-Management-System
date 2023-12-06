@@ -34,10 +34,4 @@ public class Gym {
         return phoneNumber;
     }
 
-    @Override
-    public String toString() {
-        return "name: " + name + "\n" +
-                "address: " + address + "\n" +
-                "phone number: " + phoneNumber + "\n";
-    }
 }
