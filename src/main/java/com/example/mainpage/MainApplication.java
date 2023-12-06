@@ -39,7 +39,7 @@ public class MainApplication extends Application {
         Parent root=fxmlLoader.load();
         Scene scene = new Scene(root);
         // Set the application icon
-        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\gymIcon-removebg-preview.png"));
+        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\laa set scene gymIcon-removebg-preview.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);

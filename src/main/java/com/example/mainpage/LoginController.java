@@ -9,7 +9,7 @@ import java.util.*;
 import java.io.*;
 
 public class LoginController {
-    private List<String[]> userList = new ArrayList<>();
+    private List<String[]> userList = new ArrayList<>(); // read all data from the file
     @FXML
     private Button login;
     @FXML
@@ -23,8 +23,9 @@ public class LoginController {
         String enteredPassword = passwordField.getText();
         String enteredUsername = usernameField.getText();
         boolean loginSuccessful = false;
-        try (Scanner fileScanner = new Scanner(new File("C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\java\\com\\example\\mainpage\\login.csv"))) {
+        try (Scanner fileScanner = new Scanner(new File("C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\java\\com\\example\\mainpage\\login.csv"))) {
             while (fileScanner.hasNextLine()) {
+                // split data in file into an array of strings making each array an array of all of data of each coulmb in this file
                 String[] data = fileScanner.nextLine().split(",");
                 userList.add(data); // Add each row to the list
             }
