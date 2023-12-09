@@ -9,8 +9,8 @@ public class CoachOrCustomercontroller {
 
     @FXML
     void Register_coach(MouseEvent event) throws IOException {
-        MainApplication regMain=new MainApplication();
-        regMain.changeScene("RegistrationFormCoach.fxml");
+        MainApplication coach_regMain=new MainApplication();
+        coach_regMain.changeScene("RegistrationFormCoach.fxml");
 
     }
 
