@@ -18,51 +18,41 @@ public class LoginController {
     private TextField usernameField;
     @FXML
     private Label invalid_massage;
+
+    MainApplication m =new MainApplication();
+
     @FXML
     void logincheck(MouseEvent event) throws IOException {
         String enteredPassword = passwordField.getText();
         String enteredUsername = usernameField.getText();
         boolean loginSuccessful = false;
-        try (Scanner fileScanner = new Scanner(new File("C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\java\\com\\example\\mainpage\\login.csv"))) {
-            while (fileScanner.hasNextLine()) {
-                String[] data = fileScanner.nextLine().split(",");
-                userList.add(data); // Add each row to the list
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        for (String[] data : userList) {
-            if (data.length >= 2) {
-                String usernameFromFile = data[0].trim();
-                String passwordFromFile = data[1].trim();
-                String userType = data[2].trim();
+        for (String[] data : MainApplication.return_userList()) {
+            if (data.length >= 7) {
+                String usernameFromFile = data[1].trim();
+                String passwordFromFile = data[5].trim();
+                String userType = data[6].trim();
                 if (enteredUsername.equals(usernameFromFile) && enteredPassword.equals(passwordFromFile)) {
-                    // Matching username and password found
                     loginSuccessful = true;
-                    if(userType.equals("coach")){
+                    System.out.println("done");
+                   if(userType.equals("coach")){
                         System.out.println("coach");
-                        MainApplication CoachMain=new MainApplication();
-                        CoachMain.changeScene("coachPage.fxml");
+                        m.changeScene("coachPage.fxml");
                     }
                     else if (userType.equals("customer")) {
                         System.out.println("customer");
-                        MainApplication CustomerMain=new MainApplication();
-                        CustomerMain.changeScene("customerPage.fxml");
+                        m.changeScene("customerPage.fxml");
                     } else if (userType.equals("admin")) {
                         System.out.println("admin");
-                        MainApplication AdminMain=new MainApplication();
-                        AdminMain.changeScene("adminPage.fxml");
+                        m.changeScene("adminPage.fxml");
                     }
                     break;
                 }
-
             }
         }
 
         if (loginSuccessful) {
             System.out.println("Login successful!");
-            // Add your code here for what should happen after successful login
         } else {
             System.out.println("Invalid username or password");
             invalid_massage.setVisible(true);

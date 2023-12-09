@@ -42,9 +42,10 @@ public class MainController implements Initializable{
         MainApplication logMain=new MainApplication();
         logMain.changeScene("LogInPage.fxml");
     }
-
     @FXML
-    void userSignup(MouseEvent event) {
-
+    void userSignup(MouseEvent event) throws IOException {
+        MainApplication Sign_upMain=new MainApplication();
+        Sign_upMain.changeScene("CoachOrCustomer.fxml");
     }
+
 }

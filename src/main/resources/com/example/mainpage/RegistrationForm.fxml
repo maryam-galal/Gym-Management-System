@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="635.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.RegistrationFormController">
+   <children>
+      <ImageView fitHeight="635.0" fitWidth="975.0" layoutX="-24.0" onMouseClicked="#initialize">
+         <image>
+            <Image url="@regestration_bg.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="604.0" fitWidth="351.0" layoutX="589.0" layoutY="20.0">
+         <image>
+            <Image url="@peakpx__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="Username" layoutX="175.0" layoutY="101.0" promptText="Enter Username" />
+      <TextField fx:id="Password" layoutX="175.0" layoutY="177.0" promptText="Enter Password" />
+      <TextField fx:id="phone_text" layoutX="175.0" layoutY="255.0" promptText="Enter Phone Number" />
+      <TextField fx:id="email_text" layoutX="175.0" layoutY="335.0" promptText="Enter E-mail" />
+      <TextField fx:id="address_text" layoutX="175.0" layoutY="414.0" promptText="Enter Address" />
+      <ChoiceBox fx:id="genderChoiceBox" layoutX="174.0" layoutY="488.0" prefWidth="150.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="53.0" layoutX="452.0" layoutY="523.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" width="107.0" />
+      <Button layoutX="429.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#Move_to_Next_page" prefHeight="59.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Next" textFill="#f7f3f3">
+         <font>
+            <Font name="Monotype Corsiva" size="40.0" />
+         </font>
+      </Button>
+      <Button layoutX="31.0" layoutY="90.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Username" textFill="#f7f3f3">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="31.0" layoutY="166.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Password" textFill="#f7f3f3">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="244.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Phone Number" textFill="#f7f3f3">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="42.0" layoutY="324.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="E-mail" textFill="#f7f3f3">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="42.0" layoutY="403.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Address" textFill="#f7f3f3">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="42.0" layoutY="477.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Gender" textFill="#f7f3f3">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

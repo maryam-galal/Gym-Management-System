@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="635.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.InBody_Membership_Controller">
+   <children>
+      <ImageView fitHeight="635.0" fitWidth="944.0">
+         <image>
+            <Image url="@regestration_bg.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="344.0" fitWidth="268.0" layoutX="676.0" layoutY="291.0">
+         <image>
+            <Image url="@inbody.png" />
+         </image>
+      </ImageView>
+      <DatePicker fx:id="inbody_datePicker" layoutX="52.0" layoutY="337.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Date of InBody" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="54.0" layoutX="540.0" layoutY="568.0" stroke="WHITE" strokeType="INSIDE" width="106.0" />
+      <TextField fx:id="Height" layoutX="319.0" layoutY="337.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Height in (m)" />
+      <TextField fx:id="BodyWeight" layoutX="319.0" layoutY="404.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Total Body Weight in (kg)" />
+      <TextField fx:id="Bodyfat" layoutX="53.0" layoutY="404.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Body Fat in (kg)" />
+      <TextField fx:id="Mass" layoutX="319.0" layoutY="471.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Mass in (kg)" />
+      <TextField fx:id="minerals" layoutX="53.0" layoutY="471.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Minerals in (kg)" />
+      <TextField fx:id="water" layoutX="319.0" layoutY="538.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Total Body Water in (kg)" />
+      <TextField fx:id="protein" layoutX="53.0" layoutY="538.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Protein in (kg)" />
+      <Label layoutX="54.0" layoutY="310.0" prefHeight="26.0" prefWidth="118.0" text="Date of InBody" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="322.0" layoutY="310.0" prefHeight="26.0" prefWidth="52.0" text="Height" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="323.0" layoutY="377.0" prefHeight="26.0" prefWidth="142.0" text="Total Body Weight" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="377.0" prefHeight="26.0" prefWidth="70.0" text="Body Fat" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="319.0" layoutY="444.0" prefHeight="26.0" prefWidth="38.0" text="Mass" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="53.0" layoutY="444.0" prefHeight="26.0" prefWidth="70.0" text="Minerals" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="319.0" layoutY="513.0" prefHeight="26.0" prefWidth="134.0" text="Total Body Water" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="513.0" prefHeight="26.0" prefWidth="60.0" text="Protein" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="527.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#save" style="-fx-background-color: Transparent;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="Monotype Corsiva" size="42.0" />
+         </font>
+      </Button>
+      <Label layoutX="91.0" layoutY="262.0" prefHeight="31.0" prefWidth="202.0" text="InBody Details :" textFill="#b4b4b4">
+         <font>
+            <Font name="Arial Bold Italic" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="64.0" prefHeight="26.0" prefWidth="183.0" text="Plan Details :" textFill="#b4b4b4">
+         <font>
+            <Font name="Arial Bold Italic" size="26.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="plan_ChoiceBox" layoutX="52.0" layoutY="142.0" prefHeight="37.0" prefWidth="202.0" />
+      <Label layoutX="53.0" layoutY="115.0" prefHeight="26.0" prefWidth="134.0" text="Choose Your Plan" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="319.0" layoutY="115.0" prefHeight="26.0" prefWidth="150.0" text="Number of Months" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="NumberOfMonths" layoutX="319.0" layoutY="147.0" prefHeight="26.0" prefWidth="165.0" promptText="Enter Number of Months" />
+      <Label layoutX="565.0" layoutY="115.0" prefHeight="26.0" prefWidth="150.0" text="Start Date" textFill="#f2f2f2">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="plan_DatePicker" layoutX="565.0" layoutY="147.0" promptText="Enter Start Date" />
+      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="52.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="52.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="52.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="52.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@1-removebg-preview.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
