@@ -1,11 +1,9 @@
 package com.example.mainpage;
-import java.io.*;
-import java.util.Scanner;
 
 public abstract class  Person {
 
     protected int id = 0;
-    protected String name;
+    protected String user_name;
     protected String Password;
     protected String gender;
     protected String address;
@@ -16,8 +14,8 @@ public abstract class  Person {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUser_name() {
+        return user_name;
     }
 
     public String getPassword() {
@@ -28,9 +26,7 @@ public abstract class  Person {
         return gender;
     }
 
-    public String getAddress() {
-        return address;
-    }
+    public String getAddress() {return address;}
 
     public String getPhone_number() {
         return phone_number;
@@ -44,8 +40,8 @@ public abstract class  Person {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public void setPassword(String password) {

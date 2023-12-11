@@ -7,7 +7,7 @@ import javafx.scene.input.MouseEvent;
 import java.util.*;
 import java.io.*;
 
-public class RegistrationFormController {
+public class Customer_RegistrationForm_Controller {
     @FXML
     private TextField Username, Password, phone_text, email_text, address_text;
     @FXML
@@ -20,15 +20,15 @@ public class RegistrationFormController {
         genderChoiceBox.getItems().addAll("Male", "Female");
     }
 
-    public ArrayList<Customer> ArrayListCustomer() throws IOException {
+    public ArrayList<Customer> ArrayListCustomer() {
         ArrayList<Customer> CustomerList = new ArrayList<>();
 
-        customer.gender = genderChoiceBox.getValue();
-        customer.address = address_text.getText();
-        customer.email = email_text.getText();
-        customer.Password = Password.getText();
-        customer.name = Username.getText();
-        customer.phone_number = phone_text.getText();
+        customer.setUser_name(Username.getText());
+        customer.setPassword(Password.getText());
+        customer.setPhone_number(phone_text.getText());
+        customer.setEmail(email_text.getText());
+        customer.setAddress(address_text.getText());
+        customer.setGender(genderChoiceBox.getValue());
         CustomerList.add(customer);
 
         return CustomerList;
@@ -39,14 +39,15 @@ public class RegistrationFormController {
         FileWriter fw = new FileWriter("Registration.csv", true);
         PrintWriter pw = new PrintWriter(fw, false);
 
-        //boolean headersWritten = false;
-        /*if (!headersWritten) {
-            pw.println("address,name,email,gender,phone_number,Password,user_type");
-            headersWritten = true; // Set the flag to true after writing headers
-        }*/
+//        boolean headersWritten = false;
+//        if (!headersWritten) {
+//            pw.println("\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\"");
+//            headersWritten = true;
+//        }
 
         for (Customer c : ArrayListCustomer()) {
-            pw.print(c.address + "," + c.name + "," + c.email + "," + c.gender + "," + c.phone_number + "," + c.Password + ","+"customer"+"\n");
+            pw.println(c.getUser_name() +","+ c.getPassword() +","+ c.getPhone_number() + ","+ c.getEmail() + "," +c.getAddress() + "," + c.getGender() + "," +"customer");
+            System.out.println("done");
         }
         pw.flush();
         pw.close();

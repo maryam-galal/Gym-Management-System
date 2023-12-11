@@ -10,12 +10,12 @@
    <children>
       <ImageView fitHeight="635.0" fitWidth="944.0">
          <image>
-            <Image url="@regestration_bg.jpg" />
+            <Image url="@Black bg.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="344.0" fitWidth="268.0" layoutX="676.0" layoutY="291.0">
          <image>
-            <Image url="@inbody.png" />
+            <Image url="@Ahmed Helmy.png" />
          </image>
       </ImageView>
       <DatePicker fx:id="inbody_datePicker" layoutX="52.0" layoutY="337.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Date of InBody" />
@@ -102,22 +102,22 @@
       <DatePicker fx:id="plan_DatePicker" layoutX="565.0" layoutY="147.0" promptText="Enter Start Date" />
       <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="52.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@1-removebg-preview.png" />
+            <Image url="@Cross Dumbbells.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="52.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@1-removebg-preview.png" />
+            <Image url="@Cross Dumbbells.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="52.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@1-removebg-preview.png" />
+            <Image url="@Cross Dumbbells.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="52.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@1-removebg-preview.png" />
+            <Image url="@Cross Dumbbells.png" />
          </image>
       </ImageView>
    </children>

@@ -7,17 +7,17 @@ import java.io.IOException;
 
 public class CoachOrCustomercontroller {
 
+    MainApplication m =new MainApplication();
+
     @FXML
     void Register_coach(MouseEvent event) throws IOException {
-        MainApplication coach_regMain=new MainApplication();
-        coach_regMain.changeScene("RegistrationFormCoach.fxml");
+        m.changeScene("Coach_RegistrationForm.fxml");
 
     }
 
     @FXML
     void Register_customer(MouseEvent event) throws IOException {
-        MainApplication regMain=new MainApplication();
-        regMain.changeScene("RegistrationForm.fxml");
+        m.changeScene("Customer_RegistrationForm.fxml");
 
     }
 }

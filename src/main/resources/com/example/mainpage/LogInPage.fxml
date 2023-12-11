@@ -8,9 +8,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.LoginController">
    <children>
-      <ImageView fitHeight="648.0" fitWidth="958.0" layoutX="-7.0" layoutY="-6.0" onMouseClicked="#logincheck" pickOnBounds="true">
+      <ImageView fitHeight="648.0" fitWidth="958.0" layoutX="-7.0" layoutY="-6.0" onMouseClicked="#login_check" pickOnBounds="true">
          <image>
-            <Image url="@GymBackground.jpg" />
+            <Image url="@Gym Background.jpg" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="59.0" layoutX="364.0" layoutY="375.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="INSIDE" width="135.0" />
@@ -26,12 +26,12 @@
       </Label>
       <TextField fx:id="usernameField" layoutX="414.0" layoutY="217.0" prefHeight="38.0" prefWidth="170.0" promptText="Enter Username" />
       <PasswordField fx:id="passwordField" layoutX="414.0" layoutY="299.0" prefHeight="38.0" prefWidth="170.0" promptText="Enter Password" />
-      <Button fx:id="login" layoutX="338.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#logincheck" prefHeight="86.0" prefWidth="187.0" style="-fx-background-color: transparent;" text="Log In" textFill="WHITE">
+      <Button fx:id="login" layoutX="338.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#login_check" prefHeight="86.0" prefWidth="187.0" style="-fx-background-color: transparent;" text="Log In" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Button>
-      <Label fx:id="invalid_massage" layoutX="366.0" layoutY="346.0" prefHeight="27.0" prefWidth="187.0" text="invalid password!" textFill="#ff0a0a" underline="true" visible="false">
+      <Label fx:id="invalid_massage" layoutX="314.0" layoutY="344.0" prefHeight="27.0" prefWidth="283.0" text="Invalid Username or Password!" textFill="#ff0a0a" underline="true" visible="false">
          <font>
             <Font size="18.0" />
          </font>

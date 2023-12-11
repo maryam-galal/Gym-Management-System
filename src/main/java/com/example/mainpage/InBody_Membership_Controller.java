@@ -8,7 +8,6 @@ import javafx.scene.input.MouseEvent;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class InBody_Membership_Controller {
@@ -16,19 +15,8 @@ public class InBody_Membership_Controller {
     @FXML
     private DatePicker inbody_datePicker;
     @FXML
-    private TextField BodyWeight;
-    @FXML
-    private TextField Bodyfat;
-    @FXML
-    private TextField Height;
-    @FXML
-    private TextField Mass;
-    @FXML
-    private TextField minerals;
-    @FXML
-    private TextField protein;
-    @FXML
-    private TextField water;
+    private TextField BodyWeight,Bodyfat,Height,Mass,minerals,protein,water;
+
     InBody b = new InBody();
 
     //MEMBERSHIP PLAN
@@ -38,18 +26,14 @@ public class InBody_Membership_Controller {
     private DatePicker plan_DatePicker;
     @FXML
     private TextField NumberOfMonths;
-    Membership_Plan plan = new Membership_Plan();
 
-    /*@FXML
-    public void initialize() {
-        inbody_datePicker.setValue(LocalDate.now()); // Set the current date
-    }*/
+    Membership_Plan plan = new Membership_Plan();
 
     public void initialize() {
         plan_ChoiceBox.getItems().addAll("Silver Plan \n (3 Days per Week)", "Gold Plan \n (6 Days per Week, with less session price + higher discount)");
     }
 
-    public ArrayList<InBody> ArrayListInBody() throws IOException {
+    public ArrayList<InBody> ArrayListInBody() {
         ArrayList<InBody> InbodyList = new ArrayList<>();
 
         b.height = Double.parseDouble(Height.getText());
@@ -66,10 +50,11 @@ public class InBody_Membership_Controller {
     }
 
     @FXML
-    public ArrayList<Membership_Plan> ArrayListPlan() throws IOException {
+    public ArrayList<Membership_Plan> ArrayListPlan() {
         ArrayList<Membership_Plan> PlanList = new ArrayList<>();
-        String c = plan_ChoiceBox.getValue();
-        plan.choice = c.substring(0, c.indexOf("\n")).trim();
+
+        String choice = plan_ChoiceBox.getValue();
+        plan.choice = choice.substring(0, choice.indexOf("\n")).trim();
         plan.number_of_months = Integer.parseInt(NumberOfMonths.getText());
         plan.start_date = String.valueOf(plan_DatePicker.getValue());
         plan.choose_plan();
@@ -77,6 +62,8 @@ public class InBody_Membership_Controller {
 
         return PlanList;
     }
+
+
 
     @FXML
     public void save(MouseEvent mouseEvent) throws IOException {
@@ -89,8 +76,8 @@ public class InBody_Membership_Controller {
             headersWritten = true; // Set the flag to true after writing headers
         }*/
 
-        for (InBody Value : ArrayListInBody()) {
-            pw.print(Value.Date_of_InBody + "," + Value.mass + "," + Value.body_fat + "," + Value.height + "," + Value.minerals_var + "," + Value.protein_var + "," + Value.total_weight + "," + Value.water_weight + ",");
+        for (InBody in : ArrayListInBody()) {
+            pw.print(in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight + ",");
         }
         for (Membership_Plan p : ArrayListPlan()) {
             pw.print(p.choice + "," + p.number_of_months + "," + p.start_date + "," + p.days_per_week + "\n");

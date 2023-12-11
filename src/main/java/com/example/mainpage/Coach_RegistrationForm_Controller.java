@@ -9,33 +9,28 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class RegistrationFormCoach_Controller {
+public class Coach_RegistrationForm_Controller {
     @FXML
     private TextField Address_text,Email_text,Phone_text,password,username;
     @FXML
     private ChoiceBox <String> GenderChoiceBox;
 
+    Coach coach = new Coach();
+
     @FXML
     public void initialize() {
         GenderChoiceBox.getItems().addAll("Male", "Female");
     }
-    @FXML
-    void move_to_Next_page(MouseEvent event) throws IOException {
-        MainApplication RegisterMain=new MainApplication();
-        RegisterMain.changeScene("LoginPage.fxml");
-    }
 
-
-    Coach coach = new Coach();
-    public ArrayList<Coach> ArrayListCoach() throws IOException {
+    public ArrayList<Coach> ArrayListCoach() {
         ArrayList<Coach> CoachList = new ArrayList<>();
 
-        coach.gender = GenderChoiceBox.getValue();
-        coach.address = Address_text.getText();
-        coach.email = Email_text.getText();
-        coach.Password = password.getText();
-        coach.name = username.getText();
-        coach.phone_number = Phone_text.getText();
+        coach.setGender(GenderChoiceBox.getValue());
+        coach.setAddress(Address_text.getText());
+        coach.setEmail(Email_text.getText());
+        coach.setPassword(password.getText());
+        coach.setUser_name(username.getText());
+        coach.setPhone_number(Phone_text.getText());
         CoachList.add(coach);
 
         return CoachList;
@@ -46,14 +41,8 @@ public class RegistrationFormCoach_Controller {
         FileWriter fw = new FileWriter("Registration.csv", true);
         PrintWriter pw = new PrintWriter(fw, false);
 
-        //boolean headersWritten = false;
-        /*if (!headersWritten) {
-            pw.println("address,name,email,gender,phone_number,Password,user_type");
-            headersWritten = true; // Set the flag to true after writing headers
-        }*/
-
         for (Coach c : ArrayListCoach()) {
-            pw.print(c.address + "," + c.name + "," + c.email + "," + c.gender + "," + c.phone_number + "," + c.Password +","+ "coach"+"\n");
+            pw.println(c.getUser_name() +","+ c.getPassword() +","+ c.getPhone_number() + ","+ c.getEmail() + "," +c.getAddress() + "," + c.getGender() + "," +"coach");
             System.out.println("done");
         }
         pw.flush();
@@ -62,6 +51,4 @@ public class RegistrationFormCoach_Controller {
         /*MainApplication RegisterMain = new MainApplication();
         RegisterMain.changeScene("InBody_Membership.fxml");*/
     }
-
-
 }

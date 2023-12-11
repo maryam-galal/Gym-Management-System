@@ -37,5 +37,4 @@ public class Membership_Plan {
         }
         return plan_price;
     }
-
 }
