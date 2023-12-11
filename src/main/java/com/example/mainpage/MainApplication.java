@@ -45,9 +45,13 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
-
+        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.setTitle("Fitness Gym");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
         //reading file info
-        try (Scanner fileScanner = new Scanner(new File("D:\\Projects\\2nd Year\\OOP\\GYM\\Registration.csv"))) {
+        try (Scanner fileScanner = new Scanner(new File("C:\\Users\\Mariam\\IdeaProjects\\mainpage\\Registration.csv"))) {
             while (fileScanner.hasNextLine()) {
                 String[] data = fileScanner.nextLine().split(",");
                 userList.add(data);
@@ -84,11 +88,7 @@ public class MainApplication extends Application {
         }
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
-        stage.setTitle("Fitness Gym");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 
