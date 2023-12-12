@@ -12,11 +12,15 @@ import java.util.Scanner;
 import javafx.scene.image.Image;
 
 public class MainApplication extends Application {
-
     private static List<Gym> gyms;
-    protected  static ArrayList<String[]> userList = new ArrayList<>();
-    ArrayList<Customer> customerList = new ArrayList<>();
-    ArrayList<Coach> coachList = new ArrayList<>();
+ protected static ArrayList<String[]> userList = new ArrayList<>();
+ protected static ArrayList<Customer> customerArrayList = new ArrayList<>();
+ protected static ArrayList<Coach> coachArrayList = new ArrayList<>();
+ protected static ArrayList<InBody> inBodyArrayList = new ArrayList<>();
+
+ protected static ArrayList<String[]> inBody_Membership_Data = new ArrayList<>();
+ protected static ArrayList<Membership_Plan> membershipPlanArrayList = new ArrayList<>();
+
     private static Stage primarystage;
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -45,46 +49,18 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
-
-        //reading file info
-        try (Scanner fileScanner = new Scanner(new File("D:\\Projects\\2nd Year\\OOP\\GYM\\Registration.csv"))) {
-            while (fileScanner.hasNextLine()) {
-                String[] data = fileScanner.nextLine().split(",");
-                userList.add(data);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        //saving data into lists
-        for (String[] data : userList) {
-            if (data.length >= 7) {
-                String userType = data[6].trim();
-                if (userType.equals("customer")) {
-                    Customer customer = new Customer();
-                    customer.setUser_name(data[0].trim());
-                    customer.setPassword(data[1].trim());
-                    customer.setPhone_number(data[2].trim());
-                    customer.setEmail(data[3].trim());
-                    customer.setAddress(data[4].trim());
-                    customer.setGender(data[5].trim());
-                    customerList.add(customer);
-                }
-                else if (userType.equals("coach")){
-                    Coach coach = new Coach();
-                    coach.setUser_name(data[0].trim());
-                    coach.setPassword(data[1].trim());
-                    coach.setPhone_number(data[2].trim());
-                    coach.setEmail(data[3].trim());
-                    coach.setAddress(data[4].trim());
-                    coach.setGender(data[5].trim());
-                    coachList.add(coach);
-                }
-            }
-        }
-
+        // load all data to userList
+         Files.Load_ArrayList("C:\\Users\\ROAA\\IdeaProjects\\GYM\\Registration.csv", userList);
+        // only load the customers
+        Files.LoadCustomer(userList, customerArrayList);
+        // only load the coaches
+         Files.LoadCoach(userList, coachArrayList);
+        // load data from inbody_membership file
+         Files.Load_ArrayList("InBody_Membership.csv",inBody_Membership_Data);
+        // load data to inbody list
+        Files.LoadInBody(inBody_Membership_Data, inBodyArrayList);
         // Set the application icon
-        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -104,7 +80,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 
@@ -112,9 +88,7 @@ public class MainApplication extends Application {
         return gyms;
     }
 
-    public static ArrayList<String[]> return_userList(){
-        return userList;
-    }
+
 
     public static void main(String[] args) {
         launch(args);

@@ -5,9 +5,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import java.io.FileWriter;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class InBody_Membership_Controller {
@@ -33,9 +32,7 @@ public class InBody_Membership_Controller {
         plan_ChoiceBox.getItems().addAll("Silver Plan \n (3 Days per Week)", "Gold Plan \n (6 Days per Week, with less session price + higher discount)");
     }
 
-    public ArrayList<InBody> ArrayListInBody() {
-        ArrayList<InBody> InbodyList = new ArrayList<>();
-
+    public void Load_static_arraylist() {
         b.height = Double.parseDouble(Height.getText());
         b.body_fat = Double.parseDouble(Bodyfat.getText());
         b.Date_of_InBody = String.valueOf(inbody_datePicker.getValue());
@@ -44,9 +41,9 @@ public class InBody_Membership_Controller {
         b.protein_var = Double.parseDouble(protein.getText());
         b.total_weight = Double.parseDouble(BodyWeight.getText());
         b.water_weight = Double.parseDouble(water.getText());
-        InbodyList.add(b);
+        System.out.println("loaded");
+        MainApplication.inBodyArrayList.add(b);
 
-        return InbodyList;
     }
 
     @FXML
@@ -67,23 +64,25 @@ public class InBody_Membership_Controller {
 
     @FXML
     public void save(MouseEvent mouseEvent) throws IOException {
-        FileWriter fw = new FileWriter("Inbody_Membership.csv", true);
-        PrintWriter pw = new PrintWriter(fw, false);
-
-        //boolean headersWritten = false;
-        /*if (!headersWritten) {
-            pw.println("Date_of_InBody, mass,body_fat, height,minerals_var, protein_var, total_weight, water_weight, choice, number_of_months, start_date, days_per_week");
-            headersWritten = true; // Set the flag to true after writing headers
-        }*/
-
-        for (InBody in : ArrayListInBody()) {
-            pw.print(in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight + ",");
-        }
-        for (Membership_Plan p : ArrayListPlan()) {
-            pw.print(p.choice + "," + p.number_of_months + "," + p.start_date + "," + p.days_per_week + "\n");
-            System.out.println("done");
-        }
-        pw.flush();
-        pw.close();
+        Load_static_arraylist();
+//        FileWriter fw = new FileWriter("Inbody_Membership.csv", true);
+//        PrintWriter pw = new PrintWriter(fw, false);
+//
+//        //boolean headersWritten = false;
+//        /*if (!headersWritten) {
+//
+//            headersWritten = true; // Set the flag to true after writing headers
+//        }*/
+//
+//        for (InBody in : ArrayListInBody()) {
+//            pw.print(Customer.id+ ","+ in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight + ",");
+//        }
+        Files.WriteInFile("InBody_Membership.csv");
+//        for (Membership_Plan p : ArrayListPlan()) {
+//            pw.print(p.choice + "," + p.number_of_months + "," + p.start_date + "," + p.days_per_week + "\n");
+//            System.out.println("done");
+//        }
+//        pw.flush();
+//        pw.close();
     }
 }

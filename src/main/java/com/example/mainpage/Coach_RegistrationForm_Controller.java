@@ -21,9 +21,8 @@ public class Coach_RegistrationForm_Controller {
     public void initialize() {
         GenderChoiceBox.getItems().addAll("Male", "Female");
     }
-
-    public ArrayList<Coach> ArrayListCoach() {
-        ArrayList<Coach> CoachList = new ArrayList<>();
+// add data from text field to list
+    public void AddToCoach() {
 
         coach.setGender(GenderChoiceBox.getValue());
         coach.setAddress(Address_text.getText());
@@ -31,23 +30,14 @@ public class Coach_RegistrationForm_Controller {
         coach.setPassword(password.getText());
         coach.setUser_name(username.getText());
         coach.setPhone_number(Phone_text.getText());
-        CoachList.add(coach);
+        MainApplication.coachArrayList.add(coach);
 
-        return CoachList;
     }
 
     @FXML
     void Move_to_Next_page(MouseEvent event) throws IOException {
-        FileWriter fw = new FileWriter("Registration.csv", true);
-        PrintWriter pw = new PrintWriter(fw, false);
-
-        for (Coach c : ArrayListCoach()) {
-            pw.println(c.getUser_name() +","+ c.getPassword() +","+ c.getPhone_number() + ","+ c.getEmail() + "," +c.getAddress() + "," + c.getGender() + "," +"coach");
-            System.out.println("done");
-        }
-        pw.flush();
-        pw.close();
-
+        AddToCoach();
+        Files.WriteInFile("Registration.csv");
         /*MainApplication RegisterMain = new MainApplication();
         RegisterMain.changeScene("InBody_Membership.fxml");*/
     }
