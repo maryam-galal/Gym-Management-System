@@ -1,5 +1,3 @@
-"id","User name","Password","Phone Number","Email","Address","Gender","User Type"
-A10,manar,Myaccc123,01199852856,manar_90@gmail.com,giza,Female,coach
-B20,ali,PIZZAhut123,01116085532,ali@email.com,fayoum,Male,customer
-B251,amar,PastaShrimp1,01116085539,amar@outlook.com,nasr city,Male,customer
-,admin,admin,,,,,admin
+"ID","User name","Password","Phone Number","Email","Address","Gender","User Type"
+B21,Menna_Sokkar,Menna123,01150030099,menna@gmail.com,cairo,Female,customer
+A11,Hamed_Sokkar,Hamed123,01150030088,hamed@gmail.com,cairo,Male,coach

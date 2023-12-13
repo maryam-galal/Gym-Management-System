@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert;
@@ -51,19 +51,22 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
+
+
         // load all data to userList
-         Files.Load_ArrayList("C:\\Users\\Mariam\\IdeaProjects\\mainpage\\Registration.csv");
-        //System.out.println(userList.size());
+         Files.Load_ArrayList("Registration.csv");
         // only load the customers
         Files.LoadCustomer(userList);
         // only load the coaches
-         Files.LoadCoach(userList);
+        Files.LoadCoach(userList);
         // load data from inbody_membership file
-         Files.Load_ArrayList("InBody_Membership.csv");
+        Files.Load_ArrayList("InBody_Membership.csv");
         // load data to inbody list
-        Files.LoadInBody(inBody_Membership_Data);
+        Files.Load_InBody_MembershipPlan(inBody_Membership_Data);
+
+
         // Set the application icon
-        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -83,7 +86,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 
@@ -106,7 +109,7 @@ public class MainApplication extends Application {
 
         try {
             // Load your icon image
-            Image icon = new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
+            Image icon = new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
 
             // Create an ImageView with the icon
             ImageView imageView = new ImageView(icon);

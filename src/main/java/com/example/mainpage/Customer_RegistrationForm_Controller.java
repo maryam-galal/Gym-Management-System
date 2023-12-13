@@ -98,6 +98,7 @@ public class Customer_RegistrationForm_Controller {
                 emailError.setVisible(true);
                 return;
             }
+
         Load_to_Static_list();
         // Save to file and change scene
         Files.WriteInFile("Registration.csv",type);

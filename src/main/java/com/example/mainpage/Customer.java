@@ -2,6 +2,8 @@ package com.example.mainpage;
 
 public class Customer extends Person {
     public static int customerCounter = 0;
+    protected static Coach coach;
+
     public Customer (){
         //System.out.println(MainApplication.customerArrayList.size());
 
@@ -15,5 +17,9 @@ public class Customer extends Person {
 
         // Construct the unique ID
         id = "B2" + customerCounter;
+    }
+
+    public void setCoach(Coach coach) {
+        this.coach = coach;
     }
 }
