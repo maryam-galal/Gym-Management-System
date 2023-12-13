@@ -1,12 +1,12 @@
 package com.example.mainpage;
-
+import com.example.mainpage.exceptions.loginExceptions.*;
+import com.example.mainpage.exceptions.signupExceptions.EmptyFieldException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
-
 import java.io.*;
 
 public class LoginController {
@@ -18,46 +18,49 @@ public class LoginController {
     private TextField usernameField;
     @FXML
     private Label invalid_massage;
-
+    @FXML
+    private Label passwordError;
+    @FXML
+    private Label usernameError;
     MainApplication m =new MainApplication();
-
+    LoginManager loginManager = new LoginManager();
     @FXML
     void login_check(MouseEvent event) throws IOException {
-        String entered_Password = passwordField.getText();
-        String entered_Username = usernameField.getText();
-        boolean login_Successful = false;
-        for (String[] data : MainApplication.userList) {
-            if (data.length >= 8) {
-                String username = data[1].trim();
-                String password = data[2].trim();
-                String userType = data[7].trim();
-                if (entered_Username.equals(username) && entered_Password.equals(password)) {
-                    login_Successful = true;
-                    if(userType.equals("coach")){
-                        System.out.println("coach");
-                        m.changeScene("coachPage.fxml");
-                    }
-                    else if (userType.equals("customer")) {
-                        System.out.println("customer");
-                        m.changeScene("customerPage.fxml");
-                    }
-                    else if (userType.equals("admin")) {
-                        System.out.println("admin");
-                        m.changeScene("adminPage.fxml");
-                    }
-                    break;
-                }
+        try {
+           if(loginManager.validateFields(usernameField.getText(), passwordField.getText()))
+               invalid_massage.setVisible(false);
+            String userType = loginManager.isValidUser(usernameField.getText(), passwordField.getText());
+            System.out.println("Login successful! User Type: " + userType);
+            passwordError.setVisible(false);
+            usernameError.setVisible(false);
+            // Handle the userType and change scene accordingly
+            if ("coach".equals(userType)) {
+                System.out.println("coach");
+                m.changeScene("coachPage.fxml");
+            } else if ("customer".equals(userType)) {
+                System.out.println("customer");
+                m.changeScene("customerPage.fxml");
+            } else if ("admin".equals(userType)) {
+                System.out.println("admin");
+                m.changeScene("adminPage.fxml");
             }
+        } catch (IncorrectUsernameException | IncorrectPasswordException e) {
+            MainApplication.showAlert(e.getMessage());
+            passwordField.setText("");usernameField.setText("");
+            if(e instanceof IncorrectPasswordException){
+                passwordError.setText(e.getMessage());
+                passwordError.setVisible(true);
+            } else if (e instanceof IncorrectUsernameException) {
+                usernameError.setText(e.getMessage());
+                usernameError.setVisible(true);
+            }
+        } catch (EmptyFieldException e) {
+            MainApplication.showAlert(e.getMessage());
+            invalid_massage.setText("Please fill in all fields.");
+            invalid_massage.setVisible(true);
+            System.out.println("Please fill in all fields.");
         }
 
-        if (login_Successful) {
-            System.out.println("Login successful!");
-        } else {
-            System.out.println("Invalid username or password");
-            invalid_massage.setVisible(true);
-            passwordField.setText("");
-            usernameField.setText("");
-        }
     }
 }
 

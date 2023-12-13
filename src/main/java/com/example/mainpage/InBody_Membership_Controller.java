@@ -77,7 +77,7 @@ public class InBody_Membership_Controller {
 //        for (InBody in : ArrayListInBody()) {
 //            pw.print(Customer.id+ ","+ in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight + ",");
 //        }
-        Files.WriteInFile("InBody_Membership.csv");
+        Files.WriteInFile("InBody_Membership.csv","customer");
 //        for (Membership_Plan p : ArrayListPlan()) {
 //            pw.print(p.choice + "," + p.number_of_months + "," + p.start_date + "," + p.days_per_week + "\n");
 //            System.out.println("done");

@@ -39,11 +39,12 @@ public class Files {
     }
 }
     public static void  LoadCoach(ArrayList<String[]> user_list){
+        Coach coach = new Coach();
     for (String[] data : user_list) {
-        if (data.length >= 7) {
-            String userType = data[6].trim();
+        if (data.length >= 8) {
+            String userType = data[7].trim();
             if(userType.equals("coach")) {
-                Coach coach = new Coach();
+                   coach.setId(data[0].trim());
                    coach.setUser_name(data[0].trim());
                    coach.setPassword(data[1].trim());
                    coach.setPhone_number(data[2].trim());
@@ -78,31 +79,38 @@ public class Files {
         System.out.println("inbody done");
     }
 
+//  pw.println("\"id\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\",\"User Type\"");
 
-     public static void WriteInFile (String file_name) throws IOException {
-    FileWriter fw = new FileWriter(file_name, true);
-    PrintWriter pw = new PrintWriter(fw, false);
+    public static void WriteInFile(String file_name, String userType) throws IOException {
+        FileWriter fw = new FileWriter(file_name, true);
+        PrintWriter pw = new PrintWriter(fw);
 
-    if (file_name.equals("Registration.csv")){
-    pw.println("\"id\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\"");
-        for (Coach c : MainApplication.coachArrayList) {
-            pw.println(c.getId() +","+c.getUser_name() +","+ c.getPassword() +","+ c.getPhone_number() + ","+ c.getEmail() + "," +c.getAddress() + "," + c.getGender() + "," +"coach");
-            System.out.println("done Coach");
+        System.out.println("Appending to file: " + file_name);
+
+        if (file_name.equals("Registration.csv")) {
+            // Write the last added coach
+            if (!MainApplication.coachArrayList.isEmpty() && userType.equals("coach")) {
+                Coach lastCoach = MainApplication.coachArrayList.get(MainApplication.coachArrayList.size() - 1);
+                pw.println(lastCoach.getId() + "," + lastCoach.getUser_name() + "," + lastCoach.getPassword() + "," +
+                        lastCoach.getPhone_number() + "," + lastCoach.getEmail() + "," + lastCoach.getAddress() + "," +
+                        lastCoach.getGender() + "," + "coach");
+                System.out.println("Appending Coach: " + lastCoach.getId() + " " + lastCoach.getUser_name());
+            }
+
+            // Write the last added customer
+            if (!MainApplication.customerArrayList.isEmpty() && userType.equals("customer")) {
+                Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
+                pw.println(lastCustomer.getId() + "," + lastCustomer.getUser_name() + "," + lastCustomer.getPassword() + "," +
+                        lastCustomer.getPhone_number() + "," + lastCustomer.getEmail() + "," + lastCustomer.getAddress() + "," +
+                        lastCustomer.getGender() + "," + "customer");
+                System.out.println("Appending Customer: " + lastCustomer.getId() + " " + lastCustomer.getUser_name());
+            }
         }
 
-        for (Customer c : MainApplication.customerArrayList) {
-            pw.println(c.getId() +","+c.getUser_name() +","+ c.getPassword() +","+ c.getPhone_number() + ","+ c.getEmail() + "," +c.getAddress() + "," + c.getGender() + "," +"customer");
-            System.out.println("done Customer");
-        }
-
+        // Close the PrintWriter and FileWriter
+        pw.close();
+        fw.close();
     }
-    else if (file_name.equals("InBody_Membership.csv")){
-        //pw.println("ID,Date_of_InBody, mass,body_fat, height,minerals_var, protein_var, total_weight, water_weight, choice, number_of_months, start_date, days_per_week");
-        for (InBody in : MainApplication.inBodyArrayList) {
-            pw.print(Customer.id+ ","+ in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight + ",");
-            System.out.println("inbody done");
-        }
-    }
-         pw.close();
-}
+
+
 }

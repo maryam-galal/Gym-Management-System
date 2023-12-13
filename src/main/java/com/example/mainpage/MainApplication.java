@@ -1,5 +1,4 @@
 package com.example.mainpage;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class MainApplication extends Application {
     private static List<Gym> gyms;
@@ -50,7 +52,7 @@ public class MainApplication extends Application {
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         // load all data to userList
-         Files.Load_ArrayList("C:\\Users\\ROAA\\IdeaProjects\\GYM\\Registration.csv");
+         Files.Load_ArrayList("C:\\Users\\Mariam\\IdeaProjects\\mainpage\\Registration.csv");
         //System.out.println(userList.size());
         // only load the customers
         Files.LoadCustomer(userList);
@@ -61,7 +63,7 @@ public class MainApplication extends Application {
         // load data to inbody list
         Files.LoadInBody(inBody_Membership_Data);
         // Set the application icon
-        stage.getIcons().add(new Image("file:C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -81,7 +83,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 
@@ -89,9 +91,40 @@ public class MainApplication extends Application {
         return gyms;
     }
 
-
+    public static ArrayList<String[]> return_userList(){
+        return userList;
+    }
 
     public static void main(String[] args) {
         launch(args);
+    }
+    public static void showAlert(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        try {
+            // Load your icon image
+            Image icon = new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
+
+            // Create an ImageView with the icon
+            ImageView imageView = new ImageView(icon);
+            imageView.setFitWidth(48); // Set the width of the icon
+            imageView.setFitHeight(48); // Set the height of the icon
+
+            // Set the graphic of the Alert's DialogPane to the ImageView
+            alert.getDialogPane().setGraphic(imageView);
+
+            // Set the application icon in the title bar of the alert
+            Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+            alertStage.getIcons().add(icon);
+        } catch (IllegalArgumentException e) {
+            // Handle the exception (e.g., log the error)
+            e.printStackTrace();
+        }
+
+        // Show the alert
+        alert.showAndWait();
     }
 }
