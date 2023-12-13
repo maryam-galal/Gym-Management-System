@@ -50,15 +50,16 @@ public class MainApplication extends Application {
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         // load all data to userList
-         Files.Load_ArrayList("C:\\Users\\ROAA\\IdeaProjects\\GYM\\Registration.csv", userList);
+         Files.Load_ArrayList("C:\\Users\\ROAA\\IdeaProjects\\GYM\\Registration.csv");
+        //System.out.println(userList.size());
         // only load the customers
-        Files.LoadCustomer(userList, customerArrayList);
+        Files.LoadCustomer(userList);
         // only load the coaches
-         Files.LoadCoach(userList, coachArrayList);
+         Files.LoadCoach(userList);
         // load data from inbody_membership file
-         Files.Load_ArrayList("InBody_Membership.csv",inBody_Membership_Data);
+         Files.Load_ArrayList("InBody_Membership.csv");
         // load data to inbody list
-        Files.LoadInBody(inBody_Membership_Data, inBodyArrayList);
+        Files.LoadInBody(inBody_Membership_Data);
         // Set the application icon
         stage.getIcons().add(new Image("file:C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");

@@ -26,12 +26,11 @@ public class LoginController {
         String entered_Password = passwordField.getText();
         String entered_Username = usernameField.getText();
         boolean login_Successful = false;
-
         for (String[] data : MainApplication.userList) {
-            if (data.length >= 7) {
+            if (data.length >= 8) {
                 String username = data[1].trim();
                 String password = data[2].trim();
-                String userType = data[8].trim();
+                String userType = data[7].trim();
                 if (entered_Username.equals(username) && entered_Password.equals(password)) {
                     login_Successful = true;
                     if(userType.equals("coach")){

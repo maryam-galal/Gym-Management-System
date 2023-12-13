@@ -6,24 +6,24 @@ import java.util.Scanner;
 
 public class Files {
 
-    public static void Load_ArrayList (String FileName,ArrayList<String[]> DataFromFile ){
+    public static void Load_ArrayList (String FileName ){
         //reading file info
         try (Scanner fileScanner = new Scanner(new File(FileName))) {
             while (fileScanner.hasNextLine()) {
                 String[] data = fileScanner.nextLine().split(",");
-                DataFromFile.add(data);
+               MainApplication.userList.add(data);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
     }
-    public static void LoadCustomer(ArrayList<String []> user_list, ArrayList<Customer> customerList) {
+    public static void LoadCustomer(ArrayList<String []> user_list) {
     //saving data into lists
         Customer customer = new Customer();
     for (String[] data : user_list) {
-        if (data.length >= 7) {
-            String userType = data[6].trim();
+        if (data.length >= 8) {
+            String userType = data[7].trim();
             if (userType.equals("customer")) {
                 customer.setId(data[0].trim());
                 customer.setUser_name(data[1].trim());
@@ -32,13 +32,13 @@ public class Files {
                 customer.setEmail(data[4].trim());
                 customer.setAddress(data[5].trim());
                 customer.setGender(data[6].trim());
-                customerList.add(customer);
+                MainApplication.customerArrayList.add(customer);
             }
         }
 
     }
 }
-    public static void  LoadCoach(ArrayList<String[]> user_list,ArrayList<Coach> coachArrayList){
+    public static void  LoadCoach(ArrayList<String[]> user_list){
     for (String[] data : user_list) {
         if (data.length >= 7) {
             String userType = data[6].trim();
@@ -50,13 +50,13 @@ public class Files {
                    coach.setEmail(data[3].trim());
                    coach.setAddress(data[4].trim());
                    coach.setGender(data[5].trim());
-                   coachArrayList.add(coach);
+                   MainApplication.coachArrayList.add(coach);
             }
         }
 
     }
     }
-    public static void  LoadInBody (ArrayList<String []> InBody_membership_list, ArrayList<InBody> inBodyArrayList){
+    public static void  LoadInBody (ArrayList<String []> InBody_membership_list){
         InBody i = new InBody();
         for (String [] data : InBody_membership_list) {
             if (data.length <= 8) {
@@ -70,7 +70,7 @@ public class Files {
                 i.setTotal_weight(Double.parseDouble(data[7].trim()));
                 i.setWater_weight(Double.parseDouble(data[8].trim()));
 
-                inBodyArrayList.add(i);
+                MainApplication.inBodyArrayList.add(i);
 
             }
 
@@ -84,7 +84,7 @@ public class Files {
     PrintWriter pw = new PrintWriter(fw, false);
 
     if (file_name.equals("Registration.csv")){
-     //pw.println("\"id\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\"");
+    pw.println("\"id\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\"");
         for (Coach c : MainApplication.coachArrayList) {
             pw.println(c.getId() +","+c.getUser_name() +","+ c.getPassword() +","+ c.getPhone_number() + ","+ c.getEmail() + "," +c.getAddress() + "," + c.getGender() + "," +"coach");
             System.out.println("done Coach");
