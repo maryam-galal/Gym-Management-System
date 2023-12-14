@@ -42,6 +42,8 @@ public class Customer_RegistrationForm_Controller {
         customer.setEmail(email_text.getText());
         customer.setAddress(address_text.getText());
         customer.setGender(genderChoiceBox.getValue());
+
+        //MainApplication.customerArrayList.add(customer);
         return customer;
     }
 

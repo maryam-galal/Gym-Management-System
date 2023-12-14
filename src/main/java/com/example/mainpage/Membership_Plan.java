@@ -7,6 +7,8 @@ public class Membership_Plan {
     protected int number_of_months;
     protected int days_per_week;
     public double plan_price;
+    public Coach coach;
+    public static Customer customer;
 
     public void setChoice(String choice) {
         this.choice = choice;
@@ -57,4 +59,15 @@ public class Membership_Plan {
             plan_price = calc_price(45, 0.3);
         }
     }
+
+
+//    public void addCustomer() {
+//        if (coach.canAcceptCustomer()) {
+//            customer.setAssignedCoachId(coach.getId());
+//            //numberOfCustomers++;
+//            System.out.println("Customer " + customer.getId() + " assigned to Coach " + coach.getId());
+//        } else {
+//            System.out.println("Cannot assign customer to coach. Coach " + coach.getId() + " has reached the maximum limit.");
+//        }
+//    }
 }

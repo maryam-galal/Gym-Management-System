@@ -6,6 +6,7 @@ public class Coach extends Person {
     private static final int MAX_CUSTOMERS = 10;
     protected int numberOfCustomers = 0;
 
+
     private static int coachCounter = 0;
        public Coach() {
            if (MainApplication.coachArrayList.size() > 0) {
@@ -21,22 +22,17 @@ public class Coach extends Person {
        }
 
     public boolean canAcceptCustomer() {
-        if(numberOfCustomers < MAX_CUSTOMERS)
-           return true;
+        if((numberOfCustomers < MAX_CUSTOMERS) && (working_hours < 10)) {
+            working_hours++;
+            numberOfCustomers++;
+            return true;
+        }
         else{
             return false;
         }
     }
 
-    public void addCustomer(Customer customer,Coach coach) {
-        if (canAcceptCustomer()) {
-            customer.setCoach(coach);
-            numberOfCustomers++;
-            System.out.println("Customer " + customer.getId() + " assigned to Coach " + coach.getId());
-        } else {
-            System.out.println("Cannot assign customer to coach. Coach " + getId() + " has reached the maximum limit.");
-        }
-    }
+
 
 
 }

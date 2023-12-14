@@ -31,7 +31,7 @@ public class Coach_RegistrationForm_Controller {
     public void initialize() {
         GenderChoiceBox.getItems().addAll("Male", "Female");
     }
-// add data from text field to list
+ //add data from text field to list
     public void AddToCoach() {
         Coach newCoach = createCoachInstance();
         MainApplication.coachArrayList.add(newCoach);
@@ -45,6 +45,8 @@ public class Coach_RegistrationForm_Controller {
         coach.setPassword(password.getText());
         coach.setUser_name(username.getText());
         coach.setPhone_number(Phone_text.getText());
+
+       // MainApplication.coachArrayList.add(coach);
         return coach;
     }
 
