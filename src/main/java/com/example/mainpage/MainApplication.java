@@ -63,10 +63,10 @@ public class MainApplication extends Application {
         Files.Load_ArrayList("InBody_Membership.csv");
         // load data to inbody list
         Files.Load_InBody_MembershipPlan(inBody_Membership_Data);
-
+// load the rest here
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -86,7 +86,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 
@@ -109,7 +109,7 @@ public class MainApplication extends Application {
 
         try {
             // Load your icon image
-            Image icon = new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
+            Image icon = new Image("file:C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
 
             // Create an ImageView with the icon
             ImageView imageView = new ImageView(icon);
