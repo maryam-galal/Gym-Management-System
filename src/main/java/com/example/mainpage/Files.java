@@ -33,11 +33,29 @@ public class Files {
                     customer.setEmail(data[4].trim());
                     customer.setAddress(data[5].trim());
                     customer.setGender(data[6].trim());
+
+                    Coach assignedCoach = findAvailableCoach();
+                    if (assignedCoach != null) {
+                        customer.setCoach(assignedCoach);
+                        assignedCoach.addCustomer(customer, assignedCoach);
+                        Subscription.AssignedCoachID = assignedCoach.getId();
+                    }
+
                     MainApplication.customerArrayList.add(customer);
+
                 }
             }
-
         }
+    }
+
+    private static Coach findAvailableCoach() {
+        for (Coach coach : MainApplication.coachArrayList) {
+            System.out.println(MainApplication.coachArrayList.size());
+            if (coach.canAcceptCustomer()) {
+                return coach;
+            }
+        }
+        return null; // No available coach found
     }
 
     public static void LoadCoach(ArrayList<String[]> user_list) {
@@ -75,8 +93,7 @@ public class Files {
                 i.setWater_weight(Double.parseDouble(data[8].trim()));
 
                 MainApplication.inBodyArrayList.add(i);
-            }
-            else {
+            } else {
                 p.setChoice(data[9].trim());
                 p.setStart_date(data[10].trim());
                 p.setNumber_of_months(Integer.parseInt(data[11].trim()));
@@ -99,7 +116,7 @@ public class Files {
                 Coach lastCoach = MainApplication.coachArrayList.get(MainApplication.coachArrayList.size() - 1);
                 pw.println(lastCoach.getId() + "," + lastCoach.getUser_name() + "," + lastCoach.getPassword() + "," +
                         lastCoach.getPhone_number() + "," + lastCoach.getEmail() + "," + lastCoach.getAddress() + "," +
-                        lastCoach.getGender()  +","+ "coach");
+                        lastCoach.getGender() + "," + "coach");
                 System.out.println("Appending Coach: " + lastCoach.getId() + " " + lastCoach.getUser_name());
             }
 
@@ -111,35 +128,17 @@ public class Files {
                         lastCustomer.getGender() + "," + "customer");
                 System.out.println("Appending Customer: " + lastCustomer.getId() + " " + lastCustomer.getUser_name());
             }
-        }
-
-        else if (file_name.equals("InBody_Membership.csv")) {
+        } else if (file_name.equals("InBody.csv")) {
             //pw.println("\"ID\", \"Date of InBody\",\"Mass, Body Fat\",\"Height\",\"Minerals\",\"Protein\",\"Total Weight\",\"Water Weight\"");
             for (InBody in : MainApplication.inBodyArrayList) {
                 pw.println(Customer.id + "," + in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight + ",");
                 System.out.println("inbody done");
             }
-        }
-        else if (file_name.equals("Subscription.csv")){
+        } else if (file_name.equals("Subscription.csv")) {
             //pw.println("\"Customer ID\",\"Coach ID\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\"");
-
-            for (Coach coach : MainApplication.coachArrayList) {
-                int assignedCustomers = 0;
-                for (Customer customer : MainApplication.customerArrayList) {
-                    if (Subscription.AssignedCoachID == null) {
-                        if (assignedCustomers < 10) {
-                            coach.addCustomer(customer,coach);
-                            assignedCustomers++;
-                        } else {
-                            break;
-                        }
-                    }
-                }
-            }
-
-                for (Membership_Plan p : MainApplication.membershipPlanArrayList) {
-                    Subscription s = new Subscription(Customer.id,p);
-                pw.println(s.getCustomerID() + "," + s.getAssignedCoachID()+ "," + p.choice + "," + p.start_date + "," + p.number_of_months + "," + p.days_per_week + "," + p.plan_price);
+            for (Membership_Plan p : MainApplication.membershipPlanArrayList) {
+                Subscription s = new Subscription(p);
+                pw.println(s.getCustomerID() + "," + s.getAssignedCoachID() + "," + p.choice + "," + p.start_date + "," + p.number_of_months + "," + p.days_per_week + "," + p.plan_price);
                 System.out.println("plan done");
             }
         }
@@ -148,8 +147,3 @@ public class Files {
         fw.close();
     }
 }
-
-
-
-
-

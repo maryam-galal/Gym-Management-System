@@ -21,7 +21,11 @@ public class Coach extends Person {
        }
 
     public boolean canAcceptCustomer() {
-        return numberOfCustomers < MAX_CUSTOMERS;
+        if(numberOfCustomers < MAX_CUSTOMERS)
+           return true;
+        else{
+            return false;
+        }
     }
 
     public void addCustomer(Customer customer,Coach coach) {

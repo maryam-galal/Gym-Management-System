@@ -61,7 +61,7 @@ public class InBody_Membership_Controller {
     public void save(MouseEvent mouseEvent) throws IOException {
         Load_static_InBodyArraylist();
         Load_static_PlanArrayList();
-        Files.WriteInFile("InBody_Membership.csv","customer");
+        Files.WriteInFile("InBody.csv","customer");
         Files.WriteInFile("Subscription.csv","customer");
     }
 }

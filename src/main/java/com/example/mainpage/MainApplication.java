@@ -15,13 +15,13 @@ import javafx.scene.control.Alert.AlertType;
 
 public class MainApplication extends Application {
     private static List<Gym> gyms;
- protected static ArrayList<String[]> userList = new ArrayList<>();
- protected static ArrayList<Customer> customerArrayList = new ArrayList<>();
- protected static ArrayList<Coach> coachArrayList = new ArrayList<>();
- protected static ArrayList<InBody> inBodyArrayList = new ArrayList<>();
+    protected static ArrayList<String[]> userList = new ArrayList<>();
+    protected static ArrayList<Customer> customerArrayList = new ArrayList<>();
+    protected static ArrayList<Coach> coachArrayList = new ArrayList<>();
+    protected static ArrayList<InBody> inBodyArrayList = new ArrayList<>();
 
- protected static ArrayList<String[]> inBody_Membership_Data = new ArrayList<>();
- protected static ArrayList<Membership_Plan> membershipPlanArrayList = new ArrayList<>();
+    protected static ArrayList<String[]> inBody_Membership_Data = new ArrayList<>();
+    protected static ArrayList<Membership_Plan> membershipPlanArrayList = new ArrayList<>();
 
     private static Stage primarystage;
 
@@ -54,20 +54,19 @@ public class MainApplication extends Application {
 
 
         // load all data to userList
-         Files.Load_ArrayList("Registration.csv");
-        System.out.println(userList.size());
+        Files.Load_ArrayList("Registration.csv");
         // only load the customers
         Files.LoadCustomer(userList);
         // only load the coaches
         Files.LoadCoach(userList);
         // load data from inbody_membership file
-        Files.Load_ArrayList("InBody_Membership.csv");
+        Files.Load_ArrayList("InBody.csv");
         // load data to inbody list
         Files.Load_InBody_MembershipPlan(inBody_Membership_Data);
-// load the rest here
+        // load the rest here
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -87,7 +86,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 
@@ -110,7 +109,7 @@ public class MainApplication extends Application {
 
         try {
             // Load your icon image
-            Image icon = new Image("file:C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
+            Image icon = new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
 
             // Create an ImageView with the icon
             ImageView imageView = new ImageView(icon);
