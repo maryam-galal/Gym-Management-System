@@ -55,6 +55,7 @@ public class MainApplication extends Application {
 
         // load all data to userList
          Files.Load_ArrayList("Registration.csv");
+        System.out.println(userList.size());
         // only load the customers
         Files.LoadCustomer(userList);
         // only load the coaches
