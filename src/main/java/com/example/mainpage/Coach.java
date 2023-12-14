@@ -5,6 +5,8 @@ public class Coach extends Person {
     private int working_hours;
     private static final int MAX_CUSTOMERS = 10;
     protected int numberOfCustomers = 0;
+
+
     private static int coachCounter = 0;
        public Coach() {
            if (MainApplication.coachArrayList.size() > 0) {
@@ -29,4 +31,8 @@ public class Coach extends Person {
             return false;
         }
     }
+
+
+
+
 }
