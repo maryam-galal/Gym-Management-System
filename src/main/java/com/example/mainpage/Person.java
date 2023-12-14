@@ -2,13 +2,13 @@ package com.example.mainpage;
 
 public abstract class  Person {
 
-   protected static String id;
-    protected static String user_name;
-    protected static String Password;
-    protected static String gender;
-    protected static String address;
-    protected static String phone_number;
-    protected static String email;
+   protected  String id;
+    protected String user_name;
+    protected  String Password;
+    protected String gender;
+    protected String address;
+    protected String phone_number;
+    protected String email;
 
     public String getId() {
         return id;
@@ -36,8 +36,8 @@ public abstract class  Person {
         return email;
     }
 
-    public static void setId(String id) {
-        Person.id = id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setUser_name(String user_name) {

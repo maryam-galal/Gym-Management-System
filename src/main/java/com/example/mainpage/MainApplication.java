@@ -57,17 +57,18 @@ public class MainApplication extends Application {
         // only load the customers
        // Files.LoadCustomer(userList);
 
-        Files.LoadCoach(userList);
+        Files.Load_coach_customer(userList);
 
 //        for (String [] s : userList){
 //            System.out.println(s[0]);
 //            System.out.println(s[1]);
 //            System.out.println(s[7]);
 //        }
-for(Coach c : coachArrayList){
+        for(Coach c : coachArrayList){
     System.out.println(c.getUser_name());
     System.out.println(c.getId());
-}
+
+        }
         for(Customer c : customerArrayList){
             System.out.println(c.getUser_name());
             System.out.println(c.getId());
@@ -112,6 +113,14 @@ for(Coach c : coachArrayList){
     public static ArrayList<String[]> return_userList(){
         return userList;
     }
+    public static ArrayList<Customer> return_customerList(){
+        return customerArrayList;
+    }
+    public static ArrayList<Coach> return_coachList(){
+        return coachArrayList;
+    }
+
+
 
     public static void main(String[] args) {
         launch(args);

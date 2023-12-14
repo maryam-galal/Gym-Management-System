@@ -19,9 +19,8 @@ public class Subscription {
     public Subscription(Membership_Plan plan) {
         this.plan = plan;
     }
-
     public static void findAvailableCoach() {
-        System.out.println("called");
+//       System.out.println("called");
 //        for(Customer c : MainApplication.customerArrayList){
 //            System.out.println(c.getUser_name());
 //            System.out.println(c.id);

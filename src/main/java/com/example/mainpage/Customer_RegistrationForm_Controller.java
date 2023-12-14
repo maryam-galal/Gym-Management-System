@@ -42,7 +42,10 @@ public class Customer_RegistrationForm_Controller {
                 "customer"
         };
         MainApplication.userList.add(customerData);
-       // MainApplication.customerArrayList.add(newCustomer);
+        MainApplication.customerArrayList.add(newCustomer);
+/*        for(Customer c:MainApplication.customerArrayList){
+            System.out.println(c.getId());
+        }*/
     }
 
 
@@ -115,7 +118,7 @@ public class Customer_RegistrationForm_Controller {
         Load_to_Static_list();
         // Save to file and change scene
         Files.WriteInFile("Registration.csv",type);
-        Files.LoadCoach(MainApplication.userList);
+        Files.Load_coach_customer(MainApplication.userList);
         MainApplication RegisterMain = new MainApplication();
         RegisterMain.changeScene("InBody_Membership.fxml");
     }

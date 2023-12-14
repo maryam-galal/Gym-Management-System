@@ -3,7 +3,6 @@ package com.example.mainpage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.List;
 
 public class Files {
 
@@ -27,11 +26,9 @@ public class Files {
         }
 
     }
-    public static void LoadCoach(ArrayList<String[]> user_list) {
+    public static void Load_coach_customer(ArrayList<String[]> user_list) {
         for (String[] data : user_list) {
             String userType = data[7].trim();
-            System.out.println(userType);
-            System.out.println(userType);
             if (data.length >= 8) {
                 if (userType.equals("coach")) {
                     Coach coach = new Coach();
@@ -64,7 +61,8 @@ public class Files {
         Membership_Plan p = new Membership_Plan();
         for (String[] d : MainApplication.inBodyArrayListFromFile) {
             if (d.length <= 8) {
-                Customer.setId(d[0].trim());
+                Customer c=new Customer();
+                c.setId(d[0].trim());
                 i.setDate_of_InBody(d[1].trim());
                 i.setMass(Double.parseDouble(d[2].trim()));
                 i.setBody_fat(Double.parseDouble(d[3].trim()));
@@ -111,9 +109,10 @@ public class Files {
                 System.out.println("Appending Customer: " + lastCustomer.getId() + " " + lastCustomer.getUser_name());
             }
         } else if (file_name.equals("InBody.csv")) {
+            Customer c = new Customer();
             //pw.println("\"ID\", \"Date of InBody\",\"Mass, Body Fat\",\"Height\",\"Minerals\",\"Protein\",\"Total Weight\",\"Water Weight\"");
             for (InBody in : MainApplication.InBodyList) {
-                pw.println(Customer.id + "," + in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight + ",");
+                pw.println(c.id + "," + in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight + ",");
                 System.out.println("inbody done");
             }
         } else if (file_name.equals("Subscription.csv")) {
