@@ -31,8 +31,20 @@ public class Customer_RegistrationForm_Controller {
     }
     public void Load_to_Static_list() {
         Customer newCustomer = createCustomerInstance();
-        MainApplication.customerArrayList.add(newCustomer);
+        String[] customerData = {
+                newCustomer.getId(),
+                newCustomer.getUser_name(),
+                newCustomer.getPassword(),
+                newCustomer.getPhone_number(),
+                newCustomer.getEmail(),
+                newCustomer.getAddress(),
+                newCustomer.getGender(),
+                "customer"
+        };
+        MainApplication.userList.add(customerData);
+       // MainApplication.customerArrayList.add(newCustomer);
     }
+
 
     public Customer createCustomerInstance() {
         Customer customer = new Customer();
@@ -42,6 +54,7 @@ public class Customer_RegistrationForm_Controller {
         customer.setEmail(email_text.getText());
         customer.setAddress(address_text.getText());
         customer.setGender(genderChoiceBox.getValue());
+        //MainApplication.customerArrayList.add(customer);
         return customer;
     }
 
@@ -67,41 +80,42 @@ public class Customer_RegistrationForm_Controller {
             return;
         }
 
-            try {
+        try {
                 // Validate the password
-                if (customer_Excep.validPassword(Password.getText())) {
+            if (customer_Excep.validPassword(Password.getText())) {
                     passwordError.setVisible(false);
-                }
-            }catch (InvalidPasswordException e) {
+            }
+        }catch (InvalidPasswordException e) {
                 MainApplication.showAlert(e.getMessage());
                 passwordError.setText(e.getMessage());
                 passwordError.setVisible(true);
                 return;
-            }
-            try {
-                if (customer_Excep.validPhoneNumber(phone_text.getText(), type)) {
+        }
+        try {
+            if (customer_Excep.validPhoneNumber(phone_text.getText(), type)) {
                     phoneNumberError.setVisible(false);
-                }
-            }catch (PhoneNumberException e) {
+            }
+        }catch (PhoneNumberException e) {
                 MainApplication.showAlert(e.getMessage());
                 phoneNumberError.setText(e.getMessage());
                 phoneNumberError.setVisible(true);
                 return;
+        }
+        try {
+            if (customer_Excep.isValidEmail(email_text.getText())) {
+                emailError.setVisible(false);
             }
-            try {
-                if (customer_Excep.isValidEmail(email_text.getText())) {
-                    emailError.setVisible(false);
-                }
-            }catch (InvalidEmailException e) {
+        }catch (InvalidEmailException e) {
                 MainApplication.showAlert(e.getMessage());
                 emailError.setText(e.getMessage());
                 emailError.setVisible(true);
                 return;
-            }
+        }
 
         Load_to_Static_list();
         // Save to file and change scene
         Files.WriteInFile("Registration.csv",type);
+        Files.LoadCoach(MainApplication.userList);
         MainApplication RegisterMain = new MainApplication();
         RegisterMain.changeScene("InBody_Membership.fxml");
     }

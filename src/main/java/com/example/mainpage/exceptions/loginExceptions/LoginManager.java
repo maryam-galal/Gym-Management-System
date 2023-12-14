@@ -24,7 +24,6 @@ public class LoginManager {
                 String usernameFromList = data[1].trim();
                 String passwordFromList = data[2].trim();
                 userType = data[7].trim();
-
                 if (username.equals(usernameFromList)) {
                     usernameFound = true;
                     if (password.equals(passwordFromList)) {

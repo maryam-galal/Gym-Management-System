@@ -1,3 +1,7 @@
 "Customer ID","Coach ID","Plan Choice","Start Date","Number of Months","Days Per Week","Plan Price""
-B21,null,Gold Plan,2023-12-18,3,6,2268.0
-
+B22,A12,Gold Plan,2023-12-14,9,6,6804.0
+B23,A12,Silver Plan,2023-12-16,2,3,1200.0
+B24,A12,Gold Plan,2023-12-14,1,6,1080.0
+B25,A13,Gold Plan,2023-12-21,1,6,1080.0
+B26,A13,Gold Plan,2023-12-15,1,6,1080.0
+B28,A14,Silver Plan,2023-12-13,4,3,1920.0

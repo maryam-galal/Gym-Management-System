@@ -31,11 +31,23 @@ public class Coach_RegistrationForm_Controller {
     public void initialize() {
         GenderChoiceBox.getItems().addAll("Male", "Female");
     }
-// add data from text field to list
+ //add data from text field to list
     public void AddToCoach() {
         Coach newCoach = createCoachInstance();
-        MainApplication.coachArrayList.add(newCoach);
+        String[] coachData = {
+                newCoach.getId(),
+                newCoach.getUser_name(),
+                newCoach.getPassword(),
+                newCoach.getPhone_number(),
+                newCoach.getEmail(),
+                newCoach.getAddress(),
+                newCoach.getGender(),
+                "coach"  // Assuming "coach" is the user type for coaches
+        };
 
+        // Add the string array to the user list
+        MainApplication.userList.add(coachData);
+        MainApplication.coachArrayList.add(newCoach);
     }
     public Coach createCoachInstance() {
        Coach coach = new Coach();
@@ -45,11 +57,14 @@ public class Coach_RegistrationForm_Controller {
         coach.setPassword(password.getText());
         coach.setUser_name(username.getText());
         coach.setPhone_number(Phone_text.getText());
+
+       // MainApplication.coachArrayList.add(coach);
         return coach;
     }
 
     @FXML
     void Move_to_Next_page(MouseEvent event) throws IOException {
+        MainApplication backToLogIn=new MainApplication();
         try {
             coach_excep.validateFields(username.getText(), password.getText(), Phone_text.getText(),
                     Email_text.getText(), Address_text.getText(), GenderChoiceBox.getValue());
@@ -106,5 +121,7 @@ public class Coach_RegistrationForm_Controller {
         }
         AddToCoach();
         Files.WriteInFile("Registration.csv",type);
+        backToLogIn.changeScene("LogInPage.fxml");
+
     }
 }

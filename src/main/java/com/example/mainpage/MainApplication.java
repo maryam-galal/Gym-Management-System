@@ -18,8 +18,8 @@ public class MainApplication extends Application {
     protected static ArrayList<String[]> userList = new ArrayList<>();
     protected static ArrayList<Customer> customerArrayList = new ArrayList<>();
     protected static ArrayList<Coach> coachArrayList = new ArrayList<>();
-    protected static ArrayList<InBody> inBodyArrayList = new ArrayList<>();
-
+    protected static ArrayList<String []> inBodyArrayListFromFile = new ArrayList<>();
+    protected static ArrayList<InBody> InBodyList = new ArrayList<>();
     protected static ArrayList<String[]> inBody_Membership_Data = new ArrayList<>();
     protected static ArrayList<Membership_Plan> membershipPlanArrayList = new ArrayList<>();
 
@@ -51,26 +51,41 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
-
-
         // load all data to userList
         Files.Load_ArrayList("Registration.csv");
+
         // only load the customers
-        Files.LoadCustomer(userList);
-        // only load the coaches
+       // Files.LoadCustomer(userList);
+
         Files.LoadCoach(userList);
+
+//        for (String [] s : userList){
+//            System.out.println(s[0]);
+//            System.out.println(s[1]);
+//            System.out.println(s[7]);
+//        }
+for(Coach c : coachArrayList){
+    System.out.println(c.getUser_name());
+    System.out.println(c.getId());
+}
+        for(Customer c : customerArrayList){
+            System.out.println(c.getUser_name());
+            System.out.println(c.getId());
+        }
+
         // load data from inbody_membership file
         Files.Load_ArrayList("InBody.csv");
         // load data to inbody list
-        Files.Load_InBody_MembershipPlan(inBody_Membership_Data);
+       // Files.Load_InBody_MembershipPlan(inBody_Membership_Data);
         // load the rest here
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+
     }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -86,7 +101,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 
@@ -109,7 +124,7 @@ public class MainApplication extends Application {
 
         try {
             // Load your icon image
-            Image icon = new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
+            Image icon = new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
 
             // Create an ImageView with the icon
             ImageView imageView = new ImageView(icon);

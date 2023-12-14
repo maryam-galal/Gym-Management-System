@@ -41,8 +41,8 @@ public class InBody_Membership_Controller {
         b.total_weight = Double.parseDouble(BodyWeight.getText());
         b.water_weight = Double.parseDouble(water.getText());
         System.out.println("loaded");
-        MainApplication.inBodyArrayList.add(b);
 
+        MainApplication.InBodyList.add(b);
     }
 
     @FXML
@@ -56,12 +56,15 @@ public class InBody_Membership_Controller {
     }
 
 
-
     @FXML
     public void save(MouseEvent mouseEvent) throws IOException {
+        MainApplication backTOlogIn=new MainApplication();
         Load_static_InBodyArraylist();
         Load_static_PlanArrayList();
+        Subscription.findAvailableCoach();
         Files.WriteInFile("InBody.csv","customer");
         Files.WriteInFile("Subscription.csv","customer");
+        backTOlogIn.changeScene("LogInPage.fxml");
+
     }
 }
