@@ -17,10 +17,12 @@ public class Files {
             }
             else if(FileName.equals("Subscription.csv")){
                 while (fileScanner.hasNextLine()) {
+                    System.out.println("Loading InBody data from InBody.csv");
                     String[] data = fileScanner.nextLine().split(",");
                     MainApplication.inBodyArrayListFromFile.add(data);
                 }
             }
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

@@ -64,6 +64,7 @@ public class InBody_Membership_Controller {
         Subscription.findAvailableCoach();
         Files.WriteInFile("InBody.csv","customer");
         Files.WriteInFile("Subscription.csv","customer");
+
         backTOlogIn.changeScene("LogInPage.fxml");
 
     }

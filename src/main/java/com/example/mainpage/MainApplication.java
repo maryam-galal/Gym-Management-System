@@ -58,21 +58,32 @@ public class MainApplication extends Application {
        // Files.LoadCustomer(userList);
 
         Files.Load_coach_customer(userList);
-
-//        for (String [] s : userList){
-//            System.out.println(s[0]);
-//            System.out.println(s[1]);
-//            System.out.println(s[7]);
-//        }
         for(Coach c : coachArrayList){
     System.out.println(c.getUser_name());
     System.out.println(c.getId());
-
         }
         for(Customer c : customerArrayList){
             System.out.println(c.getUser_name());
             System.out.println(c.getId());
         }
+/*        for(String [] s : inBodyArrayListFromFile ){
+            System.out.println(s[0]);
+            System.out.println(s[1]);
+            System.out.println(s[2]);
+            System.out.println(s[3]);
+            System.out.println(s[4]);
+            System.out.println(s[5]);
+            System.out.println(s[6]);
+            System.out.println(s[7]);
+            System.out.println(s[8]);
+            System.out.println(s[9]);
+            System.out.println(s[10]);
+            System.out.println(s[11]);
+            System.out.println(s[12]);
+            System.out.println(s[13]);
+        }*/
+
+
 
         // load data from inbody_membership file
         Files.Load_ArrayList("InBody.csv");

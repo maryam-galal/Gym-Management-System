@@ -43,12 +43,7 @@ public class Customer_RegistrationForm_Controller {
         };
         MainApplication.userList.add(customerData);
         MainApplication.customerArrayList.add(newCustomer);
-/*        for(Customer c:MainApplication.customerArrayList){
-            System.out.println(c.getId());
-        }*/
     }
-
-
     public Customer createCustomerInstance() {
         Customer customer = new Customer();
         customer.setUser_name(Username.getText());
