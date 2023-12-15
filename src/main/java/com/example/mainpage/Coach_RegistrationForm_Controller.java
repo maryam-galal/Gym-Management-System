@@ -23,6 +23,12 @@ public class Coach_RegistrationForm_Controller {
     private Label phoneNumberError;
     @FXML
     private Label usernameError;
+    @FXML
+    private ChoiceBox<Integer> Startinghour;
+    @FXML
+    private ChoiceBox<Integer> Endinghour;
+    @FXML
+    private Label HoursError;
     signUpManager coach_excep = new signUpManager();
     final String type="coach";
     Coach coach = new Coach();
@@ -30,6 +36,8 @@ public class Coach_RegistrationForm_Controller {
     @FXML
     public void initialize() {
         GenderChoiceBox.getItems().addAll("Male", "Female");
+        Startinghour.getItems().addAll(7,8,9,10,11,12,13,14);
+        Endinghour.getItems().addAll(17,18,19,20,21,22,23,24);
     }
  //add data from text field to list
     public void AddToCoach() {
@@ -42,7 +50,9 @@ public class Coach_RegistrationForm_Controller {
                 newCoach.getEmail(),
                 newCoach.getAddress(),
                 newCoach.getGender(),
-                "coach"  // Assuming "coach" is the user type for coaches
+                "coach",
+                String.valueOf(newCoach.getWorking_hours())
+                  // Assuming "coach" is the user type for coaches
         };
         // Add the string array to the user list
         MainApplication.userList.add(coachData);
@@ -56,6 +66,7 @@ public class Coach_RegistrationForm_Controller {
         coach.setPassword(password.getText());
         coach.setUser_name(username.getText());
         coach.setPhone_number(Phone_text.getText());
+        coach.setWorking_hours(Endinghour.getValue()-Startinghour.getValue());
         return coach;
     }
 
@@ -114,6 +125,17 @@ public class Coach_RegistrationForm_Controller {
             MainApplication.showAlert(e.getMessage());
             emailError.setText(e.getMessage());
             emailError.setVisible(true);
+            return;
+        }
+        try {
+            // Validate phone number
+            if (coach_excep.validWorkingHours(Startinghour.getValue(),Endinghour.getValue())){
+                HoursError.setVisible(false);
+            }
+        } catch (WorkingHoursException e) {
+            MainApplication.showAlert(e.getMessage());
+            HoursError.setText(e.getMessage());
+            HoursError.setVisible(true);
             return;
         }
         AddToCoach();

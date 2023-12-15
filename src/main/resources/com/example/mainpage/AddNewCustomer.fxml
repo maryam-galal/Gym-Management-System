@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.AddNewCustomerController">
+   <children>
+      <Pane prefHeight="642.0" prefWidth="944.0" style="-fx-background-color: black;">
+         <children>
+            <Button layoutX="26.0" layoutY="92.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Username" textFill="#f7f3f3">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="17.0" layoutY="134.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Password" textFill="#f7f3f3">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutY="180.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Phone Number" textFill="#f7f3f3">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="18.0" layoutY="225.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="E-mail" textFill="#f7f3f3">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="18.0" layoutY="273.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Address" textFill="#f7f3f3">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="18.0" layoutY="317.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Gender" textFill="#f7f3f3">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="Password" layoutX="173.0" layoutY="144.0" promptText="Enter Password" />
+            <TextField fx:id="Username" layoutX="173.0" layoutY="99.0" promptText="Enter Username" />
+            <TextField fx:id="phone_text" layoutX="173.0" layoutY="190.0" promptText="Enter Phone Number" />
+            <TextField fx:id="email_text" layoutX="173.0" layoutY="235.0" promptText="Enter E-mail" />
+            <TextField fx:id="address_text" layoutX="173.0" layoutY="283.0" promptText="Enter Address" />
+            <ChoiceBox fx:id="genderChoiceBox" layoutX="172.0" layoutY="327.0" prefWidth="150.0" />
+            <Label layoutX="7.0" layoutY="398.0" prefHeight="26.0" prefWidth="183.0" text="Plan Details :" textFill="#b4b4b4">
+               <font>
+                  <Font name="Arial Bold Italic" size="26.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="plan_ChoiceBox" layoutX="11.0" layoutY="498.0" prefHeight="37.0" prefWidth="202.0" />
+            <Label layoutX="8.0" layoutY="464.0" prefHeight="26.0" prefWidth="134.0" text="Choose Your Plan" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="267.0" layoutY="471.0" prefHeight="26.0" prefWidth="150.0" text="Number of Months" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="NumberOfMonths" layoutX="267.0" layoutY="504.0" prefHeight="26.0" prefWidth="165.0" promptText="Enter Number of Months" />
+            <Label layoutX="495.0" layoutY="471.0" prefHeight="26.0" prefWidth="150.0" text="Start Date" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="plan_DatePicker" layoutX="495.0" layoutY="504.0" promptText="Enter Start Date" />
+            <Label layoutX="425.0" layoutY="81.0" prefHeight="31.0" prefWidth="202.0" text="InBody Details :" textFill="#b4b4b4">
+               <font>
+                  <Font name="Arial Bold Italic" size="26.0" />
+               </font>
+            </Label>
+            <Label layoutX="427.0" layoutY="129.0" prefHeight="26.0" prefWidth="118.0" text="Date of InBody" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="inbody_datePicker" layoutX="425.0" layoutY="155.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Date of InBody" />
+            <Label layoutX="427.0" layoutY="184.0" prefHeight="26.0" prefWidth="70.0" text="Body Fat" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Bodyfat" layoutX="425.0" layoutY="209.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Body Fat in (kg)" />
+            <Label layoutX="430.0" layoutY="242.0" prefHeight="26.0" prefWidth="70.0" text="Minerals" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="minerals" layoutX="425.0" layoutY="265.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Minerals in (kg)" />
+            <Label layoutX="432.0" layoutY="297.0" prefHeight="26.0" prefWidth="60.0" text="Protein" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="protein" layoutX="425.0" layoutY="323.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Protein in (kg)" />
+            <Label layoutX="682.0" layoutY="125.0" prefHeight="26.0" prefWidth="118.0" text="Height" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Height" layoutX="682.0" layoutY="151.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Height in (m)" />
+            <Label layoutX="682.0" layoutY="184.0" prefHeight="26.0" prefWidth="142.0" text="Total Body Weight" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="BodyWeight" layoutX="682.0" layoutY="209.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Total Body Weight in (kg)" />
+            <Label layoutX="682.0" layoutY="242.0" prefHeight="26.0" prefWidth="38.0" text="Mass" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Mass" layoutX="682.0" layoutY="265.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Mass in (kg)" />
+            <Label layoutX="686.0" layoutY="297.0" prefHeight="26.0" prefWidth="134.0" text="Total Body Water" textFill="#f2f2f2">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="water" layoutX="682.0" layoutY="323.0" prefHeight="26.0" prefWidth="183.0" promptText="Enter Total Body Water in (kg)" />
+            <Button fx:id="saveButton" layoutX="794.0" layoutY="517.0" mnemonicParsing="false" onAction="#saveNewCustomer" style="-fx-background-color: Transparent;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="Monotype Corsiva" size="42.0" />
+               </font>
+            </Button>
+            <Button fx:id="BackButton" layoutX="7.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#GoBack" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: black;">
+               <graphic>
+                  <ImageView fitHeight="61.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@BackButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></Pane>
+   </children>
+</AnchorPane>

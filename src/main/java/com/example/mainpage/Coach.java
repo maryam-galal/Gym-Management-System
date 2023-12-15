@@ -6,7 +6,12 @@ public class Coach extends Person {
     private static final int MAX_CUSTOMERS = 10;
     protected int numberOfCustomers = 0;
 
-
+    public void setWorking_hours(int working_hours) {
+        this.working_hours = working_hours;
+    }
+    public int getWorking_hours(){
+        return working_hours;
+}
     private static int coachCounter = 0;
        public Coach() {
            if (MainApplication.coachArrayList.size() > 0) {
@@ -31,8 +36,4 @@ public class Coach extends Person {
             return false;
         }
     }
-
-
-
-
 }
