@@ -62,6 +62,8 @@ public class Files {
                     coach.setEmail(data[4].trim());
                     coach.setAddress(data[5].trim());
                     coach.setGender(data[6].trim());
+                    coach.setStartinghour(Integer.parseInt(data[8].trim()));
+                    coach.setEndinghour(Integer.parseInt(data[9].trim()));
                     MainApplication.coachArrayList.add(coach);
                 }
             }

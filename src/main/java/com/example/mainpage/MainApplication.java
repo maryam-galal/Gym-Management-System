@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,7 +22,7 @@ public class MainApplication extends Application {
 
     protected static ArrayList<String[]> userList = new ArrayList<>();
     protected static ArrayList<String[]> InBody_Data = new ArrayList<>();
-    protected static ArrayList<String []> Subscription_Data = new ArrayList<>();
+    protected static ArrayList<String[]> Subscription_Data = new ArrayList<>();
 
     private static Stage primarystage;
 
@@ -59,8 +60,19 @@ public class MainApplication extends Application {
         Files.Load_InBody();
         Files.Load_ArrayList("Subscription.csv");
         Files.Load_Subscription();
+
+        System.out.println(userList.size());
         System.out.println(customerArrayList.size());
         System.out.println(coachArrayList.size());
+
+        System.out.println(InBodyList.size());
+        System.out.println(InBody_Data.size());
+
+        System.out.println(membershipPlanArrayList.size());
+        System.out.println(Subscription_Data.size());
+
+
+
 
         // Set the application icon
         stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
