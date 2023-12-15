@@ -38,20 +38,10 @@ public class Files {
 
     public static void Load_coach_customer() {
         for (String[] data : MainApplication.userList) {
-            String userType = data[7].trim();
-            if (data.length >= 8) {
-                if (userType.equals("coach")) {
-                    Coach coach = new Coach();
-                    coach.setId(data[0].trim());
-                    coach.setUser_name(data[1].trim());
-                    coach.setPassword(data[2].trim());
-                    coach.setPhone_number(data[3].trim());
-                    coach.setEmail(data[4].trim());
-                    coach.setAddress(data[5].trim());
-                    coach.setGender(data[6].trim());
-                    MainApplication.coachArrayList.add(coach);
-                }
-                else if (userType.equals("customer")) {
+            if (data.length >= 8 ) {
+                String userType = data[7].trim();
+
+                if (userType.equals("customer")) {
                     Customer customer = new Customer();
                     customer.setId(data[0].trim());
                     customer.setUser_name(data[1].trim());
@@ -62,6 +52,17 @@ public class Files {
                     customer.setGender(data[6].trim());
                     Subscription.customer_id=customer.getId();
                     MainApplication.customerArrayList.add(customer);
+                }
+               else if (userType.equals("coach")) {
+                    Coach coach = new Coach();
+                    coach.setId(data[0].trim());
+                    coach.setUser_name(data[1].trim());
+                    coach.setPassword(data[2].trim());
+                    coach.setPhone_number(data[3].trim());
+                    coach.setEmail(data[4].trim());
+                    coach.setAddress(data[5].trim());
+                    coach.setGender(data[6].trim());
+                    MainApplication.coachArrayList.add(coach);
                 }
             }
         }
@@ -108,13 +109,14 @@ public class Files {
         Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
 
         if (file_name.equals("Registration.csv")) {
-            //pw.println("\"ID\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\",\"User Type\"");
+            //pw.println("\"ID\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\",\"User Type\",\"Starting Hour\",\"Ending Hour\"");
             // Write the last added coach
             if (!MainApplication.coachArrayList.isEmpty() && userType.equals("coach")) {
                 Coach lastCoach = MainApplication.coachArrayList.get(MainApplication.coachArrayList.size() - 1);
                 pw.println(lastCoach.getId() + "," + lastCoach.getUser_name() + "," + lastCoach.getPassword() + "," +
                         lastCoach.getPhone_number() + "," + lastCoach.getEmail() + "," + lastCoach.getAddress() + "," +
-                        lastCoach.getGender() + "," + "coach");
+                        lastCoach.getGender() + "," + "coach"+","+lastCoach.getStartinghour()+","+lastCoach.getEndinghour());
+
                 System.out.println("Appending Coach: " + lastCoach.getId() + " " + lastCoach.getUser_name());
             }
 
@@ -123,7 +125,8 @@ public class Files {
             else if (!MainApplication.customerArrayList.isEmpty() && userType.equals("customer")) {
                 pw.println(lastCustomer.getId() + "," + lastCustomer.getUser_name() + "," + lastCustomer.getPassword() + "," +
                         lastCustomer.getPhone_number() + "," + lastCustomer.getEmail() + "," + lastCustomer.getAddress() + "," +
-                        lastCustomer.getGender() + "," + "customer");
+                        lastCustomer.getGender() + "," + "customer"+","+""+",");
+
                 System.out.println("Appending Customer: " + lastCustomer.getId() + " " + lastCustomer.getUser_name());
             }
         }

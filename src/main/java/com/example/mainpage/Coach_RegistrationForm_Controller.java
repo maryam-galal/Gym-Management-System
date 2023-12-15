@@ -39,7 +39,6 @@ public class Coach_RegistrationForm_Controller {
         Startinghour.getItems().addAll(7,8,9,10,11,12,13,14);
         Endinghour.getItems().addAll(17,18,19,20,21,22,23,24);
     }
- //add data from text field to list
     public void AddToCoach() {
         Coach newCoach = createCoachInstance();
         String[] coachData = {
@@ -51,8 +50,8 @@ public class Coach_RegistrationForm_Controller {
                 newCoach.getAddress(),
                 newCoach.getGender(),
                 "coach",
-                String.valueOf(newCoach.getWorking_hours())
-                  // Assuming "coach" is the user type for coaches
+                String.valueOf(newCoach.getStartinghour()),
+                String.valueOf(newCoach.getEndinghour())
         };
         // Add the string array to the user list
         MainApplication.userList.add(coachData);
@@ -66,9 +65,11 @@ public class Coach_RegistrationForm_Controller {
         coach.setPassword(password.getText());
         coach.setUser_name(username.getText());
         coach.setPhone_number(Phone_text.getText());
-        coach.setWorking_hours(Endinghour.getValue()-Startinghour.getValue());
+        coach.setStartinghour(Startinghour.getValue());
+        coach.setEndinghour((Endinghour.getValue()));
         return coach;
     }
+
 
     @FXML
     void Move_to_Next_page(MouseEvent event) throws IOException {

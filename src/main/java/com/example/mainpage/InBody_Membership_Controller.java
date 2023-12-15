@@ -54,21 +54,6 @@ public class InBody_Membership_Controller {
         MainApplication.membershipPlanArrayList.add(plan);
 
     }
-//    public void Load_to_Subscription_Data_InBody_Data(){
-//        InBody inBody= Load_static_InBodyArraylist();
-//        Membership_Plan plan=Load_static_PlanArrayList();
-//        Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
-//        String[] inbodyData ={
-//                lastCustomer.getId(), inBody.Date_of_InBody, String.valueOf(inBody.mass), String.valueOf(inBody.body_fat),
-//                String.valueOf(inBody.height),String.valueOf(inBody.minerals_var), String.valueOf(inBody.protein_var),
-//                String.valueOf(inBody.total_weight), String.valueOf(inBody.water_weight)};
-//        MainApplication.InBody_Data.add(inbodyData);
-//        String[] subscribtionData={
-//                lastCustomer.getId(),Subscription.getCoach_id(),lastCustomer.getUser_name(),"Coach", plan.choice,
-//                plan.start_date, String.valueOf(plan.number_of_months), String.valueOf(plan.days_per_week),
-//                String.valueOf(plan.plan_price)};
-//        MainApplication.Subscription_Data.add(subscribtionData);
-//    }
 
 
     @FXML
@@ -77,7 +62,6 @@ public class InBody_Membership_Controller {
         Load_static_InBodyArraylist();
         Load_static_PlanArrayList();
         Subscription.findAvailableCoach();
-        //Load_to_Subscription_Data_InBody_Data();
         Files.WriteInFile("InBody.csv","customer");
         Files.WriteInFile("Subscription.csv","customer");
         backTOlogIn.changeScene("LogInPage.fxml");

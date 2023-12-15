@@ -3,6 +3,9 @@ package com.example.mainpage;
 public class Coach extends Person {
 
     private int working_hours;
+    private int Startinghour;
+    private int Endinghour;
+
     private static final int MAX_CUSTOMERS = 10;
     protected int numberOfCustomers = 0;
 
@@ -12,6 +15,23 @@ public class Coach extends Person {
     public int getWorking_hours(){
         return working_hours;
 }
+
+    public int getStartinghour() {
+        return Startinghour;
+    }
+
+    public void setStartinghour(int startinghour) {
+        Startinghour = startinghour;
+    }
+
+    public int getEndinghour() {
+        return Endinghour;
+    }
+
+    public void setEndinghour(int endinghour) {
+        Endinghour = endinghour;
+    }
+
     private static int coachCounter = 0;
        public Coach() {
            if (MainApplication.coachArrayList.size() > 0) {

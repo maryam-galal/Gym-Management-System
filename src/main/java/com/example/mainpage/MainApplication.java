@@ -59,7 +59,8 @@ public class MainApplication extends Application {
         Files.Load_InBody();
         Files.Load_ArrayList("Subscription.csv");
         Files.Load_Subscription();
-
+        System.out.println(customerArrayList.size());
+        System.out.println(coachArrayList.size());
 
         // Set the application icon
         stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
