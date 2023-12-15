@@ -47,9 +47,6 @@ public class Coach_RegistrationForm_Controller {
         // Add the string array to the user list
         MainApplication.userList.add(coachData);
         MainApplication.coachArrayList.add(newCoach);
-       /* for(Coach c:MainApplication.coachArrayList){
-            System.out.println(c.getId());
-        }*/
     }
     public Coach createCoachInstance() {
        Coach coach = new Coach();

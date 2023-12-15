@@ -2,6 +2,8 @@ package com.example.mainpage;
 
 public class Customer extends Person {
     public static int customerCounter = 0;
+
+
     public Customer (){
         //System.out.println(MainApplication.customerArrayList.size());
 

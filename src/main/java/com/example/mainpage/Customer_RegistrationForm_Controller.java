@@ -113,7 +113,7 @@ public class Customer_RegistrationForm_Controller {
         Load_to_Static_list();
         // Save to file and change scene
         Files.WriteInFile("Registration.csv",type);
-        Files.Load_coach_customer(MainApplication.userList);
+        Files.Load_coach_customer();
         MainApplication RegisterMain = new MainApplication();
         RegisterMain.changeScene("InBody_Membership.fxml");
     }

@@ -14,7 +14,6 @@ public class InBody_Membership_Controller {
     private DatePicker inbody_datePicker;
     @FXML
     private TextField BodyWeight,Bodyfat,Height,Mass,minerals,protein,water;
-
     InBody b = new InBody();
 
     //MEMBERSHIP PLAN
@@ -24,7 +23,6 @@ public class InBody_Membership_Controller {
     private DatePicker plan_DatePicker;
     @FXML
     private TextField NumberOfMonths;
-
     Membership_Plan plan = new Membership_Plan();
 
     public void initialize() {
