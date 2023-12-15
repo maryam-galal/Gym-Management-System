@@ -71,8 +71,10 @@ public class EditCustomerController {
     MainApplication m=new MainApplication();
     @FXML
     void GetCustomer(ActionEvent event) {
+        boolean UserFound=false;
         for(Customer c: MainApplication.return_customerList()){
             if(id.getText().equals(c.getId())){
+                UserFound=true;
                 username.setText(c.getUser_name());
                 password.setText(c.getPassword());
                 phonenumber.setText(c.getPhone_number());
@@ -101,6 +103,9 @@ public class EditCustomerController {
                     }
                 }
             }
+        }if(!UserFound){
+            MainApplication.showAlert("No Matching Customer");
+            id.clear();
         }
     }
     @FXML

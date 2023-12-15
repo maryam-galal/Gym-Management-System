@@ -56,4 +56,8 @@ public class Coach extends Person {
             return false;
         }
     }
+
+    public void setWorking_hours(String working_hours) {
+          this.working_hours= Integer.parseInt(working_hours);
+    }
 }

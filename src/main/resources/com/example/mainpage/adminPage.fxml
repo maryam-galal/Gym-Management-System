@@ -63,8 +63,7 @@
                   <MenuButton mnemonicParsing="false" prefHeight="102.0" prefWidth="319.0" style="-fx-background-color: transparent;" text="Manage Coaches" textFill="#faf8f8">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#AddCoach" text="Add Coach" />
-                      <MenuItem mnemonicParsing="false" onAction="#EditCoach" text="Edit Coch" />
-                        <MenuItem mnemonicParsing="false" onAction="#DeleteCoach" text="Delete Coach" />
+                      <MenuItem mnemonicParsing="false" onAction="#EditCoach" text="Edit/Delete Coach" />
                     </items>
                      <font>
                         <Font name="System Bold" size="22.0" />

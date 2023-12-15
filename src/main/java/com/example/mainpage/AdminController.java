@@ -27,8 +27,8 @@ public class AdminController  {
     }
     @FXML
     void hideSlider(MouseEvent event) {
-MenuButton.setVisible(true);
-Slider.setVisible(false);
+      MenuButton.setVisible(true);
+      Slider.setVisible(false);
     }
     @FXML
     void income(MouseEvent event) throws IOException {
@@ -36,8 +36,8 @@ Slider.setVisible(false);
     }
 
     @FXML
-    void AddCoach(ActionEvent event) {
-
+    void AddCoach(ActionEvent event) throws IOException {
+        m.changeScene("AddNewCoach.fxml");
     }
 
     @FXML
@@ -49,19 +49,14 @@ Slider.setVisible(false);
     void AddEquipment(ActionEvent event) {
 
     }
-
-    @FXML
-    void DeleteCoach(ActionEvent event) {
-
-    }
     @FXML
     void DeleteEquipment(ActionEvent event) {
 
     }
 
     @FXML
-    void EditCoach(ActionEvent event) {
-
+    void EditCoach(ActionEvent event) throws IOException {
+         m.changeScene("EditCoach.fxml");
     }
 
     @FXML

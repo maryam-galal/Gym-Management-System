@@ -40,7 +40,6 @@ public class Files {
         for (String[] data : MainApplication.userList) {
             if (data.length >= 8 ) {
                 String userType = data[7].trim();
-
                 if (userType.equals("customer")) {
                     Customer customer = new Customer();
                     customer.setId(data[0].trim());
@@ -65,6 +64,9 @@ public class Files {
                     coach.setStartinghour(Integer.parseInt(data[8].trim()));
                     coach.setEndinghour(Integer.parseInt(data[9].trim()));
                     MainApplication.coachArrayList.add(coach);
+/*                    System.out.println("Starting hour: " + coach.getStartinghour());
+                    System.out.println("Ending hour: " + coach.getEndinghour());*/
+
                 }
             }
         }
