@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.AdminDisplay_Controller">
+    <children>
+        <ImageView fitHeight="643.0" fitWidth="950.0" layoutX="-4.0" pickOnBounds="true">
+            <image>
+                <Image url="@Black bg.jpg" />
+            </image>
+        </ImageView>
+      <TextField fx:id="Month" layoutX="34.0" layoutY="70.0" promptText="Enter Month" />
+      <TextField fx:id="Day" layoutX="397.0" layoutY="70.0" promptText="Enter Day" />
+      <Label layoutX="34.0" layoutY="44.0" text="Month" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="400.0" layoutY="44.0" text="Day" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="display_month" blendMode="HARD_LIGHT" layoutX="34.0" layoutY="120.0" mnemonicParsing="false" onMouseClicked="#Search_ByMonth" prefHeight="38.0" prefWidth="310.0" text="Display all subscribed customers in that month" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="display_day" blendMode="HARD_LIGHT" layoutX="397.0" layoutY="120.0" mnemonicParsing="false" onMouseClicked="#Search_ByDay" prefHeight="38.0" prefWidth="310.0" text="Display all subscribed customers in that day" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="subscribed_customers" layoutX="740.0" layoutY="14.0" prefHeight="147.0" prefWidth="178.0" visible="false">
+        <columns>
+          <TableColumn prefWidth="79.20001220703125" text="Customer ID" />
+          <TableColumn prefWidth="98.4000244140625" text="User Name" />
+        </columns>
+      </TableView>
+    </children>
+</AnchorPane>

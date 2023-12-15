@@ -4,23 +4,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
 import javafx.scene.image.Image;
-//comment
+import javafx.scene.image.ImageView;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 public class MainApplication extends Application {
     private static List<Gym> gyms;
-    protected  static ArrayList<String[]> userList = new ArrayList<>();
-    ArrayList<Customer> customerList = new ArrayList<>();
-    ArrayList<Coach> coachList = new ArrayList<>();
+    protected static ArrayList<Customer> customerArrayList = new ArrayList<>();
+    protected static ArrayList<Coach> coachArrayList = new ArrayList<>();
+    protected static ArrayList<InBody> InBodyList = new ArrayList<>();
+    protected static ArrayList<Membership_Plan> membershipPlanArrayList = new ArrayList<>();
+
+    protected static ArrayList<String[]> userList = new ArrayList<>();
+    protected static ArrayList<String[]> InBody_Data = new ArrayList<>();
+    protected static ArrayList<String []> Subscription_Data = new ArrayList<>();
 
     private static Stage primarystage;
 
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     private static List<Gym> readGymsFromFile(String filePath) {
         List<Gym> gyms = new ArrayList<>();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
@@ -38,68 +43,43 @@ public class MainApplication extends Application {
         return gyms;
     }
 
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     @Override
     public void start(Stage stage) throws IOException {
-
         primarystage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("mainPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
 
-        //read customer info
-        try (Scanner fileScanner = new Scanner(new File("D:\\Projects\\2nd Year\\OOP\\GYM\\Registration.csv"))) {
-            while (fileScanner.hasNextLine()) {
-                // split data in file into an array of strings making each array an array of all of data of each coulmn in this file
-                String[] data = fileScanner.nextLine().split(",");
-                userList.add(data); // Add each row to the list
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        for (String[] data : userList) {
-            if (data.length >= 7) {
-                String userType = data[6].trim();
-                if (userType.equals("customer")) {
-                    Customer customer = new Customer();
-                    customer.setAddress(data[0].trim()); // Assuming address is at index 0, adjust as needed
-                    customer.setName(data[1].trim());    // Assuming name is at index 1, adjust as needed
-                    customer.setEmail(data[2].trim());   // Assuming email is at index 2, adjust as needed
-                    customer.setGender(data[3].trim());  // Assuming gender is at index 3, adjust as needed
-                    customer.setPhone_number(data[4].trim()); // Assuming phone_number is at index 4, adjust as needed
-                    customer.setPassword(data[5].trim());     // Assuming password is at index 5, adjust as needed
+        // load all data to userList
+        Files.Load_ArrayList("Registration.csv");
+        Files.Load_coach_customer();
 
-                    customerList.add(customer);
-                }
-                else if (userType.equals("coach")){
-                    Coach coach = new Coach();
-                    coach.setAddress(data[0].trim());
-                    coach.setName(data[1].trim());
-                    coach.setEmail(data[2].trim());
-                    coach.setGender(data[3].trim());
-                    coach.setPhone_number(data[4].trim());
-                    coach.setPassword(data[5].trim());
 
-                    coachList.add(coach);
-                }
-            }
-        }
+        Files.Load_ArrayList("InBody.csv");
+        Files.Load_InBody();
+        Files.Load_ArrayList("Subscription.csv");
+        Files.Load_Subscription();
+
+        System.out.println(userList.size());
+        System.out.println(customerArrayList.size());
+        System.out.println(coachArrayList.size());
+        System.out.println(InBodyList.size());
+        System.out.println(membershipPlanArrayList.size());
+        System.out.println(InBody_Data.size());
+        System.out.println(Subscription_Data.size());
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\gymIcon-removebg-preview.png"));
+        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+
     }
 
-    @Override
-    public void init() {
-        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\java\\com\\example\\mainpage\\Gyminfo_class.txt";
-        gyms = readGymsFromFile(filePath);
-    }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public void changeScene(String fxml) throws IOException {
         // System.out.println("Changing scene to: " + fxml);
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource(fxml));
@@ -110,6 +90,11 @@ public class MainApplication extends Application {
         primarystage.show();
 
     }
+    @Override
+    public void init() {
+        String filePath = "C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        gyms = readGymsFromFile(filePath);
+    }
 
     public static List<Gym> getGyms() {
         return gyms;
@@ -118,10 +103,45 @@ public class MainApplication extends Application {
     public static ArrayList<String[]> return_userList(){
         return userList;
     }
+    public static ArrayList<Customer> return_customerList(){
+        return customerArrayList;
+    }
+    public static ArrayList<Coach> return_coachList(){
+        return coachArrayList;
+    }
+
+
 
     public static void main(String[] args) {
         launch(args);
     }
+    public static void showAlert(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
 
+        try {
+            // Load your icon image
+            Image icon = new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
 
+            // Create an ImageView with the icon
+            ImageView imageView = new ImageView(icon);
+            imageView.setFitWidth(48); // Set the width of the icon
+            imageView.setFitHeight(48); // Set the height of the icon
+
+            // Set the graphic of the Alert's DialogPane to the ImageView
+            alert.getDialogPane().setGraphic(imageView);
+
+            // Set the application icon in the title bar of the alert
+            Stage alertStage = (Stage) alert.getDialogPane().getScene().getWindow();
+            alertStage.getIcons().add(icon);
+        } catch (IllegalArgumentException e) {
+            // Handle the exception (e.g., log the error)
+            e.printStackTrace();
+        }
+
+        // Show the alert
+        alert.showAndWait();
+    }
 }

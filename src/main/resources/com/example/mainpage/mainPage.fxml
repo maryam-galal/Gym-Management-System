@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="647.0" fitWidth="944.0" layoutY="-9.0" pickOnBounds="true">
          <image>
-            <Image url="@GymBackground.jpg" />
+            <Image url="@Gym Background.jpg" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="59.0" layoutX="366.0" layoutY="367.0" stroke="WHITE" strokeType="INSIDE" width="135.0" />
@@ -41,33 +41,33 @@
             </Label>
             <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="12.0" layoutY="44.0" pickOnBounds="true">
                <image>
-                  <Image url="@gymIcon-removebg-preview.png" />
+                  <Image url="@Gym Icon.png" />
                </image>
             </ImageView>
             <MenuButton layoutX="649.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Address" textFill="WHITE">
-              <items>
-                <MenuItem fx:id="Address" mnemonicParsing="false" text="action1" />
-              </items>
+               <items>
+                  <MenuItem fx:id="Address" mnemonicParsing="false" text="action1" />
+               </items>
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </MenuButton>
             <MenuButton layoutX="804.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Contact Us" textFill="WHITE">
-              <items>
-                <MenuItem fx:id="phoneNumber" mnemonicParsing="false" text="action1" />
-              </items>
+               <items>
+                  <MenuItem fx:id="phoneNumber" mnemonicParsing="false" text="action1" />
+               </items>
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </MenuButton>
          </children>
       </Pane>
-      <Button fx:id="loginButton" layoutX="354.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#userLogIn" prefHeight="94.0" prefWidth="160.0" style="-fx-background-color: Transparent;" text="Log In" textFill="#e7dddd">
+      <Button fx:id="loginButton" layoutX="354.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#user_LogIn" prefHeight="94.0" prefWidth="160.0" style="-fx-background-color: Transparent;" text="Log In" textFill="#e7dddd">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Button>
-      <Button fx:id="signupButton" layoutX="323.0" layoutY="267.0" mnemonicParsing="false" onMouseClicked="#userSignup" prefHeight="94.0" prefWidth="221.0" style="-fx-background-color: Transparent;" text="Register" textFill="#eae2e2">
+      <Button fx:id="signupButton" layoutX="323.0" layoutY="267.0" mnemonicParsing="false" onMouseClicked="#user_Register" prefHeight="94.0" prefWidth="221.0" style="-fx-background-color: Transparent;" text="Register" textFill="#eae2e2">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

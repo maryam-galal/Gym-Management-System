@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="635.0" prefWidth="944.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.Edit_DeleteCoachController">
+    <children>
+        <ImageView fitHeight="635.0" fitWidth="975.0" layoutX="-24.0">
+            <image>
+                <Image url="@Black bg.jpg" />
+            </image>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="56.0" layoutX="272.0" layoutY="557.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" width="122.0" />
+        <Button layoutX="248.0" layoutY="542.0" mnemonicParsing="false" onMouseClicked="#SaveEditedCoach" prefHeight="78.0" prefWidth="165.0" style="-fx-background-color: transparent;" text="Submit" textFill="#f7f3f3">
+            <font>
+                <Font name="Monotype Corsiva" size="40.0" />
+            </font>
+        </Button>
+        <Button layoutX="20.0" layoutY="145.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Username" textFill="#f7f3f3">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="14.0" layoutY="207.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Password" textFill="#f7f3f3">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="3.0" layoutY="266.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Phone Number" textFill="#f7f3f3">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="31.0" layoutY="329.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="E-mail" textFill="#f7f3f3">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="31.0" layoutY="386.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Address" textFill="#f7f3f3">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="31.0" layoutY="449.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Gender" textFill="#f7f3f3">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Button>
+        <Label layoutX="627.0" layoutY="232.0" prefHeight="31.0" prefWidth="196.0" text="Working Hours:" textFill="#b4b4b4">
+            <font>
+                <Font name="Arial Bold Italic" size="26.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="39.0" fitWidth="37.0" layoutX="573.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Cross Dumbbells.png" />
+            </image>
+        </ImageView>
+        <Button alignment="BASELINE_LEFT" layoutX="525.0" layoutY="362.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Ending Hour" textFill="#f7f3f3">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Button>
+        <Button alignment="BASELINE_LEFT" layoutX="516.0" layoutY="294.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Starting Hour" textFill="#f7f3f3">
+            <font>
+                <Font name="System Bold Italic" size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="15.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#GoBack" prefHeight="66.0" prefWidth="81.0" style="-fx-background-color: transparent;">
+            <graphic>
+                <ImageView fitHeight="63.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@BackButton.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="56.0" layoutX="559.0" layoutY="557.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" width="122.0" />
+      <Button layoutX="535.0" layoutY="542.0" mnemonicParsing="false" onMouseClicked="#DeleteCoach" prefHeight="78.0" prefWidth="165.0" style="-fx-background-color: transparent;" text="Delete" textFill="#f7f3f3">
+         <font>
+            <Font name="Monotype Corsiva" size="40.0" />
+         </font>
+      </Button>
+      <Label layoutX="474.0" layoutY="46.0" text="Coach ID" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="coachId" layoutX="627.0" layoutY="46.0" prefHeight="35.0" prefWidth="158.0" promptText="Enter coach id" />
+      <Button alignment="BASELINE_LEFT" layoutX="552.0" layoutY="125.0" mnemonicParsing="false" onAction="#GetCoach" prefHeight="36.0" prefWidth="132.0" style="-fx-background-color: white;" text="Display Info" textFill="#180000">
+         <font>
+            <Font name="Monotype Corsiva" size="20.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="username" layoutX="147.0" layoutY="150.0" prefHeight="5.0" prefWidth="166.0" promptText="username" />
+      <TextArea fx:id="password" layoutX="147.0" layoutY="209.0" prefHeight="5.0" prefWidth="166.0" promptText="password" />
+      <TextArea fx:id="Startinghour" layoutX="682.0" layoutY="298.0" prefHeight="5.0" prefWidth="166.0" promptText="starting hour" />
+      <TextArea fx:id="Endinghour" layoutX="682.0" layoutY="366.0" prefHeight="5.0" prefWidth="166.0" promptText="Ending hour" />
+      <TextArea fx:id="Phone_text" layoutX="147.0" layoutY="270.0" prefHeight="5.0" prefWidth="166.0" promptText="phone number" />
+      <TextArea fx:id="email" layoutX="147.0" layoutY="333.0" prefHeight="5.0" prefWidth="166.0" promptText="email" />
+      <TextArea fx:id="Address_text" layoutX="147.0" layoutY="390.0" prefHeight="5.0" prefWidth="166.0" promptText="address" />
+      <TextArea fx:id="Gender" layoutX="147.0" layoutY="452.0" prefHeight="5.0" prefWidth="166.0" promptText="gender" />
+    </children>
+</AnchorPane>
