@@ -15,13 +15,14 @@ import javafx.scene.control.Alert.AlertType;
 
 public class MainApplication extends Application {
     private static List<Gym> gyms;
-    protected static ArrayList<String[]> userList = new ArrayList<>();
     protected static ArrayList<Customer> customerArrayList = new ArrayList<>();
     protected static ArrayList<Coach> coachArrayList = new ArrayList<>();
-    protected static ArrayList<String []> inBodyArrayListFromFile = new ArrayList<>();
     protected static ArrayList<InBody> InBodyList = new ArrayList<>();
-    protected static ArrayList<String[]> inBody_Membership_Data = new ArrayList<>();
     protected static ArrayList<Membership_Plan> membershipPlanArrayList = new ArrayList<>();
+
+    protected static ArrayList<String[]> userList = new ArrayList<>();
+    protected static ArrayList<String[]> InBody_Data = new ArrayList<>();
+    protected static ArrayList<String []> Subscription_Data = new ArrayList<>();
 
     private static Stage primarystage;
 
@@ -46,42 +47,23 @@ public class MainApplication extends Application {
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     @Override
     public void start(Stage stage) throws IOException {
-
         primarystage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPage.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
+
+
         // load all data to userList
         Files.Load_ArrayList("Registration.csv");
-
-        // only load the customers
-       // Files.LoadCustomer(userList);
-
-        Files.Load_coach_customer(userList);
-
-//        for (String [] s : userList){
-//            System.out.println(s[0]);
-//            System.out.println(s[1]);
-//            System.out.println(s[7]);
-//        }
-        for(Coach c : coachArrayList){
-    System.out.println(c.getUser_name());
-    System.out.println(c.getId());
-
-        }
-        for(Customer c : customerArrayList){
-            System.out.println(c.getUser_name());
-            System.out.println(c.getId());
-        }
-
-        // load data from inbody_membership file
+        Files.Load_coach_customer();
         Files.Load_ArrayList("InBody.csv");
-        // load data to inbody list
-       // Files.Load_InBody_MembershipPlan(inBody_Membership_Data);
-        // load the rest here
+        Files.Load_InBody();
+        Files.Load_ArrayList("Subscription.csv");
+        Files.Load_Subscription();
+
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -102,7 +84,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 

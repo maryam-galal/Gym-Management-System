@@ -1,7 +1,10 @@
 package com.example.mainpage;
 
+import jdk.internal.icu.lang.UCharacterDirection;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Files {
@@ -9,25 +12,34 @@ public class Files {
     public static void Load_ArrayList(String FileName) {
         //reading file info
         try (Scanner fileScanner = new Scanner(new File(FileName))) {
-            if(FileName.equals("Registration.csv")) {
-                while (fileScanner.hasNextLine()) {
-                    String[] data = fileScanner.nextLine().split(",");
-                    MainApplication.userList.add(data);
-                }
-            }
-            else if(FileName.equals("Subscription.csv")){
-                while (fileScanner.hasNextLine()) {
-                    String[] data = fileScanner.nextLine().split(",");
-                    MainApplication.inBodyArrayListFromFile.add(data);
+            if (fileScanner.hasNextLine()) {
+                // Skip the header line
+                fileScanner.nextLine();
+
+                if (FileName.equals("Registration.csv")) {
+                    while (fileScanner.hasNextLine()) {
+                        String[] data = fileScanner.nextLine().split(",");
+                        MainApplication.userList.add(data);
+                    }
+                } else if (FileName.equals("Subscription.csv")) {
+                    while (fileScanner.hasNextLine()) {
+                        String[] data = fileScanner.nextLine().split(",");
+                        MainApplication.Subscription_Data.add(data);
+                    }
+                } else if (FileName.equals("InBody.csv")) {
+                    while (fileScanner.hasNextLine()) {
+                        String[] data = fileScanner.nextLine().split(",");
+                        MainApplication.InBody_Data.add(data);
+                    }
                 }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
     }
-    public static void Load_coach_customer(ArrayList<String[]> user_list) {
-        for (String[] data : user_list) {
+
+    public static void Load_coach_customer() {
+        for (String[] data : MainApplication.userList) {
             String userType = data[7].trim();
             if (data.length >= 8) {
                 if (userType.equals("coach")) {
@@ -56,12 +68,11 @@ public class Files {
             }
         }
     }
-    public static void Load_InBody_MembershipPlan() {
-        InBody i = new InBody();
-        Membership_Plan p = new Membership_Plan();
-        for (String[] d : MainApplication.inBodyArrayListFromFile) {
-            if (d.length <= 8) {
-                Customer c=new Customer();
+    public static void Load_InBody() {
+        for (String[] d : MainApplication.InBody_Data) {
+            if (d.length == 9) {
+                InBody i = new InBody();
+                Customer c = new Customer();
                 c.setId(d[0].trim());
                 i.setDate_of_InBody(d[1].trim());
                 i.setMass(Double.parseDouble(d[2].trim()));
@@ -72,17 +83,24 @@ public class Files {
                 i.setTotal_weight(Double.parseDouble(d[7].trim()));
                 i.setWater_weight(Double.parseDouble(d[8].trim()));
                 MainApplication.InBodyList.add(i);
-            } else {
-                p.setChoice(d[9].trim());
-                p.setStart_date(d[10].trim());
-                p.setNumber_of_months(Integer.parseInt(d[11].trim()));
-                p.setDays_per_week(Integer.parseInt(d[12].trim()));
-                p.setPlan_price(Double.parseDouble(d[13].trim()));
+            }
+        }
+    }
+    public static void Load_Subscription() {
+        for (String[] S : MainApplication.Subscription_Data) {
+            if (S.length == 7) {
+                Membership_Plan p = new Membership_Plan();
+                p.setChoice(S[2].trim());
+                p.setStart_date(S[3].trim());
+                p.setNumber_of_months(Integer.parseInt(S[4].trim()));
+                p.setDays_per_week(Integer.parseInt(S[5].trim()));
+                p.setPlan_price(Double.parseDouble(S[6].trim()));
 
                 MainApplication.membershipPlanArrayList.add(p);
             }
         }
     }
+
 
 
     public static void WriteInFile(String file_name, String userType) throws IOException {
@@ -108,18 +126,21 @@ public class Files {
                         lastCustomer.getGender() + "," + "customer");
                 System.out.println("Appending Customer: " + lastCustomer.getId() + " " + lastCustomer.getUser_name());
             }
-        } else if (file_name.equals("InBody.csv")) {
-            Customer c = new Customer();
+        }
+
+        else if (file_name.equals("InBody.csv")) {
             //pw.println("\"ID\", \"Date of InBody\",\"Mass, Body Fat\",\"Height\",\"Minerals\",\"Protein\",\"Total Weight\",\"Water Weight\"");
-            for (InBody in : MainApplication.InBodyList) {
-                pw.println(c.id + "," + in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight + ",");
+            if (!MainApplication.InBodyList.isEmpty()) {
+            InBody in = MainApplication.InBodyList.get(MainApplication.InBodyList.size() - 1);
+                pw.println( Subscription.getCustomer_id()+ "," + in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight);
                 System.out.println("inbody done");
             }
-        } else if (file_name.equals("Subscription.csv")) {
-            Customer c = new Customer();
+        }
+
+        else if (file_name.equals("Subscription.csv")) {
             //pw.println("\"Customer ID\",\"Coach ID\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\"");
-            for (Membership_Plan p : MainApplication.membershipPlanArrayList) {
-                Subscription s = new Subscription(p);
+            if (!MainApplication.membershipPlanArrayList.isEmpty()) {
+                Membership_Plan p = MainApplication.membershipPlanArrayList.get(MainApplication.membershipPlanArrayList.size() - 1);
                 pw.println(Subscription.getCustomer_id() + "," + Subscription.getCoach_id() + "," + p.choice + "," + p.start_date + "," + p.number_of_months + "," + p.days_per_week + "," + p.plan_price);
                 System.out.println("plan done");
             }
