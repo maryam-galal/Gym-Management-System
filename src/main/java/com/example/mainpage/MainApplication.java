@@ -60,6 +60,7 @@ public class MainApplication extends Application {
         Files.Load_ArrayList("Subscription.csv");
         Files.Load_Subscription();
 
+
         // Set the application icon
         stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
