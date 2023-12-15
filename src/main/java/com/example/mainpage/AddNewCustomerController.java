@@ -176,7 +176,7 @@ public class AddNewCustomerController {
 
         Load_to_Static_list();
         Files.WriteInFile("Registration.csv",type);
-        Files.Load_coach_customer(MainApplication.userList);
+        //Files.Load_coach_customer(MainApplication.userList);
         Load_static_InBodyArraylist();
         Load_static_PlanArrayList();
         Subscription.findAvailableCoach();

@@ -38,8 +38,8 @@ public class Files {
 
     public static void Load_coach_customer() {
         for (String[] data : MainApplication.userList) {
-            String userType = data[7].trim();
-            if (data.length >= 8) {
+
+            if (data.length >= 8) {String userType = data[7].trim();
                 if (userType.equals("coach")) {
                     Coach coach = new Coach();
                     coach.setId(data[0].trim());

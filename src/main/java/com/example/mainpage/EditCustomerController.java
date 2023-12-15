@@ -78,7 +78,7 @@ public class EditCustomerController {
                 email.setText(c.getEmail());
                 address.setText(c.getAddress());
                 gender.setText(c.getGender());
-                for(String [] s:MainApplication.inBodyArrayListFromFile){
+ /*               for(String [] s:MainApplication.inBodyArrayListFromFile){
                     if(id.getText().equals(s[0].trim())){
                         inbodydate.setText(s[1].trim());
                         mass.setText(s[2].trim());
@@ -94,7 +94,7 @@ public class EditCustomerController {
                         daysperweek.setText(s[12].trim());
                         price.setText(s[13]);
                     }
-                }
+                }*/
             }
         }
     }
@@ -113,7 +113,7 @@ public class EditCustomerController {
                c.setEmail(email.getText());
                 c.setAddress(address.getText());
                 c.setGender(gender.getText());
-                for(String [] s:MainApplication.inBodyArrayListFromFile){
+/*                for(String [] s:MainApplication.inBodyArrayListFromFile){
                     if(id.getText().equals(s[0].trim())){
                         s[1]=inbodydate.getText();
                         s[2]= mass.getText();
@@ -130,7 +130,7 @@ public class EditCustomerController {
                         s[13]= price.getText();
 
                     }
-            }
+            }*/
         }
     }
         for(Customer c : MainApplication.customerArrayList){

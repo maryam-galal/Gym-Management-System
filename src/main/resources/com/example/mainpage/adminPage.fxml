@@ -31,9 +31,14 @@
                   </ImageView>
                </graphic>
             </Button>
+            <ImageView fitHeight="38.0" fitWidth="39.0" layoutX="886.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Cross Dumbbells.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <Pane fx:id="Slider" layoutY="2.0" prefHeight="635.0" prefWidth="319.0" style="-fx-background-color: black;" visible="false">
+      <Pane fx:id="Slider" layoutY="2.0" prefHeight="635.0" prefWidth="319.0" style="-fx-background-color: black;">
          <children>
             <Button fx:id="backButton" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#hideSlider" prefHeight="73.0" prefWidth="88.0" style="-fx-background-color: transparent;">
                <graphic>
@@ -78,6 +83,11 @@
                   <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#income" prefHeight="119.0" prefWidth="319.0" style="-fx-background-color: black;" styleClass="sidebarItem" text="Gym Income" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="display_subscribed" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#go_to_3rdFunc" prefHeight="105.0" prefWidth="319.0" style="-fx-background-color: black;" text="Display" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
                      </font>
                   </Button>
                </children>

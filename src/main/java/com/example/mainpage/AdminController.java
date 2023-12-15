@@ -15,6 +15,8 @@ public class AdminController  {
     private Button backButton;
     @FXML
     private Pane Slider;
+    @FXML
+    private Button display_subscribed;
     MainApplication m=new MainApplication();
 
     @FXML
@@ -71,6 +73,11 @@ Slider.setVisible(false);
     @FXML
     void EditEquipment(ActionEvent event) {
 
+    }
+    @FXML
+    void go_to_3rdFunc(MouseEvent event) throws IOException {
+        MainApplication m = new MainApplication();
+        m.changeScene("Admin_Display.fxml");
     }
 
 
