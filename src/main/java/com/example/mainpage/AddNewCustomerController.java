@@ -110,7 +110,7 @@ public class AddNewCustomerController {
         b.protein_var = Double.parseDouble(protein.getText());
         b.total_weight = Double.parseDouble(BodyWeight.getText());
         b.water_weight = Double.parseDouble(water.getText());
-        System.out.println("loaded");
+        //System.out.println("loaded");
 
         MainApplication.InBodyList.add(b);
     }

@@ -1,18 +1,19 @@
-"ID","User name","Password","Phone Number","Email","Address","Gender","User Type"
-,admin,admin,,,,,admin
-B21,Menna,Menna123,01150030099,menna@gmail.com,cairo,Female,customer
-A11,Hamed,Hamed123,01150030088,hamed@gmail.com,cairo,Male,coach
-B22,Maryam,Cinnabon8,01152195513,maryam@gmail.com,cairo,Female,customer
-A12,Hagar,MOlokheya2,01555236852,hagar@mail.com,cairo,Female,coach
-B23,hassan,Hasona123,01266655547,Hasona@outlook.com,giza,Male,customer
-B24,hanaa,Hanona123,01222225551,Hanaa@mail.com,giza,Female,customer
-B25,ali,catDog1234,01556321231,ali@mail.com,giza,Male,customer
-A13,ahmed,ahmedAli125,01152859964,ahmed@mail.com,cairo,Male,coach
-B26,amar,Amoraa123,01115587703,amor@mail.com,fayoum,Male,customer
-B27,alaa,Alaashaheen123,01158994563,alaa@mail.com,giza,Male,customer
-A14,amir,amirAMOR1,01236985475,amir@mail.com,giza,Male,coach
-B28,hanan,Hanan7anona1,01236985236,hanan@mail.com,giza,Female,customer
-A15,Eman,Emangamda1,01225547892,eman@mail.com,cairo,Female,coach
-A16,Amin,Aminel3sl,01145698745,amin@mail.com,cairo,Male,coach
-B29,mmc,KLMjml4152,12365478901,MM@mail.com,giza,Male,customer
-
+"ID","User name","Password","Phone Number","Email","Address","Gender","User Type","Working Hours"
+,admin,admin,,,,,admin,
+B21,Menna,Menna123,01150030099,menna@gmail.com,cairo,Female,customer,
+A11,Hamed,Hamed123,01150030088,hamed@gmail.com,cairo,Male,coach,5
+B22,Maryam,Cinnabon8,01152195513,maryam@gmail.com,cairo,Female,customer,
+A12,Hagar,MOlokheya2,01555236852,hagar@mail.com,cairo,Female,coach,9
+B23,hassan,Hasona123,01266655547,Hasona@outlook.com,giza,Male,customer,
+B24,hanaa,Hanona123,01222225551,Hanaa@mail.com,giza,Female,customer,
+B25,ali,catDog1234,01556321231,ali@mail.com,giza,Male,customer,
+A13,ahmed,ahmedAli125,01152859964,ahmed@mail.com,cairo,Male,coach,10
+B26,amar,Amoraa123,01115587703,amor@mail.com,fayoum,Male,customer,
+B27,alaa,Alaashaheen123,01158994563,alaa@mail.com,giza,Male,customer,
+A14,amir,amirAMOR1,01236985475,amir@mail.com,giza,Male,coach,6
+B28,hanan,Hanan7anona1,01236985236,hanan@mail.com,giza,Female,customer,
+A15,Eman,Emangamda1,01225547892,eman@mail.com,cairo,Female,coach,8
+A16,Amin,Aminel3sl,01145698745,amin@mail.com,cairo,Male,coach,7
+B29,mmc,KLMjml4152,12365478901,MM@mail.com,giza,Male,customer,
+A17,Essam,3asOmy123,01147748965,essam@mail.com,cairo,Male,coach,10
+B21,r,rjHhHK5465512,12332145685,h@mail.com,hh,Female,customer, 

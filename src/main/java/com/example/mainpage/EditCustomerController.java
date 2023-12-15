@@ -41,7 +41,8 @@ public class EditCustomerController {
 
     @FXML
     private TextArea noMonths;
-
+    @FXML
+    private TextArea assignedcoachId;
     @FXML
     private TextArea password;
 
@@ -78,8 +79,8 @@ public class EditCustomerController {
                 email.setText(c.getEmail());
                 address.setText(c.getAddress());
                 gender.setText(c.getGender());
- /*               for(String [] s:MainApplication.inBodyArrayListFromFile){
-                    if(id.getText().equals(s[0].trim())){
+                for(String [] s:MainApplication.InBody_Data){
+                    if(id.getText().equals(s[0].trim())) {
                         inbodydate.setText(s[1].trim());
                         mass.setText(s[2].trim());
                         bodyfat.setText(s[3].trim());
@@ -88,13 +89,17 @@ public class EditCustomerController {
                         protein.setText(s[6].trim());
                         bodyweight.setText(s[7].trim());
                         bodywater.setText(s[8].trim());
-                        plan.setText(s[9].trim());
-                        startdate.setText(s[10].trim());
-                        noMonths.setText(s[11].trim());
-                        daysperweek.setText(s[12].trim());
-                        price.setText(s[13]);
+                    }}
+                for(String [] s:MainApplication.Subscription_Data){
+                    if(id.getText().equals(s[0].trim())) {
+                        assignedcoachId.setText(s[1].trim());
+                        plan.setText(s[3].trim());
+                        startdate.setText(s[4].trim());
+                        noMonths.setText(s[5].trim());
+                        daysperweek.setText(s[6].trim());
+                        price.setText(s[7]);
                     }
-                }*/
+                }
             }
         }
     }
@@ -113,32 +118,40 @@ public class EditCustomerController {
                c.setEmail(email.getText());
                 c.setAddress(address.getText());
                 c.setGender(gender.getText());
-/*                for(String [] s:MainApplication.inBodyArrayListFromFile){
-                    if(id.getText().equals(s[0].trim())){
-                        s[1]=inbodydate.getText();
-                        s[2]= mass.getText();
-                        s[3]= bodyfat.getText();
-                        s[4]= height.getText();
-                        s[5]= minerals.getText();
-                        s[6]=protein.getText();
-                        s[7]=bodyweight.getText();
-                        s[8]=bodywater.getText();
-                        s[9]= plan.getText();
-                        s[10]=startdate.getText();
-                        s[11]=noMonths.getText();
-                        s[12]=daysperweek.getText();
-                        s[13]= price.getText();
 
-                    }
-            }*/
         }
-    }
+    } for(String [] s:MainApplication.InBody_Data){
+            if(id.getText().equals(s[0].trim())) {
+                s[1]=inbodydate.getText();
+                s[2]= mass.getText();
+                s[3]= bodyfat.getText();
+                s[4]=height.getText();
+                s[5]=minerals.getText();
+                s[6]=protein.getText();
+                s[7]=bodyweight.getText();
+                s[8]=bodywater.getText();
+                System.out.println("in");
+            }}
+        for(String [] s:MainApplication.Subscription_Data){
+            if(id.getText().equals(s[0].trim())) {
+               s[1]= assignedcoachId.getText();
+                s[3]=plan.getText();
+                s[4]=startdate.getText();
+                s[5]=noMonths.getText();
+                s[6]=daysperweek.getText();
+                s[7]=price.getText();
+                System.out.println("sub");
+            }
+        }
         for(Customer c : MainApplication.customerArrayList){
             System.out.println(c.getUser_name());
             System.out.println(c.getId());
             System.out.println(c.getGender());
         }
-}
+        Files.Load_Subscription();
+        Files.Load_InBody();
+
+    }
     @FXML
     public void DeleteCustomer(ActionEvent event) throws IOException {
         username.setText("");
@@ -160,6 +173,7 @@ public class EditCustomerController {
         noMonths.setText("");
         daysperweek.setText("");
         price.setText("");
+        assignedcoachId.setText("");
         String customerIdToRemove = id.getText().trim();
         boolean customerFound = false;
         Iterator<Customer> iterator = MainApplication.return_customerList().iterator();
@@ -169,6 +183,26 @@ public class EditCustomerController {
                 iterator.remove();
                 customerFound=true;
             }
+        }// Remove the corresponding InBody data
+        Iterator<String[]> inBodyIterator = MainApplication.InBody_Data.iterator();
+        while (inBodyIterator.hasNext()) {
+            String[] inBodyData = inBodyIterator.next();
+            if (customerIdToRemove.equals(inBodyData[0].trim())) {
+                inBodyIterator.remove();
+                System.out.println("InBody data removed");
+                break;
+            }
+        }
+
+        // Remove the corresponding Subscription data
+        Iterator<String[]> subscriptionIterator = MainApplication.Subscription_Data.iterator();
+        while (subscriptionIterator.hasNext()) {
+            String[] subscriptionData = subscriptionIterator.next();
+            if (customerIdToRemove.equals(subscriptionData[0].trim())) {
+                subscriptionIterator.remove();
+                System.out.println("Subscription data removed");
+                break;
+            }
         }
         if (!customerFound) {
             System.out.println("Customer with ID " + customerIdToRemove + " not found");
@@ -176,6 +210,8 @@ public class EditCustomerController {
         } else {
             System.out.println("Customer with ID " + customerIdToRemove + " deleted successfully");
         }
+        Files.Load_Subscription();
+        Files.Load_InBody();
     }
 
 

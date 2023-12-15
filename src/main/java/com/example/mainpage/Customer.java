@@ -1,7 +1,7 @@
 package com.example.mainpage;
 
 public class Customer extends Person {
-    public static int customerCounter = 0;
+    private static int customerCounter = 0;
 
 
     public Customer (){
@@ -9,7 +9,7 @@ public class Customer extends Person {
 
         if (MainApplication.customerArrayList.size() > 0) {
             // Increment the counter based on the size of the ArrayList
-            customerCounter = MainApplication.customerArrayList.size() + 1;
+            customerCounter = MainApplication.customerArrayList.size() + 2;
         } else {
             // Initialize the counter to 1 if the ArrayList is empty
             customerCounter = 1;

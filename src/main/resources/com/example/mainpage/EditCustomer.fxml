@@ -11,8 +11,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="944.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.EditCustomerController">
    <children>
-      <TextField fx:id="id" layoutX="435.0" layoutY="28.0" promptText="Enter customer ID" />
-      <Label layoutX="227.0" layoutY="23.0" prefHeight="27.0" prefWidth="170.0" text="customer Id" textFill="WHITE">
+      <TextField fx:id="id" layoutX="501.0" layoutY="29.0" promptText="Enter customer ID" />
+      <Label layoutX="296.0" layoutY="24.0" prefHeight="27.0" prefWidth="170.0" text="customer Id" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -26,32 +26,32 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="14.0" layoutY="127.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Username" textFill="#f7f3f3">
+      <Button layoutX="14.0" layoutY="88.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Username" textFill="#f7f3f3">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="8.0" layoutY="179.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Password" textFill="#f7f3f3">
+      <Button layoutX="8.0" layoutY="127.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Password" textFill="#f7f3f3">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="-3.0" layoutY="230.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Phone Number" textFill="#f7f3f3">
+      <Button layoutX="-3.0" layoutY="178.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Phone Number" textFill="#f7f3f3">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="19.0" layoutY="280.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="E-mail" textFill="#f7f3f3">
+      <Button layoutX="19.0" layoutY="226.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="E-mail" textFill="#f7f3f3">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="19.0" layoutY="335.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Address" textFill="#f7f3f3">
+      <Button layoutX="19.0" layoutY="272.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Address" textFill="#f7f3f3">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="19.0" layoutY="377.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Gender" textFill="#f7f3f3">
+      <Button layoutX="19.0" layoutY="319.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Gender" textFill="#f7f3f3">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -126,17 +126,17 @@
             <Font name="Monotype Corsiva" size="42.0" />
          </font>
       </Button>
-      <Button alignment="BASELINE_LEFT" layoutX="338.0" layoutY="78.0" mnemonicParsing="false" onAction="#GetCustomer" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: white;" text="Display Info" textFill="#180000">
+      <Button alignment="BASELINE_LEFT" layoutX="397.0" layoutY="72.0" mnemonicParsing="false" onAction="#GetCustomer" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: white;" text="Display Info" textFill="#180000">
          <font>
             <Font name="Monotype Corsiva" size="20.0" />
          </font>
       </Button>
-      <TextArea fx:id="username" layoutX="162.0" layoutY="132.0" prefHeight="26.0" prefWidth="150.0" promptText="username" />
-      <TextArea fx:id="password" layoutX="162.0" layoutY="182.0" prefHeight="26.0" prefWidth="150.0" promptText="password" />
-      <TextArea fx:id="phonenumber" layoutX="162.0" layoutY="234.0" prefHeight="26.0" prefWidth="150.0" promptText="phone number" />
-      <TextArea fx:id="email" layoutX="162.0" layoutY="284.0" prefHeight="26.0" prefWidth="150.0" promptText="email" />
-      <TextArea fx:id="address" layoutX="162.0" layoutY="332.0" prefHeight="26.0" prefWidth="150.0" promptText="address" />
-      <TextArea fx:id="gender" layoutX="162.0" layoutY="380.0" prefHeight="26.0" prefWidth="150.0" promptText="gender" />
+      <TextArea fx:id="username" layoutX="162.0" layoutY="92.0" prefHeight="26.0" prefWidth="150.0" promptText="username" />
+      <TextArea fx:id="password" layoutX="162.0" layoutY="135.0" prefHeight="26.0" prefWidth="150.0" promptText="password" />
+      <TextArea fx:id="phonenumber" layoutX="162.0" layoutY="182.0" prefHeight="26.0" prefWidth="150.0" promptText="phone number" />
+      <TextArea fx:id="email" layoutX="162.0" layoutY="230.0" prefHeight="26.0" prefWidth="150.0" promptText="email" />
+      <TextArea fx:id="address" layoutX="162.0" layoutY="276.0" prefHeight="26.0" prefWidth="150.0" promptText="address" />
+      <TextArea fx:id="gender" layoutX="162.0" layoutY="323.0" prefHeight="26.0" prefWidth="150.0" promptText="gender" />
       <TextArea fx:id="noMonths" layoutX="364.0" layoutY="510.0" prefHeight="26.0" prefWidth="150.0" promptText="number of month" />
       <TextArea fx:id="plan" layoutX="19.0" layoutY="510.0" prefHeight="26.0" prefWidth="150.0" promptText="plan" />
       <TextArea fx:id="bodywater" layoutX="646.0" layoutY="393.0" prefHeight="26.0" prefWidth="150.0" promptText="total body water" />
@@ -165,5 +165,11 @@
             <Font name="Monotype Corsiva" size="42.0" />
          </font>
       </Button>
+      <Button layoutX="-3.0" layoutY="369.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="170.0" style="-fx-background-color: transparent;" text="His Coach Id" textFill="#f7f3f3">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="assignedcoachId" layoutX="162.0" layoutY="373.0" prefHeight="26.0" prefWidth="150.0" promptText="coach id" />
    </children>
 </AnchorPane>

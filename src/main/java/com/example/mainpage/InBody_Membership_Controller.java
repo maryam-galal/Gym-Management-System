@@ -14,7 +14,7 @@ public class InBody_Membership_Controller {
     private DatePicker inbody_datePicker;
     @FXML
     private TextField BodyWeight,Bodyfat,Height,Mass,minerals,protein,water;
-    InBody b = new InBody();
+
 
     //MEMBERSHIP PLAN
     @FXML
@@ -23,13 +23,14 @@ public class InBody_Membership_Controller {
     private DatePicker plan_DatePicker;
     @FXML
     private TextField NumberOfMonths;
-    Membership_Plan plan = new Membership_Plan();
+
 
     public void initialize() {
         plan_ChoiceBox.getItems().addAll("Silver Plan \n (3 Days per Week)", "Gold Plan \n (6 Days per Week, with less session price + higher discount)");
     }
 
-    public void Load_static_InBodyArraylist() {
+    public InBody Load_static_InBodyArraylist() {
+        InBody b = new InBody();
         b.height = Double.parseDouble(Height.getText());
         b.body_fat = Double.parseDouble(Bodyfat.getText());
         b.Date_of_InBody = String.valueOf(inbody_datePicker.getValue());
@@ -39,18 +40,35 @@ public class InBody_Membership_Controller {
         b.total_weight = Double.parseDouble(BodyWeight.getText());
         b.water_weight = Double.parseDouble(water.getText());
         System.out.println("loaded");
-
         MainApplication.InBodyList.add(b);
+        return b;
     }
 
     @FXML
-    public void Load_static_PlanArrayList() {
+    public Membership_Plan Load_static_PlanArrayList() {
+        Membership_Plan plan = new Membership_Plan();
         String choice = plan_ChoiceBox.getValue();
         plan.choice = choice.substring(0, choice.indexOf("\n")).trim();
         plan.start_date = String.valueOf(plan_DatePicker.getValue());
         plan.number_of_months = Integer.parseInt(NumberOfMonths.getText());
         plan.choose_plan();
         MainApplication.membershipPlanArrayList.add(plan);
+        return plan;
+    }
+    public void Load_to_Subscription_Data_InBody_Data(){
+        InBody inBody= Load_static_InBodyArraylist();
+        Membership_Plan plan=Load_static_PlanArrayList();
+        Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
+        String[] inbodyData ={
+                lastCustomer.getId(), inBody.Date_of_InBody, String.valueOf(inBody.mass), String.valueOf(inBody.body_fat),
+                String.valueOf(inBody.height),String.valueOf(inBody.minerals_var), String.valueOf(inBody.protein_var),
+                String.valueOf(inBody.total_weight), String.valueOf(inBody.water_weight)};
+        MainApplication.InBody_Data.add(inbodyData);
+        String[] subscribtionData={
+                lastCustomer.getId(),Subscription.getCoach_id(),lastCustomer.getUser_name(),"Coach", plan.choice,
+                plan.start_date, String.valueOf(plan.number_of_months), String.valueOf(plan.days_per_week),
+                String.valueOf(plan.plan_price)};
+        MainApplication.Subscription_Data.add(subscribtionData);
     }
 
 
@@ -60,9 +78,9 @@ public class InBody_Membership_Controller {
         Load_static_InBodyArraylist();
         Load_static_PlanArrayList();
         Subscription.findAvailableCoach();
+        //Load_to_Subscription_Data_InBody_Data();
         Files.WriteInFile("InBody.csv","customer");
         Files.WriteInFile("Subscription.csv","customer");
-
         backTOlogIn.changeScene("LogInPage.fxml");
 
     }

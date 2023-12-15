@@ -91,4 +91,11 @@ public class signUpManager {
         }
         return true;
     }
+
+    public boolean validWorkingHours(Integer start, Integer end) throws WorkingHoursException {
+        if((end-start)>10){
+            throw new WorkingHoursException("Working hours can't be more than 10");
+        }
+        return true;
+    }
 }

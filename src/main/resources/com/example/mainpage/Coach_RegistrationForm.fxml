@@ -22,44 +22,44 @@
                 <Image url="@No Pain No Gain.png" />
             </image>
         </ImageView>
-        <TextField fx:id="username" layoutX="174.0" layoutY="100.0" promptText="Enter Username" />
-        <TextField fx:id="password" layoutX="175.0" layoutY="173.0" promptText="Enter Password" />
-        <TextField fx:id="Phone_text" layoutX="174.0" layoutY="255.0" promptText="Enter Phone Number" />
-        <TextField fx:id="Email_text" layoutX="175.0" layoutY="330.0" promptText="Enter E-mail" />
-        <TextField fx:id="Address_text" layoutX="174.0" layoutY="407.0" promptText="Enter Address" />
-        <ChoiceBox fx:id="GenderChoiceBox" layoutX="174.0" layoutY="488.0" prefWidth="150.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="56.0" layoutX="469.0" layoutY="525.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" width="109.0" />
-        <Button layoutX="445.0" layoutY="510.0" mnemonicParsing="false" onMouseClicked="#Move_to_Next_page" prefHeight="59.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Next" textFill="#f7f3f3">
+        <TextField fx:id="username" layoutX="174.0" layoutY="49.0" promptText="Enter Username" />
+        <TextField fx:id="password" layoutX="174.0" layoutY="109.0" promptText="Enter Password" />
+        <TextField fx:id="Phone_text" layoutX="175.0" layoutY="169.0" promptText="Enter Phone Number" />
+        <TextField fx:id="Email_text" layoutX="175.0" layoutY="229.0" promptText="Enter E-mail" />
+        <TextField fx:id="Address_text" layoutX="175.0" layoutY="287.0" promptText="Enter Address" />
+        <ChoiceBox fx:id="GenderChoiceBox" layoutX="173.0" layoutY="352.0" prefWidth="150.0" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="56.0" layoutX="481.0" layoutY="553.0" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" width="109.0" />
+        <Button layoutX="457.0" layoutY="538.0" mnemonicParsing="false" onMouseClicked="#Move_to_Next_page" prefHeight="59.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Next" textFill="#f7f3f3">
             <font>
                 <Font name="Monotype Corsiva" size="40.0" />
             </font>
         </Button>
-        <Button layoutX="22.0" layoutY="90.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Username" textFill="#f7f3f3">
+        <Button layoutX="22.0" layoutY="39.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Username" textFill="#f7f3f3">
             <font>
                 <Font name="System Bold Italic" size="18.0" />
             </font>
         </Button>
-        <Button layoutX="22.0" layoutY="163.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Password" textFill="#f7f3f3">
+        <Button layoutX="22.0" layoutY="99.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Password" textFill="#f7f3f3">
             <font>
                 <Font name="System Bold Italic" size="18.0" />
             </font>
         </Button>
-        <Button layoutX="5.0" layoutY="244.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Phone Number" textFill="#f7f3f3">
+        <Button layoutX="14.0" layoutY="158.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Phone Number" textFill="#f7f3f3">
             <font>
                 <Font name="System Bold Italic" size="18.0" />
             </font>
         </Button>
-        <Button layoutX="33.0" layoutY="319.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="E-mail" textFill="#f7f3f3">
+        <Button layoutX="33.0" layoutY="218.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="E-mail" textFill="#f7f3f3">
             <font>
                 <Font name="System Bold Italic" size="18.0" />
             </font>
         </Button>
-        <Button layoutX="33.0" layoutY="396.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Address" textFill="#f7f3f3">
+        <Button layoutX="43.0" layoutY="277.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Address" textFill="#f7f3f3">
             <font>
                 <Font name="System Bold Italic" size="18.0" />
             </font>
         </Button>
-        <Button layoutX="33.0" layoutY="477.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Gender" textFill="#f7f3f3">
+        <Button layoutX="43.0" layoutY="341.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="94.0" style="-fx-background-color: transparent;" text="Gender" textFill="#f7f3f3">
             <font>
                 <Font name="System Bold Italic" size="18.0" />
             </font>
@@ -84,5 +84,32 @@
                 <Font name="System Bold Italic" size="14.0" />
             </font>
         </Label>
+      <Label layoutX="60.0" layoutY="429.0" prefHeight="31.0" prefWidth="196.0" text="Woking Hours:" textFill="#b4b4b4">
+         <font>
+            <Font name="Arial Bold Italic" size="26.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="39.0" fitWidth="37.0" layoutX="14.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Cross%20Dumbbells.png" />
+         </image>
+      </ImageView>
+      <ChoiceBox fx:id="Startinghour" layoutX="22.0" layoutY="538.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="Endinghour" layoutX="202.0" layoutY="538.0" prefWidth="150.0" />
+      <Button alignment="BASELINE_LEFT" layoutX="198.0" layoutY="488.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Ending Hour" textFill="#f7f3f3">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Button alignment="BASELINE_LEFT" layoutX="14.0" layoutY="488.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Starting Hour" textFill="#f7f3f3">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="HoursError" layoutX="33.0" layoutY="567.0" textFill="#ff0000" underline="true" visible="false">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
