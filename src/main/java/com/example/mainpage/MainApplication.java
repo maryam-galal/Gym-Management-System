@@ -62,6 +62,7 @@ public class MainApplication extends Application {
         Files.Load_Subscription();
 
 
+
         // Set the application icon
         stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");

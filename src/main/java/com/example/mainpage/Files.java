@@ -1,7 +1,5 @@
 package com.example.mainpage;
 
-import jdk.internal.icu.lang.UCharacterDirection;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,13 +86,13 @@ public class Files {
     }
     public static void Load_Subscription() {
         for (String[] S : MainApplication.Subscription_Data) {
-            if (S.length == 7) {
+            if (S.length == 8) {
                 Membership_Plan p = new Membership_Plan();
-                p.setChoice(S[2].trim());
-                p.setStart_date(S[3].trim());
-                p.setNumber_of_months(Integer.parseInt(S[4].trim()));
-                p.setDays_per_week(Integer.parseInt(S[5].trim()));
-                p.setPlan_price(Double.parseDouble(S[6].trim()));
+                p.setChoice(S[3].trim());
+                p.setStart_date(S[4].trim());
+                p.setNumber_of_months(Integer.parseInt(S[5].trim()));
+                p.setDays_per_week(Integer.parseInt(S[6].trim()));
+                p.setPlan_price(Double.parseDouble(S[7].trim()));
 
                 MainApplication.membershipPlanArrayList.add(p);
             }
@@ -106,6 +104,8 @@ public class Files {
     public static void WriteInFile(String file_name, String userType) throws IOException {
         FileWriter fw = new FileWriter(file_name, true);
         PrintWriter pw = new PrintWriter(fw);
+
+        Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
 
         if (file_name.equals("Registration.csv")) {
             //pw.println("\"ID\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\",\"User Type\"");
@@ -119,8 +119,8 @@ public class Files {
             }
 
             // Write the last added customer
+
             else if (!MainApplication.customerArrayList.isEmpty() && userType.equals("customer")) {
-                Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
                 pw.println(lastCustomer.getId() + "," + lastCustomer.getUser_name() + "," + lastCustomer.getPassword() + "," +
                         lastCustomer.getPhone_number() + "," + lastCustomer.getEmail() + "," + lastCustomer.getAddress() + "," +
                         lastCustomer.getGender() + "," + "customer");
@@ -138,10 +138,10 @@ public class Files {
         }
 
         else if (file_name.equals("Subscription.csv")) {
-            //pw.println("\"Customer ID\",\"Coach ID\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\"");
+            //pw.println("\"Customer ID\",\"Coach ID\",\"Customer Name\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\"");
             if (!MainApplication.membershipPlanArrayList.isEmpty()) {
                 Membership_Plan p = MainApplication.membershipPlanArrayList.get(MainApplication.membershipPlanArrayList.size() - 1);
-                pw.println(Subscription.getCustomer_id() + "," + Subscription.getCoach_id() + "," + p.choice + "," + p.start_date + "," + p.number_of_months + "," + p.days_per_week + "," + p.plan_price);
+                pw.println(Subscription.getCustomer_id() + "," + Subscription.getCoach_id() + "," +lastCustomer.user_name+","+ p.choice + "," + p.start_date + "," + p.number_of_months + "," + p.days_per_week + "," + p.plan_price);
                 System.out.println("plan done");
             }
         }
