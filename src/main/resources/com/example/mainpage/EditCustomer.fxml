@@ -9,15 +9,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="944.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.EditCustomerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="944.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.Edit_DeleteCustomerController">
    <children>
+      <ImageView fitHeight="635.0" fitWidth="944.0" pickOnBounds="true">
+         <image>
+            <Image url="@Black%20bg.jpg" />
+         </image>
+      </ImageView>
       <TextField fx:id="id" layoutX="501.0" layoutY="29.0" promptText="Enter customer ID" />
       <Label layoutX="296.0" layoutY="24.0" prefHeight="27.0" prefWidth="170.0" text="customer Id" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" onAction="#GoBack" prefHeight="72.0" prefWidth="87.0" style="-fx-background-color: black;">
+      <Button mnemonicParsing="false" onAction="#GoBack" prefHeight="72.0" prefWidth="87.0" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="64.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                <image>

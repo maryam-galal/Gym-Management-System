@@ -7,6 +7,36 @@ import java.util.Scanner;
 
 public class Files {
 
+    public static void load_Equipment(String FileName){
+        try (Scanner fileScanner = new Scanner(new File(FileName))) {
+            if (fileScanner.hasNextLine()) {
+                // Skip the header line
+                fileScanner.nextLine();
+                    while (fileScanner.hasNextLine()) {
+                        String[] data = fileScanner.nextLine().split(",");
+                        MainApplication.EquipmentsFromFile.add(data);
+                    }
+                }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void load_cardio_strength(){
+        for (String[]data:MainApplication.EquipmentsFromFile){
+           //if (data.length >= 4 ){
+            if(data[3].trim().equals("cardio")){
+                CardioEquipment c=new CardioEquipment(data[0].trim(),data[1].trim(),Integer.parseInt(data[2].trim()));
+                c.setEntryDate(data[4].trim());
+                MainApplication.cardioEquipments.add(c);
+            } else if(data[3].trim().equals("strength")) {
+                StrengthEquipment t=new StrengthEquipment(data[0].trim(),data[1].trim(),Integer.parseInt(data[2].trim()));
+                MainApplication.strengthEquipments.add(t);
+
+            }
+           }
+       //}
+    }
+
     public static void Load_ArrayList(String FileName) {
         //reading file info
         try (Scanner fileScanner = new Scanner(new File(FileName))) {

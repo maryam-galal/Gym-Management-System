@@ -31,11 +31,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fitHeight="38.0" fitWidth="39.0" layoutX="886.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Cross Dumbbells.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
       <Pane fx:id="Slider" layoutY="2.0" prefHeight="635.0" prefWidth="319.0" style="-fx-background-color: black;" visible="false">
@@ -63,7 +58,7 @@
                   <MenuButton mnemonicParsing="false" prefHeight="102.0" prefWidth="319.0" style="-fx-background-color: transparent;" text="Manage Coaches" textFill="#faf8f8">
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#AddCoach" text="Add Coach" />
-                      <MenuItem mnemonicParsing="false" onAction="#EditCoach" text="Edit/Delete Coach" />
+                      <MenuItem mnemonicParsing="false" onAction="#Edit_DeleteCoach" text="Edit/Delete Coach" />
                     </items>
                      <font>
                         <Font name="System Bold" size="22.0" />
@@ -72,8 +67,7 @@
                   <MenuButton mnemonicParsing="false" prefHeight="102.0" prefWidth="319.0" style="-fx-background-color: transparent;" text="Manage Equipments" textFill="#faf8f8">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#AddEquipment" text="Add Equipment" />
-                        <MenuItem mnemonicParsing="false" onAction="#EditEquipment" text="Edit Equipment" />
-                        <MenuItem mnemonicParsing="false" onAction="#DeleteEquipment" text="Delete Equipment" />
+                        <MenuItem mnemonicParsing="false" onAction="#Edit_DeleteEquipment" text="Edit/Delete Equipment" />
                      </items>
                      <font>
                         <Font name="System Bold" size="22.0" />

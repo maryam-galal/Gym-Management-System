@@ -88,13 +88,13 @@
             <Font name="Monotype Corsiva" size="40.0" />
          </font>
       </Button>
-      <Label layoutX="474.0" layoutY="46.0" text="Coach ID" textFill="#fffbfb">
+      <Label layoutX="413.0" layoutY="41.0" text="Coach ID" textFill="#fffbfb">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="coachId" layoutX="627.0" layoutY="46.0" prefHeight="35.0" prefWidth="158.0" promptText="Enter coach id" />
-      <Button alignment="BASELINE_LEFT" layoutX="552.0" layoutY="125.0" mnemonicParsing="false" onAction="#GetCoach" prefHeight="36.0" prefWidth="132.0" style="-fx-background-color: white;" text="Display Info" textFill="#180000">
+      <TextField fx:id="coachId" layoutX="573.0" layoutY="41.0" prefHeight="35.0" prefWidth="158.0" promptText="Enter coach id" />
+      <Button alignment="BASELINE_LEFT" layoutX="498.0" layoutY="105.0" mnemonicParsing="false" onAction="#GetCoach" prefHeight="39.0" prefWidth="122.0" style="-fx-background-color: white;" text="Display Info" textFill="#180000">
          <font>
             <Font name="Monotype Corsiva" size="20.0" />
          </font>

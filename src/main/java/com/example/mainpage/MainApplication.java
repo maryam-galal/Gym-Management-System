@@ -1,5 +1,6 @@
 package com.example.mainpage;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +24,10 @@ public class MainApplication extends Application {
     protected static ArrayList<String[]> InBody_Data = new ArrayList<>();
     protected static ArrayList<String []> Subscription_Data = new ArrayList<>();
 
+    private static final String FILE_NAME = "gym_equipment.csv";
+    protected static ArrayList<String []> EquipmentsFromFile= new ArrayList<>();
+    protected static ArrayList<CardioEquipment> cardioEquipments=new ArrayList<>();
+    protected static ArrayList<StrengthEquipment> strengthEquipments=new ArrayList<>();
     private static Stage primarystage;
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -42,6 +47,27 @@ public class MainApplication extends Application {
         }
         return gyms;
     }
+    public static void updateFile(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName,false))) {
+            // Write the header
+            writer.write("Name,Code,Quantity,Equipment Type,Entry date\n");
+            // Write data from CardioEquipment list
+            for (CardioEquipment cardio : cardioEquipments) {
+                writer.write(String.format("%s,%s,%d,%s,%s\n",
+                        cardio.getEquipmentName(), cardio.getEquipmentCode(),
+                        cardio.getEquipmentQuantity(), cardio.getEquipmentType(),
+                        cardio.getEntryDate()));
+            }
+            // Write data from StrengthEquipment list
+            for (StrengthEquipment strength : strengthEquipments) {
+                writer.write(String.format("%s,%s,%d,%s\n",
+                        strength.getEquipmentName(), strength.getEquipmentCode(),
+                        strength.getEquipmentQuantity(), strength.getEquipmentType()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     @Override
@@ -55,20 +81,111 @@ public class MainApplication extends Application {
         // load all data to userList
         Files.Load_ArrayList("Registration.csv");
         Files.Load_coach_customer();
-
-
         Files.Load_ArrayList("InBody.csv");
         Files.Load_InBody();
         Files.Load_ArrayList("Subscription.csv");
         Files.Load_Subscription();
+        Files.load_Equipment("gym_equipment.csv");
+        Files.load_cardio_strength();
+        System.out.println(cardioEquipments.size());
+        System.out.println(strengthEquipments.size());
+        System.out.println(EquipmentsFromFile.size());
 
-        System.out.println(userList.size());
+/*        System.out.println(userList.size());
         System.out.println(customerArrayList.size());
         System.out.println(coachArrayList.size());
         System.out.println(InBodyList.size());
         System.out.println(membershipPlanArrayList.size());
         System.out.println(InBody_Data.size());
         System.out.println(Subscription_Data.size());
+        System.out.println();*///habiba--------------------------------------------------------------------------------------------
+        //  List<Equipments>equipmentList = new ArrayList<>();
+
+        // Read data from CSV file
+/*
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+            String line;
+            reader.readLine(); // Skip header row
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(",");
+                String name = values[0];
+                int id = Integer.parseInt(values[1]);
+                int quantity = Integer.parseInt(values[2]);
+
+                equipmentList.add(new Equipments(name, id, quantity));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        // Print loaded equipment
+        System.out.println("Loaded equipment:");
+        for (Equipments equipment : equipmentList) {
+            System.out.println(equipment);
+        }
+
+        // Add new equipment
+        Equipments newEquipment = new Equipments("Treadmill", 1, 10);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Dumbbellset", 2, 2);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("ChestPress", 3, 3);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Aerobic Steps", 4, 15);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("ArmCurl", 5, 2);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Bench Press", 6, 3);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Cable Row", 7, 2);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Kettle bells", 8, 2);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Lat pulldown", 9, 3);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Leg Press", 10, 1);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Shoulder press", 11, 3);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Spin Bike", 12, 4);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Stability Ball", 13, 5);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Stair Climber", 14, 3);
+        equipmentList.add(newEquipment);
+
+        newEquipment = new Equipments("Triceps Press", 15, 3);
+        equipmentList.add(newEquipment);
+
+
+        // Save updated list to CSV file
+        try (FileWriter writer = new FileWriter(FILE_NAME)) {
+            writer.write("Name,ID,Quantity\n"); // Write header row
+            for (Equipments equipment : equipmentList) {
+                writer.write(equipment.toCsvLine() + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+*/
+
+
+        //-------------------------------------------------------------------------------------------------------------------
+
 
         // Set the application icon
         stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
@@ -76,6 +193,12 @@ public class MainApplication extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+
+
+        stage.setOnCloseRequest(windowEvent -> {
+            updateFile(FILE_NAME);
+            Platform.exit();
+        });
 
     }
 

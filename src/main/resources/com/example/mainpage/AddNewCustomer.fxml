@@ -15,6 +15,11 @@
    <children>
       <Pane prefHeight="642.0" prefWidth="944.0" style="-fx-background-color: black;">
          <children>
+            <ImageView fitHeight="642.0" fitWidth="944.0" pickOnBounds="true">
+               <image>
+                  <Image url="@Black%20bg.jpg" />
+               </image>
+            </ImageView>
             <Button layoutX="26.0" layoutY="92.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="116.0" style="-fx-background-color: transparent;" text="Username" textFill="#f7f3f3">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
@@ -132,7 +137,7 @@
                   <Font name="Monotype Corsiva" size="42.0" />
                </font>
             </Button>
-            <Button fx:id="BackButton" layoutX="7.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#GoBack" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: black;">
+            <Button fx:id="BackButton" layoutX="7.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#GoBack" prefHeight="63.0" prefWidth="70.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="61.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
                      <image>

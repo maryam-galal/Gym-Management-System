@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.util.Iterator;
 
-public class EditCustomerController {
+public class Edit_DeleteCustomerController {
 
     @FXML
     private TextArea address;

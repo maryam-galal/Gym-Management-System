@@ -23,7 +23,6 @@ public class AdminController  {
     void SliderAppear(MouseEvent event) {
         MenuButton.setVisible(false);
         Slider.setVisible(true);
-
     }
     @FXML
     void hideSlider(MouseEvent event) {
@@ -34,46 +33,35 @@ public class AdminController  {
     void income(MouseEvent event) throws IOException {
         m.changeScene("GymIncome.fxml");
     }
-
     @FXML
     void AddCoach(ActionEvent event) throws IOException {
         m.changeScene("AddNewCoach.fxml");
     }
-
     @FXML
     void AddCustomer(ActionEvent event) throws IOException {
         m.changeScene("AddNewCustomer.fxml");
     }
-
     @FXML
-    void AddEquipment(ActionEvent event) {
-
+    void AddEquipment(ActionEvent event) throws IOException {
+        m.changeScene("AddEquipment.fxml");
     }
     @FXML
-    void DeleteEquipment(ActionEvent event) {
-
-    }
-
-    @FXML
-    void EditCoach(ActionEvent event) throws IOException {
+    void Edit_DeleteCoach(ActionEvent event) throws IOException {
          m.changeScene("EditCoach.fxml");
     }
-
     @FXML
     void Edit_DeleteCustomer(ActionEvent event) throws IOException {
         m.changeScene("EditCustomer.fxml");
 
     }
-
     @FXML
-    void EditEquipment(ActionEvent event) {
-
+    void Edit_DeleteEquipment(ActionEvent event) throws IOException {
+        m.changeScene("EditEquipment.fxml");
     }
     @FXML
     void go_to_3rdFunc(MouseEvent event) throws IOException {
         MainApplication m = new MainApplication();
         m.changeScene("Admin_Display.fxml");
     }
-
 
 }
