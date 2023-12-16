@@ -32,6 +32,7 @@ public class Customer_RegistrationForm_Controller {
     }
     public void Load_to_Static_list() {
         Customer newCustomer = createCustomerInstance();
+        //Subscription s = new Subscription(newCustomer.getId());
         String[] customerData = {
                 newCustomer.getId(),
                 newCustomer.getUser_name(),

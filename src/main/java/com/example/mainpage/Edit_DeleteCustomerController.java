@@ -95,11 +95,11 @@ public class Edit_DeleteCustomerController {
                 for(String [] s:MainApplication.Subscription_Data){
                     if(id.getText().equals(s[0].trim())) {
                         assignedcoachId.setText(s[1].trim());
-                        plan.setText(s[3].trim());
-                        startdate.setText(s[4].trim());
-                        noMonths.setText(s[5].trim());
-                        daysperweek.setText(s[6].trim());
-                        price.setText(s[7]);
+                        plan.setText(s[2].trim());
+                        startdate.setText(s[3].trim());
+                        noMonths.setText(s[4].trim());
+                        daysperweek.setText(s[5].trim());
+                        price.setText(s[6]);
                     }
                 }
             }
@@ -215,8 +215,8 @@ public class Edit_DeleteCustomerController {
         } else {
             System.out.println("Customer with ID " + customerIdToRemove + " deleted successfully");
         }
-        Files.Load_Subscription();
-        Files.Load_InBody();
+        //Files.Load_Subscription();
+       // Files.Load_InBody();
     }
 
 

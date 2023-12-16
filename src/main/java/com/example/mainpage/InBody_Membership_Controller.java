@@ -23,7 +23,7 @@ public class InBody_Membership_Controller {
     private DatePicker plan_DatePicker;
     @FXML
     private TextField NumberOfMonths;
-     Customer c = new Customer();
+
     public void initialize() {
         plan_ChoiceBox.getItems().addAll("Silver Plan \n (3 Days per Week)", "Gold Plan \n (6 Days per Week, with less session price + higher discount)");
     }
@@ -32,8 +32,6 @@ public class InBody_Membership_Controller {
 
     public InBody Create_Inbody_Instance() {
         InBody b = new InBody();
-        b.setCustomer_id(c.getId());
-        Subscription.setCustomer_id(c.getId());
         b.height = Double.parseDouble(Height.getText());
         b.body_fat = Double.parseDouble(Bodyfat.getText());
         b.Date_of_InBody = String.valueOf(inbody_datePicker.getValue());
@@ -48,7 +46,7 @@ public class InBody_Membership_Controller {
     public void AddTo_InBody() {
         InBody in = Create_Inbody_Instance();
         String[] Inbody_data = {
-                Subscription.getCustomer_id(),
+             //   Subscription.getCustomer_id(),
                 in.getDate_of_InBody(),
                 String.valueOf(in.getMass()),
                 String.valueOf(in.getBody_fat()),
@@ -58,21 +56,21 @@ public class InBody_Membership_Controller {
                 String.valueOf(in.getTotal_weight()),
                 String.valueOf(in.getWater_weight())
         };
-        MainApplication.InBody_Data.add(Inbody_data);
+       // MainApplication.InBody_Data.add(Inbody_data);
         MainApplication.InBodyList.add(in);
     }
 
     public void AddTo_Subscription() {
         Membership_Plan p = Create_plan_instance();
         String[] plan_data = {
-                Subscription.getCustomer_id(),
+               // Subscription.getCustomer_id(),
                 p.getChoice(),
                 p.getStart_date(),
                 String.valueOf(p.getNumber_of_months()),
                 String.valueOf(p.getDays_per_week()),
                 String.valueOf(p.getPlan_price())
         };
-        MainApplication.Subscription_Data.add(plan_data);
+      //  MainApplication.Subscription_Data.add(plan_data);
         MainApplication.membershipPlanArrayList.add(p);
     }
     @FXML
@@ -93,8 +91,8 @@ public class InBody_Membership_Controller {
         MainApplication backTOlogIn=new MainApplication();
         AddTo_InBody();
         AddTo_Subscription();
-       // Subscription.findAvailableCoach();
-      //  Files.WriteInFile("InBody.csv","customer");
+        //Subscription.findAvailableCoach();
+       // Files.WriteInFile("InBody.csv","customer");
         //Files.WriteInFile("Subscription.csv","customer");
         backTOlogIn.changeScene("LogInPage.fxml");
 
