@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="704.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.CustomerController">
+   <children>
+      <ImageView fitHeight="704.0" fitWidth="959.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@black bg with quote .png" />
+         </image>
+      </ImageView>
+      <Label layoutX="82.0" layoutY="83.0" prefHeight="27.0" prefWidth="190.0" text="Display Equipment" textFill="#f7f1f1">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="equipmentTableView" layoutX="71.0" layoutY="212.0" prefHeight="294.0" prefWidth="550.0">
+        <columns>
+          <TableColumn minWidth="183.0" prefWidth="75.0" text="Name" />
+          <TableColumn minWidth="183.0" prefWidth="75.0" text="Id" />
+            <TableColumn minWidth="183.0" prefWidth="75.0" text="Quantity" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

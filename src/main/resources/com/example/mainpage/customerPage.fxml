@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.CustomerController">
+<AnchorPane prefHeight="704.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.CustomerController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="704.0" fitWidth="959.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Gym Background.jpg" />
+            <Image url="@black bg with quote .png" />
          </image>
       </ImageView>
+      <Button layoutX="181.0" layoutY="123.0" mnemonicParsing="false" onAction="#coachinformation" prefHeight="30.0" prefWidth="162.0" text="Coach information">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="181.0" layoutY="221.0" mnemonicParsing="false" onAction="#gymequipment" prefHeight="30.0" prefWidth="162.0" text="Gym Equipment">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="181.0" layoutY="320.0" mnemonicParsing="false" onAction="#in_body_information" prefHeight="30.0" prefWidth="162.0" text="In-body information">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="182.0" layoutY="411.0" mnemonicParsing="false" onAction="#membership_plan" prefHeight="30.0" prefWidth="162.0" text="Membership's plan">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="182.0" layoutY="488.0" mnemonicParsing="false" onAction="#kilos_to_be_reduced" prefHeight="30.0" prefWidth="162.0" text="Kilos to be reduced">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

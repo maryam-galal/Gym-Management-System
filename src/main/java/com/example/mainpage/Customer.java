@@ -2,6 +2,7 @@ package com.example.mainpage;
 
 public class Customer extends Person {
     private static int customerCounter = 0;
+    protected static String recievedName= new String();
 
 
     public Customer (){
@@ -17,6 +18,25 @@ public class Customer extends Person {
 
         // Construct the unique ID
         id = "B2" + customerCounter;
+    }
+    static String var = new String();
+    public static String processName(String name) {
+        System.out.println("Received name in the coach class is: " + name);
+        String customerId = new String();
+        for(Customer customerSearch: MainApplication.customerArrayList){
+            if (customerSearch.getUser_name().equals(name)) {
+                recievedName= name;
+                System.out.println("Received name in if condition is: " + recievedName);
+                customerId = customerSearch.getId(); // Assuming 'getId()' returns the ID of the coach
+                var = customerId;
+                System.out.println("The id of this coach is: " + customerId);
+                break;
+            }
+        }
+        return customerId;
+    }
+    public static String get(){
+        return var;
     }
 
 }

@@ -22,6 +22,7 @@ public class LoginController {
     private Label passwordError;
     @FXML
     private Label usernameError;
+    protected String userName;
     MainApplication m =new MainApplication();
     LoginManager loginManager = new LoginManager();
     @FXML
@@ -38,6 +39,8 @@ public class LoginController {
                 System.out.println("coach");
                 m.changeScene("coachPage.fxml");
             } else if ("customer".equals(userType)) {
+                userName=usernameField.getText();// updated by maya
+                Customer.processName(userName);
                 System.out.println("customer");
                 m.changeScene("customerPage.fxml");
             } else if ("admin".equals(userType)) {

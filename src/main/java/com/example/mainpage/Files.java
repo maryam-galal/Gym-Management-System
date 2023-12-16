@@ -61,6 +61,7 @@ public class Files {
                     }
                 }
             }
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -134,6 +135,21 @@ public class Files {
         }
     }
 
+  /* public static void LoadEquipments(ArrayList<String[]> GymEquipments_list ){
+        Equipments Equipment = new Equipments();
+        for (String [] data:GymEquipments_list)
+        {
+            if(data.length<=3){
+                Equipment.setEquipmentName(data[0].trim());
+                Equipment.setEquipmentId(Integer.parseInt(data[1].trim()));
+                Equipment.setEquipmentQuantity(Integer.parseInt(data[2].trim()));
+                MainApplication.equipmentList .add(Equipment);
+            }
+
+        }
+        System.out.println("Equipment added");
+    }*/
+
 
 
     public static void WriteInFile(String file_name, String userType) throws IOException {
@@ -173,6 +189,11 @@ public class Files {
                 System.out.println("inbody done");
             }
         }
+      /* else if(file_name.equals("Equipments.csv")){
+            Equipments lastEquipment = MainApplication.GymEquipments.get(MainApplication.GymEquipments.size()-1);
+            pw.println(lastEquipment.getEquipmentName()+","+lastEquipment.getEquipmentId()+","+lastEquipment.getEquipmentQuantity());
+            System.out.println("Appending Equipment"+ lastEquipment.getEquipmentName()+" "+ lastEquipment.getEquipmentId());
+        }*/
 
         else if (file_name.equals("Subscription.csv")) {
             //pw.println("\"Customer ID\",\"Coach ID\",\"Customer Name\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\"");

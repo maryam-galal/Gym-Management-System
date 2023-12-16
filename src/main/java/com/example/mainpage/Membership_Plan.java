@@ -50,6 +50,8 @@ public class Membership_Plan {
         this.plan_price = plan_price;
     }
 
+
+
     public Membership_Plan() {
     }
 
