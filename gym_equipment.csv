@@ -1,14 +1,16 @@
-Name,ID,Quantity,Equipment Type,Entry date
+Name,Code,Quantity,Equipment Type,Entry date
 Treadmill,1,10,cardio,2023-12-01
-Dumbbellset,2,2,strength,
-ChestPress,3,3,strength,
 Aerobic Steps,4,15,cardio,2023-12-11
-ArmCurl,5,2,strength,
-Bench Press,6,3,strength,
-Kettle bells,8,2,strength,
-Lat pulldown,9,3,strength,
-Leg Press,10,1,strength,
-Shoulder press,11,3,strength,
 Spin Bike,12,4,cardio,2023-12-15
 Stair Climber,14,3,cardio,2023-12-10
-Triceps Press,15,3,strength,
+Treadmill,1,12,cardio,2023-12-01
+Treadmill,1,10,cardio,2023-12-01
+Dumbbellset,2,4,strength
+ChestPress,3,3,strength
+ArmCurl,5,2,strength
+Bench Press,6,3,strength
+Kettle bells,8,2,strength
+Lat pulldown,9,3,strength
+Leg Press,10,1,strength
+Shoulder press,11,3,strength
+Triceps Press,15,3,strength

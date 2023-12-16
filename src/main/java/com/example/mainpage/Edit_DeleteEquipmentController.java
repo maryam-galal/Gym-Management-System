@@ -111,23 +111,31 @@ public class Edit_DeleteEquipmentController implements Initializable {
 
     @FXML
     void saveEditedEquipment(ActionEvent event) {
-        for (CardioEquipment c: MainApplication.cardioEquipments) {
+        for (CardioEquipment c : MainApplication.cardioEquipments) {
             if (type.getText().equals("cardio")) {
-               c.setEquipmentName(name.getText());
-               c.setEquipmentCode(code.getText());
-               c.setEquipmentQuantity(Integer.parseInt(quantity.getText()));
-                c.setEntryDate(entrydate.getText());
-                MainApplication.cardioEquipments.add(c);
+                if (code.getText().equals(c.getEquipmentCode())) {
+                    c.setEquipmentName(name.getText());
+                    c.setEquipmentCode(code.getText());
+                    c.setEquipmentQuantity(Integer.parseInt(quantity.getText()));
+                    c.setEntryDate(entrydate.getText());
+                    break;
+                }
             }
         }
-        for(StrengthEquipment s: MainApplication.strengthEquipments){
-            if(type.getText().equals("strength")){
-                s.setEquipmentName(name.getText());
-                s.setEquipmentCode(code.getText());
-                s.setEquipmentQuantity(Integer.parseInt(quantity.getText()));
-                MainApplication.strengthEquipments.add(s);
+
+        for (StrengthEquipment s : MainApplication.strengthEquipments) {
+            if (type.getText().equals("strength")) {
+                if (code.getText().equals(s.getEquipmentCode())) {
+                    s.setEquipmentName(name.getText());
+                    s.setEquipmentCode(code.getText());
+                    s.setEquipmentQuantity(Integer.parseInt(quantity.getText()));
+                    break;
+                }
             }
-        }        System.out.println(MainApplication.cardioEquipments.size());
+        }
+
+        System.out.println(MainApplication.cardioEquipments.size());
         System.out.println(MainApplication.strengthEquipments.size());
     }
+
 }

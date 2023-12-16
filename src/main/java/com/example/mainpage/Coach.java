@@ -9,6 +9,14 @@ public class Coach extends Person {
     private static final int MAX_CUSTOMERS = 10;
     protected int numberOfCustomers = 0;
 
+    public int getNumberOfCustomers() {
+        return numberOfCustomers;
+    }
+
+    public void setNumberOfCustomers(int numberOfCustomers) {
+        this.numberOfCustomers = numberOfCustomers;
+    }
+
     public void setWorking_hours(int working_hours) {
         this.working_hours = working_hours;
     }
@@ -42,20 +50,19 @@ public class Coach extends Person {
                coachCounter = 1;
            }
 
-           // Construct the unique ID
            id = "A1" + coachCounter;
        }
 
-    public boolean canAcceptCustomer() {
-        if((numberOfCustomers < MAX_CUSTOMERS) && (working_hours < 10)) {
-            working_hours++;
-            numberOfCustomers++;
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+//    public boolean canAcceptCustomer() {
+//        if((numberOfCustomers < MAX_CUSTOMERS) && (working_hours < 10)) {
+//            working_hours++;
+//            numberOfCustomers++;
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
+//    }
 
     public void setWorking_hours(String working_hours) {
           this.working_hours= Integer.parseInt(working_hours);

@@ -87,18 +87,19 @@ public class MainApplication extends Application {
         Files.Load_Subscription();
         Files.load_Equipment("gym_equipment.csv");
         Files.load_cardio_strength();
+
         System.out.println(cardioEquipments.size());
         System.out.println(strengthEquipments.size());
         System.out.println(EquipmentsFromFile.size());
-
-/*        System.out.println(userList.size());
+        System.out.println(userList.size());
         System.out.println(customerArrayList.size());
         System.out.println(coachArrayList.size());
         System.out.println(InBodyList.size());
         System.out.println(membershipPlanArrayList.size());
         System.out.println(InBody_Data.size());
         System.out.println(Subscription_Data.size());
-        System.out.println();*///habiba--------------------------------------------------------------------------------------------
+
+        //habiba--------------------------------------------------------------------------------------------
         //  List<Equipments>equipmentList = new ArrayList<>();
 
         // Read data from CSV file
@@ -182,8 +183,6 @@ public class MainApplication extends Application {
             e.printStackTrace();
         }
 */
-
-
         //-------------------------------------------------------------------------------------------------------------------
 
 
