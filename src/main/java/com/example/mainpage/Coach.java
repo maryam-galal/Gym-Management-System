@@ -57,26 +57,18 @@ public class Coach extends Person {
            id = "A1" + coachCounter;
        }
 
-//    public boolean canAcceptCustomer() {
-//        if((numberOfCustomers < MAX_CUSTOMERS) && (working_hours < 10)) {
-//            working_hours++;
-//            numberOfCustomers++;
-//            return true;
-//        }
-//        else{
-//            return false;
-//        }
-//    }
+
 public void assignCoachToCustomer(Customer customer) {
     Collections.shuffle(MainApplication.coachArrayList);
     for (Coach coach : MainApplication.coachArrayList) {
-         if(customerArrayList.size() < 11){
-            System.out.println(customer.getId());
-            System.out.println(coach.getId());
+        if(customerArrayList.size() < 11){
             coach.customerArrayList.add(customer);
             customer.setAssignedCoach(coach);
-            Subscription.setCoach_id(coach.getId());
-            break;
+            Subscription s = new Subscription(customer.getId(),coach.getId());
+
+            System.out.println(customer.getId());
+            System.out.println(coach.getId());
+
         }
     }
 }

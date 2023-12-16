@@ -1,8 +1,6 @@
 package com.example.mainpage;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Files {
@@ -80,7 +78,7 @@ public class Files {
                     customer.setEmail(data[4].trim());
                     customer.setAddress(data[5].trim());
                     customer.setGender(data[6].trim());
-                    Subscription.customer_id=customer.getId();
+                    //Subscription.setCustomer_id(customer.getId());
                     MainApplication.customerArrayList.add(customer);
                 }
                else if (userType.equals("coach")) {
@@ -122,14 +120,17 @@ public class Files {
     public static void Load_Subscription() {
         for (String[] S : MainApplication.Subscription_Data) {
             if (S.length == 7) {
-                Membership_Plan p = new Membership_Plan();
-                p.setChoice(S[2].trim());
-                p.setStart_date(S[3].trim());
-                p.setNumber_of_months(Integer.parseInt(S[4].trim()));
-                p.setDays_per_week(Integer.parseInt(S[5].trim()));
-                p.setPlan_price(Double.parseDouble(S[6].trim()));
+                Subscription s = new Subscription();
+                s.plan = new Membership_Plan();
+                s.setCustomer_id(S[0].trim());
+                s.setCoach_id(S[1].trim());
+                s.plan.setChoice(S[2].trim());
+                s.plan.setStart_date(S[3].trim());
+                s.plan.setNumber_of_months(Integer.parseInt(S[4].trim()));
+                s.plan.setDays_per_week(Integer.parseInt(S[5].trim()));
+                s.plan.setPlan_price(Double.parseDouble(S[6].trim()));
 
-                MainApplication.membershipPlanArrayList.add(p);
+                MainApplication.subscriptionArrayList.add(s);
             }
         }
     }
@@ -167,7 +168,9 @@ public class Files {
                             strength.getEquipmentName(), strength.getEquipmentCode(),
                             strength.getEquipmentQuantity(), strength.getEquipmentType()));
                 }
-            } else if (fileName.equals("Registration.csv")) {
+            }
+
+            else if (fileName.equals("Registration.csv")) {
                 writer.write("\"ID\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\",\"User Type\",\"Starting Hour\",\"Ending Hour\"\n");
                 for (Coach c : MainApplication.coachArrayList) {
                     writer.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s,%d,%d\n",
@@ -181,17 +184,21 @@ public class Files {
                             c.getPhone_number() , c.getEmail() , c.getAddress() ,
                             c.getGender() , "customer"));
                 }
-            } else if (fileName.equals("InBody.csv")) {
+            }
+
+            else if (fileName.equals("InBody.csv")) {
                 writer.write("\"ID\", \"Date of InBody\",\"Mass\", \"Body Fat\",\"Height\",\"Minerals\",\"Protein\",\"Total Weight\",\"Water Weight\"\n");
                 for (InBody in: MainApplication.InBodyList) {
                     writer.write(String.format("%s,%s,%f,%f,%f,%f,%f,%f,%f\n",
                             in.getCustomer_id(), in.Date_of_InBody , in.mass , in.body_fat , in.height ,in.minerals_var , in.protein_var , in.total_weight , in.water_weight));
                 }
-            } else if (fileName.equals("Subscription.csv")) {
+            }
+
+            else if (fileName.equals("Subscription.csv")) {
                 writer.write("\"Customer ID\",\"Coach ID\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\n");
-                for (Membership_Plan p: MainApplication.membershipPlanArrayList) {
+                for (Subscription s: MainApplication.subscriptionArrayList) {
                     writer.write(String.format("%s,%s,%s,%s,%d,%d,%f\n",
-                            Subscription.getCustomer_id() , Subscription.getCoach_id() , p.choice , p.start_date , p.number_of_months , p.days_per_week , p.plan_price));
+                            s.getCustomer_id() , s.getCoach_id() , s.plan.choice , s.plan.start_date , s.plan.number_of_months , s.plan.days_per_week , s.plan.plan_price));
                 }
             }
         } catch (IOException e) {

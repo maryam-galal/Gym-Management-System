@@ -23,7 +23,6 @@ public class Customer_RegistrationForm_Controller {
     private Label emailError;
     signUpManager customer_Excep = new signUpManager();
     final String type="customer";
-    //Customer customer = new Customer();
     Coach c = new Coach();
 
     @FXML
@@ -54,7 +53,6 @@ public class Customer_RegistrationForm_Controller {
         customer.setEmail(email_text.getText());
         customer.setAddress(address_text.getText());
         customer.setGender(genderChoiceBox.getValue());
-        //MainApplication.customerArrayList.add(customer);
         return customer;
     }
 
@@ -113,7 +111,6 @@ public class Customer_RegistrationForm_Controller {
         }
 
         Load_to_Static_list();
-        // Save to file and change scene
        // Files.WriteInFile("Registration.csv",type);
         Files.Load_coach_customer();
         c.assignCoachToCustomer(createCustomerInstance());

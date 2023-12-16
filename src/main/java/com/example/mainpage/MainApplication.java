@@ -18,7 +18,7 @@ public class MainApplication extends Application {
     protected static ArrayList<Customer> customerArrayList = new ArrayList<>();
     protected static ArrayList<Coach> coachArrayList = new ArrayList<>();
     protected static ArrayList<InBody> InBodyList = new ArrayList<>();
-    protected static ArrayList<Membership_Plan> membershipPlanArrayList = new ArrayList<>();
+    protected static ArrayList<Subscription> subscriptionArrayList = new ArrayList<>();
 
     protected static ArrayList<String[]> userList = new ArrayList<>();
     protected static ArrayList<String[]> InBody_Data = new ArrayList<>();
@@ -73,7 +73,7 @@ public class MainApplication extends Application {
         System.out.println(customerArrayList.size());
         System.out.println(coachArrayList.size());
         System.out.println(InBodyList.size());
-        System.out.println(membershipPlanArrayList.size());
+        System.out.println(subscriptionArrayList.size());
         System.out.println(InBody_Data.size());
         System.out.println(Subscription_Data.size());
 
@@ -165,7 +165,7 @@ public class MainApplication extends Application {
 
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -195,7 +195,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 
@@ -223,7 +223,7 @@ public class MainApplication extends Application {
 
         try {
             // Load your icon image
-            Image icon = new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
+            Image icon = new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
 
             // Create an ImageView with the icon
             ImageView imageView = new ImageView(icon);

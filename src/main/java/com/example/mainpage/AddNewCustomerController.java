@@ -67,7 +67,7 @@ public class AddNewCustomerController {
     private Button BackButton;
     signUpManager customer_Excep = new signUpManager();
     final String type="customer";
-    Membership_Plan plan = new Membership_Plan();
+    Subscription s = new Subscription();
     InBody b = new InBody();
     Coach c = new Coach();
 
@@ -119,11 +119,11 @@ public class AddNewCustomerController {
     @FXML
     public void Load_static_PlanArrayList() {
         String choice = plan_ChoiceBox.getValue();
-        plan.choice = choice.substring(0, choice.indexOf("\n")).trim();
-        plan.start_date = String.valueOf(plan_DatePicker.getValue());
-        plan.number_of_months = Integer.parseInt(NumberOfMonths.getText());
-        plan.choose_plan();
-        MainApplication.membershipPlanArrayList.add(plan);
+        s.plan.choice = choice.substring(0, choice.indexOf("\n")).trim();
+        s.plan.start_date = String.valueOf(plan_DatePicker.getValue());
+        s.plan.number_of_months = Integer.parseInt(NumberOfMonths.getText());
+        s.plan.choose_plan();
+        MainApplication.subscriptionArrayList.add(s);
     }
 
     @FXML
