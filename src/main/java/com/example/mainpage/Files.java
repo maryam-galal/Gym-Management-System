@@ -119,17 +119,17 @@ public class Files {
     }
     public static void Load_Subscription() {
         for (String[] S : MainApplication.Subscription_Data) {
-            if (S.length == 7) {
+            if (S.length == 8) {
                 Subscription s = new Subscription();
                 s.plan = new Membership_Plan();
                 s.setCustomer_id(S[0].trim());
                 s.setCoach_id(S[1].trim());
-                s.plan.setChoice(S[2].trim());
-                s.plan.setStart_date(S[3].trim());
-                s.plan.setNumber_of_months(Integer.parseInt(S[4].trim()));
-                s.plan.setDays_per_week(Integer.parseInt(S[5].trim()));
-                s.plan.setPlan_price(Double.parseDouble(S[6].trim()));
-
+                s.setCustomer_name(S[2].trim());
+                s.plan.setChoice(S[3].trim());
+                s.plan.setStart_date(S[4].trim());
+                s.plan.setNumber_of_months(Integer.parseInt(S[5].trim()));
+                s.plan.setDays_per_week(Integer.parseInt(S[6].trim()));
+                s.plan.setPlan_price(Double.parseDouble(S[7].trim()));
                 MainApplication.subscriptionArrayList.add(s);
             }
         }
@@ -189,16 +189,16 @@ public class Files {
             else if (fileName.equals("InBody.csv")) {
                 writer.write("\"ID\", \"Date of InBody\",\"Mass\", \"Body Fat\",\"Height\",\"Minerals\",\"Protein\",\"Total Weight\",\"Water Weight\"\n");
                 for (InBody in: MainApplication.InBodyList) {
-                    writer.write(String.format("%s,%s,%f,%f,%f,%f,%f,%f,%f\n",
+                    writer.write(String.format("%s,%s,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\n",
                             in.getCustomer_id(), in.Date_of_InBody , in.mass , in.body_fat , in.height ,in.minerals_var , in.protein_var , in.total_weight , in.water_weight));
                 }
             }
 
             else if (fileName.equals("Subscription.csv")) {
-                writer.write("\"Customer ID\",\"Coach ID\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\n");
+                writer.write("\"Customer ID\",\"Coach ID\",\"Customer Name\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\n");
                 for (Subscription s: MainApplication.subscriptionArrayList) {
-                    writer.write(String.format("%s,%s,%s,%s,%d,%d,%f\n",
-                            s.getCustomer_id() , s.getCoach_id() , s.plan.choice , s.plan.start_date , s.plan.number_of_months , s.plan.days_per_week , s.plan.plan_price));
+                    writer.write(String.format("%s,%s,%s,%s,%s,%d,%d,%.2f\n",
+                            s.getCustomer_id() , s.getCoach_id(),s.getCustomer_name() , s.plan.choice , s.plan.start_date , s.plan.number_of_months , s.plan.days_per_week , s.plan.plan_price));
                 }
             }
         } catch (IOException e) {

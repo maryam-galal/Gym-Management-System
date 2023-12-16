@@ -31,7 +31,6 @@ public class Customer_RegistrationForm_Controller {
     }
     public void Load_to_Static_list() {
         Customer newCustomer = createCustomerInstance();
-        //Subscription s = new Subscription(newCustomer.getId());
         String[] customerData = {
                 newCustomer.getId(),
                 newCustomer.getUser_name(),
@@ -111,9 +110,7 @@ public class Customer_RegistrationForm_Controller {
         }
 
         Load_to_Static_list();
-       // Files.WriteInFile("Registration.csv",type);
-        Files.Load_coach_customer();
-        c.assignCoachToCustomer(createCustomerInstance());
+       // c.assignCoachToCustomer(createCustomerInstance());
         MainApplication RegisterMain = new MainApplication();
         RegisterMain.changeScene("InBody_Membership.fxml");
     }

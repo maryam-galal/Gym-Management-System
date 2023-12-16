@@ -8,6 +8,16 @@ public class Subscription {
 
     protected  String customer_id;
     protected  String coach_id;
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    protected String customer_name;
     protected Membership_Plan plan;
 
     public Subscription(String id) {

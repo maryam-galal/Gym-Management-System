@@ -61,19 +61,16 @@ public class Edit_DeleteCoachController {
                  Gender.setText(c.getGender());
                  Startinghour.setText(String.valueOf(c.getStartinghour()));
                  Endinghour.setText(String.valueOf(c.getEndinghour()));
-
              }
          }
          if(!UserFound){
              MainApplication.showAlert("No Matching Coach");clearFields();
          }
-
     }
     @FXML
     void DeleteCoach(MouseEvent event) {
         String coachIdToDelete = coachId.getText();
         Coach coachToDelete = null;
-
         // Find the coach with the specified ID
         for (Coach c : MainApplication.coachArrayList) {
             if (coachIdToDelete.equals(c.getId())) {
@@ -81,6 +78,17 @@ public class Edit_DeleteCoachController {
                 break; // Found the coach, exit the loop
             }
         }
+        for(Subscription s : MainApplication.subscriptionArrayList){
+            if(coachToDelete.getId().equals(s.getCoach_id())){
+                for(Customer customer: MainApplication.customerArrayList){
+                    if(s.getCustomer_id().equals(customer.getId())){
+                        s.setCoach_id(coachToDelete.assignCoachToCustomer(customer));
+                    }
+                }
+            }
+        }
+
+
 
         if (coachToDelete != null) {
             MainApplication.coachArrayList.remove(coachToDelete);

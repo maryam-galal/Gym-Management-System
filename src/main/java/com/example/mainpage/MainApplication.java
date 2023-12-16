@@ -165,7 +165,7 @@ public class MainApplication extends Application {
 
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -195,7 +195,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 

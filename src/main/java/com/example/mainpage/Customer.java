@@ -1,7 +1,7 @@
 package com.example.mainpage;
-
+import java.math.BigInteger;
+import java.util.UUID;
 public class Customer extends Person {
-    private static int customerCounter = 0;
     protected static String recievedName= new String();
 
     public Coach getAssignedCoach() {
@@ -15,18 +15,17 @@ public class Customer extends Person {
     protected Coach AssignedCoach = new Coach();
 
     public Customer (){
-        //System.out.println(MainApplication.customerArrayList.size());
+        id = generateUniqueID();
+    }
+    protected String generateUniqueID() {
+        UUID uuid = UUID.randomUUID();
 
-        if (MainApplication.customerArrayList.size() > 0) {
-            // Increment the counter based on the size of the ArrayList
-            customerCounter = MainApplication.customerArrayList.size() + 2;
-        } else {
-            // Initialize the counter to 1 if the ArrayList is empty
-            customerCounter = 1;
-        }
-
-        // Construct the unique ID
-        id = "B2" + customerCounter;
+        // Convert any Character with number
+        BigInteger decimalValue = new BigInteger(uuid.toString().replace("-", ""), 16);
+        BigInteger maxLimit = BigInteger.valueOf(999);
+        BigInteger limitedValue = decimalValue.mod(maxLimit);
+        String limitedDecimalString = limitedValue.toString();
+        return "B" + String.format("%03d", Integer.parseInt(limitedDecimalString));
     }
     static String var = new String();
     public static String processName(String name) {

@@ -67,10 +67,8 @@ public class AddNewCustomerController {
     private Button BackButton;
     signUpManager customer_Excep = new signUpManager();
     final String type="customer";
-    Subscription s = new Subscription();
     InBody b = new InBody();
-    Coach c = new Coach();
-
+    Coach co = new Coach();
     public void initialize() {
         genderChoiceBox.getItems().addAll("Male","Female");
         plan_ChoiceBox.getItems().addAll("Silver Plan \n (3 Days per Week)", "Gold Plan \n (6 Days per Week, with less session price + higher discount)");
@@ -99,10 +97,11 @@ public class AddNewCustomerController {
         customer.setEmail(email_text.getText());
         customer.setAddress(address_text.getText());
         customer.setGender(genderChoiceBox.getValue());
-        //MainApplication.customerArrayList.add(customer);
         return customer;
     }
     public void Load_static_InBodyArraylist() {
+        Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
+        b.setCustomer_id(lastCustomer.getId());
         b.height = Double.parseDouble(Height.getText());
         b.body_fat = Double.parseDouble(Bodyfat.getText());
         b.Date_of_InBody = String.valueOf(inbody_datePicker.getValue());
@@ -112,12 +111,17 @@ public class AddNewCustomerController {
         b.total_weight = Double.parseDouble(BodyWeight.getText());
         b.water_weight = Double.parseDouble(water.getText());
         //System.out.println("loaded");
-
         MainApplication.InBodyList.add(b);
     }
-
     @FXML
     public void Load_static_PlanArrayList() {
+        Subscription s = new Subscription();
+        s.plan = new Membership_Plan();
+        Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
+        String assignedcoachid=co.assignCoachToCustomer(lastCustomer);
+        s.setCoach_id(assignedcoachid);
+        s.setCustomer_id(lastCustomer.getId());
+        s.setCustomer_name(lastCustomer.getUser_name());
         String choice = plan_ChoiceBox.getValue();
         s.plan.choice = choice.substring(0, choice.indexOf("\n")).trim();
         s.plan.start_date = String.valueOf(plan_DatePicker.getValue());
@@ -125,7 +129,6 @@ public class AddNewCustomerController {
         s.plan.choose_plan();
         MainApplication.subscriptionArrayList.add(s);
     }
-
     @FXML
     void saveNewCustomer(ActionEvent event) throws IOException {
         System.out.println("savvvvv");
@@ -176,18 +179,9 @@ public class AddNewCustomerController {
         }
 
         Load_to_Static_list();
-       // Files.WriteInFile("Registration.csv",type);
-        //Files.Load_coach_customer(MainApplication.userList);
         Load_static_InBodyArraylist();
         Load_static_PlanArrayList();
-        //Subscription.findAvailableCoach();
-        c.assignCoachToCustomer(createCustomerInstance());
-      //  Files.WriteInFile("InBody.csv","customer");
-      //  Files.WriteInFile("Subscription.csv","customer");
-
-
     }
-
     @FXML
     void GoBack(MouseEvent event) throws IOException {
 MainApplication M= new MainApplication();

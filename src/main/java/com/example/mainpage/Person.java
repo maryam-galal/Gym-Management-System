@@ -9,7 +9,7 @@ public abstract class  Person {
     protected String address;
     protected String phone_number;
     protected String email;
-
+    protected abstract String generateUniqueID();
     public String getId() {
         return id;
     }

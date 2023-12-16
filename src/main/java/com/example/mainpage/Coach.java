@@ -2,17 +2,16 @@ package com.example.mainpage;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.UUID;
+import java.math.BigInteger;
 
 public class Coach extends Person {
-
-    private int working_hours;
     private int Startinghour;
     private int Endinghour;
     protected ArrayList<Customer> customerArrayList = new ArrayList<>();
 
     private static final int MAX_CUSTOMERS = 10;
     protected int numberOfCustomers = 0;
-
     public int getNumberOfCustomers() {
         return numberOfCustomers;
     }
@@ -20,18 +19,9 @@ public class Coach extends Person {
     public void setNumberOfCustomers(int numberOfCustomers) {
         this.numberOfCustomers = numberOfCustomers;
     }
-
-    public void setWorking_hours(int working_hours) {
-        this.working_hours = working_hours;
-    }
-    public int getWorking_hours(){
-        return working_hours;
-}
-
     public int getStartinghour() {
         return Startinghour;
     }
-
     public void setStartinghour(int startinghour) {
         Startinghour = startinghour;
     }
@@ -44,36 +34,34 @@ public class Coach extends Person {
         Endinghour = endinghour;
     }
 
-    private static int coachCounter = 0;
        public Coach() {
-           if (MainApplication.coachArrayList.size() > 0) {
-               // Increment the counter based on the size of the ArrayList
-               coachCounter = MainApplication.coachArrayList.size() + 1;
-           } else {
-               // Initialize the counter to 1 if the ArrayList is empty
-               coachCounter = 1;
-           }
-
-           id = "A1" + coachCounter;
+           id = generateUniqueID();
        }
+  protected String generateUniqueID() {
+      UUID uuid = UUID.randomUUID();
 
+      // Convert any Character with number
+      BigInteger decimalValue = new BigInteger(uuid.toString().replace("-", ""), 16);
+      BigInteger maxLimit = BigInteger.valueOf(999);
+      BigInteger limitedValue = decimalValue.mod(maxLimit);
+      String limitedDecimalString = limitedValue.toString();
+      return "A" + String.format("%03d", Integer.parseInt(limitedDecimalString));
 
-public void assignCoachToCustomer(Customer customer) {
+  }
+
+public String assignCoachToCustomer(Customer customer) {
     Collections.shuffle(MainApplication.coachArrayList);
     for (Coach coach : MainApplication.coachArrayList) {
         if(customerArrayList.size() < 11){
             coach.customerArrayList.add(customer);
             customer.setAssignedCoach(coach);
-            Subscription s = new Subscription(customer.getId(),coach.getId());
-
+           // Subscription s = new Subscription(customer.getId(),coach.getId());
             System.out.println(customer.getId());
             System.out.println(coach.getId());
+            return coach.getId();
 
         }
-    }
-}
+    } return null;
 
-    public void setWorking_hours(String working_hours) {
-          this.working_hours= Integer.parseInt(working_hours);
-    }
+}
 }

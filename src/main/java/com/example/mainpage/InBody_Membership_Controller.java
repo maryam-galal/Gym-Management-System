@@ -22,18 +22,14 @@ public class InBody_Membership_Controller {
     private DatePicker plan_DatePicker;
     @FXML
     private TextField NumberOfMonths;
-    Customer c = new Customer();
     Coach co = new Coach();
-
     public void initialize() {
         plan_ChoiceBox.getItems().addAll("Silver Plan \n (3 Days per Week)", "Gold Plan \n (6 Days per Week, with less session price + higher discount)");
     }
-
-
-
     public InBody Create_Inbody_Instance() {
+        Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
         InBody b = new InBody();
-        //b.setCustomer_id(Subscription.getCustomer_id());
+        b.setCustomer_id(lastCustomer.getId());
         b.height = Double.parseDouble(Height.getText());
         b.body_fat = Double.parseDouble(Bodyfat.getText());
         b.Date_of_InBody = String.valueOf(inbody_datePicker.getValue());
@@ -44,7 +40,6 @@ public class InBody_Membership_Controller {
         b.water_weight = Double.parseDouble(water.getText());
         return b;
     }
-
     public void AddTo_InBody() {
         InBody in = Create_Inbody_Instance();
         String[] Inbody_data = {
@@ -61,11 +56,16 @@ public class InBody_Membership_Controller {
         MainApplication.InBody_Data.add(Inbody_data);
         MainApplication.InBodyList.add(in);
     }
-
-
     @FXML
     public Subscription Create_sub_instance() {
-        Subscription s = new Subscription(c.getId(), co.getId());
+        //Subscription s = new Subscription(c.getId(), co.getId());
+        Subscription s = new Subscription();
+        s.plan = new Membership_Plan();
+        Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
+        String assignedcoachid=co.assignCoachToCustomer(lastCustomer);
+        s.setCoach_id(assignedcoachid);
+        s.setCustomer_id(lastCustomer.getId());
+        s.setCustomer_name(lastCustomer.getUser_name());
         String choice = plan_ChoiceBox.getValue();
         s.plan.choice = choice.substring(0, choice.indexOf("\n")).trim();
         s.plan.start_date = String.valueOf(plan_DatePicker.getValue());
@@ -78,6 +78,7 @@ public class InBody_Membership_Controller {
         String[]  sub_data = {
                 s.getCustomer_id(),
                 s.getCoach_id(),
+                s.getCustomer_name(),
                 s.plan.getChoice(),
                 s.plan.getStart_date(),
                 String.valueOf(s.plan.getNumber_of_months()),
@@ -87,10 +88,6 @@ public class InBody_Membership_Controller {
         MainApplication.Subscription_Data.add(sub_data);
         MainApplication.subscriptionArrayList.add(s);
     }
-
-
-
-
     @FXML
     public void save(MouseEvent mouseEvent) throws IOException {
         MainApplication backTOlogIn=new MainApplication();

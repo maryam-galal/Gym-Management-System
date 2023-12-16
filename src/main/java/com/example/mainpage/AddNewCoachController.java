@@ -135,9 +135,6 @@ public class AddNewCoachController implements Initializable {
             return;
         }
         AddToCoach();
-        //Files.WriteInFile("Registration.csv",type);
-        backToLogIn.changeScene("LogInPage.fxml");
-
     }
     @FXML
     void GoBack(MouseEvent event) throws IOException {

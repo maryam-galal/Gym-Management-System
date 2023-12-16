@@ -81,25 +81,25 @@ public class Edit_DeleteCustomerController {
                 email.setText(c.getEmail());
                 address.setText(c.getAddress());
                 gender.setText(c.getGender());
-                for(String [] s:MainApplication.InBody_Data){
-                    if(id.getText().equals(s[0].trim())) {
-                        inbodydate.setText(s[1].trim());
-                        mass.setText(s[2].trim());
-                        bodyfat.setText(s[3].trim());
-                        height.setText(s[4].trim());
-                        minerals.setText(s[5].trim());
-                        protein.setText(s[6].trim());
-                        bodyweight.setText(s[7].trim());
-                        bodywater.setText(s[8].trim());
+                for(InBody i:MainApplication.InBodyList){
+                    if(id.getText().equals(i.getCustomer_id())) {
+                        inbodydate.setText(i.getDate_of_InBody());
+                        mass.setText(String.valueOf(i.getMass()));
+                        bodyfat.setText(String.valueOf(i.getBody_fat()));
+                        height.setText(String.valueOf(i.getHeight()));
+                        minerals.setText(String.valueOf(i.getMinerals_var()));
+                        protein.setText(String.valueOf(i.getProtein_var()));
+                        bodyweight.setText(String.valueOf(i.getTotal_weight()));
+                        bodywater.setText(String.valueOf(i.getWater_weight()));
                     }}
-                for(String [] s:MainApplication.Subscription_Data){
-                    if(id.getText().equals(s[0].trim())) {
-                        assignedcoachId.setText(s[1].trim());
-                        plan.setText(s[2].trim());
-                        startdate.setText(s[3].trim());
-                        noMonths.setText(s[4].trim());
-                        daysperweek.setText(s[5].trim());
-                        price.setText(s[6]);
+                for(Subscription s :MainApplication.subscriptionArrayList){
+                    if(id.getText().equals(s.getCustomer_id())) {
+                        assignedcoachId.setText(s.getCoach_id());
+                        plan.setText(s.plan.getChoice());
+                        startdate.setText(s.plan.getStart_date());
+                        noMonths.setText(String.valueOf(s.plan.getNumber_of_months()));
+                        daysperweek.setText(String.valueOf(s.plan.getDays_per_week()));
+                        price.setText(String.valueOf(s.plan.getPlan_price()));
                     }
                 }
             }
@@ -125,36 +125,36 @@ public class Edit_DeleteCustomerController {
                 c.setGender(gender.getText());
 
         }
-    } for(String [] s:MainApplication.InBody_Data){
-            if(id.getText().equals(s[0].trim())) {
-                s[1]=inbodydate.getText();
-                s[2]= mass.getText();
-                s[3]= bodyfat.getText();
-                s[4]=height.getText();
-                s[5]=minerals.getText();
-                s[6]=protein.getText();
-                s[7]=bodyweight.getText();
-                s[8]=bodywater.getText();
-                System.out.println("in");
-            }}
-        for(String [] s:MainApplication.Subscription_Data){
-            if(id.getText().equals(s[0].trim())) {
-               s[1]= assignedcoachId.getText();
-                s[3]=plan.getText();
-                s[4]=startdate.getText();
-                s[5]=noMonths.getText();
-                s[6]=daysperweek.getText();
-                s[7]=price.getText();
-                System.out.println("sub");
+    }
+        for(InBody i:MainApplication.InBodyList){
+            if(id.getText().equals(i.getCustomer_id())){
+                i.setDate_of_InBody(inbodydate.getText());
+                i.setMass(Double.parseDouble(mass.getText()));
+                i.setBody_fat(Double.parseDouble(bodyfat.getText()));
+                i.setHeight(Double.parseDouble(height.getText()));
+                i.setMinerals_var(Double.parseDouble(minerals.getText()));
+                i.setProtein_var(Double.parseDouble(protein.getText()));
+                i.setTotal_weight(Double.parseDouble(bodyweight.getText()));
+                i.setWater_weight(Double.parseDouble(bodywater.getText()));
             }
         }
+        for(Subscription s : MainApplication.subscriptionArrayList) {
+            if(id.getText().equals(s.getCustomer_id())){
+                s.setCustomer_name(username.getText());
+                s.setCoach_id(assignedcoachId.getText());
+                s.plan.setChoice(plan.getText());
+                s.plan.setStart_date(startdate.getText());
+                s.plan.setNumber_of_months(Integer.parseInt(noMonths.getText()));
+                s.plan.setDays_per_week(Integer.parseInt(daysperweek.getText()));
+                s.plan.setPlan_price(Double.parseDouble(price.getText()));
+            }
+        }
+
         for(Customer c : MainApplication.customerArrayList){
             System.out.println(c.getUser_name());
             System.out.println(c.getId());
             System.out.println(c.getGender());
         }
-        Files.Load_Subscription();
-        Files.Load_InBody();
 
     }
     @FXML
@@ -188,22 +188,19 @@ public class Edit_DeleteCustomerController {
                 iterator.remove();
                 customerFound=true;
             }
-        }// Remove the corresponding InBody data
-        Iterator<String[]> inBodyIterator = MainApplication.InBody_Data.iterator();
+        }    Iterator<InBody> inBodyIterator = MainApplication.InBodyList.iterator();
         while (inBodyIterator.hasNext()) {
-            String[] inBodyData = inBodyIterator.next();
-            if (customerIdToRemove.equals(inBodyData[0].trim())) {
+            InBody inBodyData = inBodyIterator.next();
+            if (customerIdToRemove.equals(inBodyData.getCustomer_id())) {
                 inBodyIterator.remove();
                 System.out.println("InBody data removed");
                 break;
             }
         }
-
-        // Remove the corresponding Subscription data
-        Iterator<String[]> subscriptionIterator = MainApplication.Subscription_Data.iterator();
+        Iterator<Subscription> subscriptionIterator = MainApplication.subscriptionArrayList.iterator();
         while (subscriptionIterator.hasNext()) {
-            String[] subscriptionData = subscriptionIterator.next();
-            if (customerIdToRemove.equals(subscriptionData[0].trim())) {
+            Subscription subscriptionData = subscriptionIterator.next();
+            if (customerIdToRemove.equals(subscriptionData.getCustomer_id())) {
                 subscriptionIterator.remove();
                 System.out.println("Subscription data removed");
                 break;
@@ -215,11 +212,7 @@ public class Edit_DeleteCustomerController {
         } else {
             System.out.println("Customer with ID " + customerIdToRemove + " deleted successfully");
         }
-        //Files.Load_Subscription();
-       // Files.Load_InBody();
     }
-
-
 }
 
 
