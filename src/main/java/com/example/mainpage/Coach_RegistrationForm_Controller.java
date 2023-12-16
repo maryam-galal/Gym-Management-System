@@ -139,7 +139,7 @@ public class Coach_RegistrationForm_Controller {
             return;
         }
         AddToCoach();
-        Files.WriteInFile("Registration.csv",type);
+      //  Files.WriteInFile("Registration.csv",type);
         backToLogIn.changeScene("LogInPage.fxml");
 
     }

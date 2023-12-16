@@ -43,7 +43,7 @@ public class LoginController {
                 Customer.processName(userName);
                 System.out.println("customer");
                 m.changeScene("customerPage.fxml");
-            } else if ("admin".equals(userType)) {
+            } else if (userType.equals("admin")) {
                 System.out.println("admin");
                 m.changeScene("adminPage.fxml");
             }

@@ -4,6 +4,15 @@ public class Customer extends Person {
     private static int customerCounter = 0;
     protected static String recievedName= new String();
 
+    public Coach getAssignedCoach() {
+        return AssignedCoach;
+    }
+
+    public void setAssignedCoach(Coach assignedCoach) {
+        AssignedCoach = assignedCoach;
+    }
+
+    protected Coach AssignedCoach = new Coach();
 
     public Customer (){
         //System.out.println(MainApplication.customerArrayList.size());

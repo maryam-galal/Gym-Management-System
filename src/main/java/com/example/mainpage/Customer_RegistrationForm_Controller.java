@@ -24,6 +24,7 @@ public class Customer_RegistrationForm_Controller {
     signUpManager customer_Excep = new signUpManager();
     final String type="customer";
     //Customer customer = new Customer();
+    Coach c = new Coach();
 
     @FXML
     public void initialize() {
@@ -112,8 +113,9 @@ public class Customer_RegistrationForm_Controller {
 
         Load_to_Static_list();
         // Save to file and change scene
-        Files.WriteInFile("Registration.csv",type);
+       // Files.WriteInFile("Registration.csv",type);
         Files.Load_coach_customer();
+        c.assignCoachToCustomer(createCustomerInstance());
         MainApplication RegisterMain = new MainApplication();
         RegisterMain.changeScene("InBody_Membership.fxml");
     }

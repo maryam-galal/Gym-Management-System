@@ -23,8 +23,6 @@ public class MainApplication extends Application {
     protected static ArrayList<String[]> userList = new ArrayList<>();
     protected static ArrayList<String[]> InBody_Data = new ArrayList<>();
     protected static ArrayList<String []> Subscription_Data = new ArrayList<>();
-
-    private static final String FILE_NAME = "gym_equipment.csv";
     protected static ArrayList<String []> EquipmentsFromFile= new ArrayList<>();
     protected static ArrayList<CardioEquipment> cardioEquipments=new ArrayList<>();
     protected static ArrayList<StrengthEquipment> strengthEquipments=new ArrayList<>();
@@ -47,27 +45,7 @@ public class MainApplication extends Application {
         }
         return gyms;
     }
-    public static void updateFile(String fileName) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName,false))) {
-            // Write the header
-            writer.write("Name,Code,Quantity,Equipment Type,Entry date\n");
-            // Write data from CardioEquipment list
-            for (CardioEquipment cardio : cardioEquipments) {
-                writer.write(String.format("%s,%s,%d,%s,%s\n",
-                        cardio.getEquipmentName(), cardio.getEquipmentCode(),
-                        cardio.getEquipmentQuantity(), cardio.getEquipmentType(),
-                        cardio.getEntryDate()));
-            }
-            // Write data from StrengthEquipment list
-            for (StrengthEquipment strength : strengthEquipments) {
-                writer.write(String.format("%s,%s,%d,%s\n",
-                        strength.getEquipmentName(), strength.getEquipmentCode(),
-                        strength.getEquipmentQuantity(), strength.getEquipmentType()));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     @Override
@@ -187,7 +165,7 @@ public class MainApplication extends Application {
 
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -195,7 +173,10 @@ public class MainApplication extends Application {
 
 
         stage.setOnCloseRequest(windowEvent -> {
-            updateFile(FILE_NAME);
+            Files.updateFile("gym_equipment.csv");
+            Files.updateFile("Registration.csv");
+            Files.updateFile("InBody.csv");
+            Files.updateFile("Subscription.csv");
             Platform.exit();
         });
 
@@ -214,7 +195,7 @@ public class MainApplication extends Application {
     }
     @Override
     public void init() {
-        String filePath = "C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
+        String filePath = "C:\\Users\\ROAA\\IdeaProjects\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gyminfo_class.txt";
         gyms = readGymsFromFile(filePath);
     }
 
@@ -231,9 +212,6 @@ public class MainApplication extends Application {
     public static ArrayList<Coach> return_coachList(){
         return coachArrayList;
     }
-
-
-
     public static void main(String[] args) {
         launch(args);
     }

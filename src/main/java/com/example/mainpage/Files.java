@@ -106,8 +106,7 @@ public class Files {
         for (String[] d : MainApplication.InBody_Data) {
             if (d.length == 9) {
                 InBody i = new InBody();
-                Customer c = new Customer();
-                c.setId(d[0].trim());
+                i.setCustomer_id(d[0].trim());
                 i.setDate_of_InBody(d[1].trim());
                 i.setMass(Double.parseDouble(d[2].trim()));
                 i.setBody_fat(Double.parseDouble(d[3].trim()));
@@ -122,13 +121,13 @@ public class Files {
     }
     public static void Load_Subscription() {
         for (String[] S : MainApplication.Subscription_Data) {
-            if (S.length == 8) {
+            if (S.length == 7) {
                 Membership_Plan p = new Membership_Plan();
-                p.setChoice(S[3].trim());
-                p.setStart_date(S[4].trim());
-                p.setNumber_of_months(Integer.parseInt(S[5].trim()));
-                p.setDays_per_week(Integer.parseInt(S[6].trim()));
-                p.setPlan_price(Double.parseDouble(S[7].trim()));
+                p.setChoice(S[2].trim());
+                p.setStart_date(S[3].trim());
+                p.setNumber_of_months(Integer.parseInt(S[4].trim()));
+                p.setDays_per_week(Integer.parseInt(S[5].trim()));
+                p.setPlan_price(Double.parseDouble(S[6].trim()));
 
                 MainApplication.membershipPlanArrayList.add(p);
             }
@@ -150,61 +149,107 @@ public class Files {
         System.out.println("Equipment added");
     }*/
 
-
-
-    public static void WriteInFile(String file_name, String userType) throws IOException {
-        FileWriter fw = new FileWriter(file_name, true);
-        PrintWriter pw = new PrintWriter(fw);
-
-        Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
-
-        if (file_name.equals("Registration.csv")) {
-            //pw.println("\"ID\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\",\"User Type\",\"Starting Hour\",\"Ending Hour\"");
-            // Write the last added coach
-            if (!MainApplication.coachArrayList.isEmpty() && userType.equals("coach")) {
-                Coach lastCoach = MainApplication.coachArrayList.get(MainApplication.coachArrayList.size() - 1);
-                pw.println(lastCoach.getId() + "," + lastCoach.getUser_name() + "," + lastCoach.getPassword() + "," +
-                        lastCoach.getPhone_number() + "," + lastCoach.getEmail() + "," + lastCoach.getAddress() + "," +
-                        lastCoach.getGender() + "," + "coach"+","+lastCoach.getStartinghour()+","+lastCoach.getEndinghour());
-
-                System.out.println("Appending Coach: " + lastCoach.getId() + " " + lastCoach.getUser_name());
+    public static void updateFile(String fileName) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName,false))) {
+            if(fileName.equals("gym_equipment.csv")) {
+                // Write the header
+                writer.write("Name,Code,Quantity,Equipment Type,Entry date\n");
+                // Write data from CardioEquipment list
+                for (CardioEquipment cardio : MainApplication.cardioEquipments) {
+                    writer.write(String.format("%s,%s,%d,%s,%s\n",
+                            cardio.getEquipmentName(), cardio.getEquipmentCode(),
+                            cardio.getEquipmentQuantity(), cardio.getEquipmentType(),
+                            cardio.getEntryDate()));
+                }
+                // Write data from StrengthEquipment list
+                for (StrengthEquipment strength : MainApplication.strengthEquipments) {
+                    writer.write(String.format("%s,%s,%d,%s\n",
+                            strength.getEquipmentName(), strength.getEquipmentCode(),
+                            strength.getEquipmentQuantity(), strength.getEquipmentType()));
+                }
+            } else if (fileName.equals("Registration.csv")) {
+                writer.write("\"ID\",\"User name\",\"Password\",\"Phone Number\",\"Email\",\"Address\",\"Gender\",\"User Type\",\"Starting Hour\",\"Ending Hour\"\n");
+                for (Coach c : MainApplication.coachArrayList) {
+                    writer.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s,%d,%d\n",
+                            c.getId() , c.getUser_name() , c.getPassword() ,
+                                    c.getPhone_number() , c.getEmail() , c.getAddress() ,
+                                    c.getGender() , "coach", c.getStartinghour(), c.getEndinghour()));
+                }
+                for (Customer c: MainApplication.customerArrayList) {
+                    writer.write(String.format("%s,%s,%s,%s,%s,%s,%s,%s,,\n",
+                            c.getId() , c.getUser_name() , c.getPassword() ,
+                            c.getPhone_number() , c.getEmail() , c.getAddress() ,
+                            c.getGender() , "customer"));
+                }
+            } else if (fileName.equals("InBody.csv")) {
+                writer.write("\"ID\", \"Date of InBody\",\"Mass\", \"Body Fat\",\"Height\",\"Minerals\",\"Protein\",\"Total Weight\",\"Water Weight\"\n");
+                for (InBody in: MainApplication.InBodyList) {
+                    writer.write(String.format("%s,%s,%f,%f,%f,%f,%f,%f,%f\n",
+                            in.getCustomer_id(), in.Date_of_InBody , in.mass , in.body_fat , in.height ,in.minerals_var , in.protein_var , in.total_weight , in.water_weight));
+                }
+            } else if (fileName.equals("Subscription.csv")) {
+                writer.write("\"Customer ID\",\"Coach ID\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\n");
+                for (Membership_Plan p: MainApplication.membershipPlanArrayList) {
+                    writer.write(String.format("%s,%s,%s,%s,%d,%d,%f\n",
+                            Subscription.getCustomer_id() , Subscription.getCoach_id() , p.choice , p.start_date , p.number_of_months , p.days_per_week , p.plan_price));
+                }
             }
-
-            // Write the last added customer
-
-            else if (!MainApplication.customerArrayList.isEmpty() && userType.equals("customer")) {
-                pw.println(lastCustomer.getId() + "," + lastCustomer.getUser_name() + "," + lastCustomer.getPassword() + "," +
-                        lastCustomer.getPhone_number() + "," + lastCustomer.getEmail() + "," + lastCustomer.getAddress() + "," +
-                        lastCustomer.getGender() + "," + "customer"+","+""+",");
-
-                System.out.println("Appending Customer: " + lastCustomer.getId() + " " + lastCustomer.getUser_name());
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        else if (file_name.equals("InBody.csv")) {
-            //pw.println("\"ID\", \"Date of InBody\",\"Mass, Body Fat\",\"Height\",\"Minerals\",\"Protein\",\"Total Weight\",\"Water Weight\"");
-            if (!MainApplication.InBodyList.isEmpty()) {
-                InBody in = MainApplication.InBodyList.get(MainApplication.InBodyList.size() - 1);
-                pw.println( Subscription.getCustomer_id()+ "," + in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight);
-                System.out.println("inbody done");
-            }
-        }
-      /* else if(file_name.equals("Equipments.csv")){
-            Equipments lastEquipment = MainApplication.GymEquipments.get(MainApplication.GymEquipments.size()-1);
-            pw.println(lastEquipment.getEquipmentName()+","+lastEquipment.getEquipmentId()+","+lastEquipment.getEquipmentQuantity());
-            System.out.println("Appending Equipment"+ lastEquipment.getEquipmentName()+" "+ lastEquipment.getEquipmentId());
-        }*/
-
-        else if (file_name.equals("Subscription.csv")) {
-            //pw.println("\"Customer ID\",\"Coach ID\",\"Customer Name\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\"");
-            if (!MainApplication.membershipPlanArrayList.isEmpty()) {
-                Membership_Plan p = MainApplication.membershipPlanArrayList.get(MainApplication.membershipPlanArrayList.size() - 1);
-                pw.println(Subscription.getCustomer_id() + "," + Subscription.getCoach_id() + "," +lastCustomer.user_name+","+ p.choice + "," + p.start_date + "," + p.number_of_months + "," + p.days_per_week + "," + p.plan_price);
-                System.out.println("plan done");
-            }
-        }
-
-        pw.close();
-        fw.close();
     }
+
+//    public static void WriteInFile(String file_name, String userType) throws IOException {
+//        FileWriter fw = new FileWriter(file_name, true);
+//        PrintWriter pw = new PrintWriter(fw);
+//
+//        Customer lastCustomer = MainApplication.customerArrayList.get(MainApplication.customerArrayList.size() - 1);
+//
+//        if (file_name.equals("Registration.csv")) {
+//            //pw.println();
+//            // Write the last added coach
+//            if (!MainApplication.coachArrayList.isEmpty() && userType.equals("coach")) {
+//                Coach lastCoach = MainApplication.coachArrayList.get(MainApplication.coachArrayList.size() - 1);
+//             //   pw.println(
+//
+//                System.out.println("Appending Coach: " + lastCoach.getId() + " " + lastCoach.getUser_name());
+//            }
+//
+//            // Write the last added customer
+//
+//            else if (!MainApplication.customerArrayList.isEmpty() && userType.equals("customer")) {
+//                pw.println(lastCustomer.getId() + "," + lastCustomer.getUser_name() + "," + lastCustomer.getPassword() + "," +
+//                        lastCustomer.getPhone_number() + "," + lastCustomer.getEmail() + "," + lastCustomer.getAddress() + "," +
+//                        lastCustomer.getGender() + "," + "customer"+","+""+",");
+//
+//                System.out.println("Appending Customer: " + lastCustomer.getId() + " " + lastCustomer.getUser_name());
+//            }
+//        }
+//
+//        else if (file_name.equals("InBody.csv")) {
+//            //pw.println("\"ID\", \"Date of InBody\",\"Mass, Body Fat\",\"Height\",\"Minerals\",\"Protein\",\"Total Weight\",\"Water Weight\"");
+//            if (!MainApplication.InBodyList.isEmpty()) {
+//                InBody in = MainApplication.InBodyList.get(MainApplication.InBodyList.size() - 1);
+//                pw.println( Subscription.getCustomer_id()+ "," + in.Date_of_InBody + "," + in.mass + "," + in.body_fat + "," + in.height + "," + in.minerals_var + "," + in.protein_var + "," + in.total_weight + "," + in.water_weight);
+//                System.out.println("inbody done");
+//            }
+//        }
+//      /* else if(file_name.equals("Equipments.csv")){
+//            Equipments lastEquipment = MainApplication.GymEquipments.get(MainApplication.GymEquipments.size()-1);
+//            pw.println(lastEquipment.getEquipmentName()+","+lastEquipment.getEquipmentId()+","+lastEquipment.getEquipmentQuantity());
+//            System.out.println("Appending Equipment"+ lastEquipment.getEquipmentName()+" "+ lastEquipment.getEquipmentId());
+//        }*/
+//
+//        else if (file_name.equals("Subscription.csv")) {
+//            //pw.println("\"Customer ID\",\"Coach ID\",\"Customer Name\",\"Plan Choice\",\"Start Date\",\"Number of Months\",\"Days Per Week\",\"Plan Price\"\"");
+//            if (!MainApplication.membershipPlanArrayList.isEmpty()) {
+//                Membership_Plan p = MainApplication.membershipPlanArrayList.get(MainApplication.membershipPlanArrayList.size() - 1);
+//                pw.println(Subscription.getCustomer_id() + "," + Subscription.getCoach_id() + "," +lastCustomer.user_name+","+ p.choice + "," + p.start_date + "," + p.number_of_months + "," + p.days_per_week + "," + p.plan_price);
+//                System.out.println("plan done");
+//            }
+//        }
+//
+//        pw.close();
+//        fw.close();
+//    }
 }

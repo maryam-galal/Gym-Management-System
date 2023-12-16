@@ -23,7 +23,7 @@ public class InBody_Membership_Controller {
     private DatePicker plan_DatePicker;
     @FXML
     private TextField NumberOfMonths;
-
+     Customer c = new Customer();
     public void initialize() {
         plan_ChoiceBox.getItems().addAll("Silver Plan \n (3 Days per Week)", "Gold Plan \n (6 Days per Week, with less session price + higher discount)");
     }
@@ -32,6 +32,8 @@ public class InBody_Membership_Controller {
 
     public InBody Create_Inbody_Instance() {
         InBody b = new InBody();
+        b.setCustomer_id(c.getId());
+        Subscription.setCustomer_id(c.getId());
         b.height = Double.parseDouble(Height.getText());
         b.body_fat = Double.parseDouble(Bodyfat.getText());
         b.Date_of_InBody = String.valueOf(inbody_datePicker.getValue());
@@ -91,9 +93,9 @@ public class InBody_Membership_Controller {
         MainApplication backTOlogIn=new MainApplication();
         AddTo_InBody();
         AddTo_Subscription();
-        Subscription.findAvailableCoach();
-        Files.WriteInFile("InBody.csv","customer");
-        Files.WriteInFile("Subscription.csv","customer");
+       // Subscription.findAvailableCoach();
+      //  Files.WriteInFile("InBody.csv","customer");
+        //Files.WriteInFile("Subscription.csv","customer");
         backTOlogIn.changeScene("LogInPage.fxml");
 
     }

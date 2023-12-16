@@ -135,7 +135,7 @@ public class AddNewCoachController implements Initializable {
             return;
         }
         AddToCoach();
-        Files.WriteInFile("Registration.csv",type);
+        //Files.WriteInFile("Registration.csv",type);
         backToLogIn.changeScene("LogInPage.fxml");
 
     }

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class InBody {
-
+ protected String Customer_id;
  protected String Date_of_InBody;
  protected double height;
  protected double total_weight;
@@ -15,11 +15,6 @@ public class InBody {
  protected  double minerals_var;
  protected  double water_weight;
  protected double protein_var;
-
-
-
-
-
  public String getDate_of_InBody() {
   return Date_of_InBody;
  }
@@ -82,6 +77,13 @@ public class InBody {
 
  public void setProtein_var(double protein_var) {
   this.protein_var = protein_var;
+ }
+ public  String getCustomer_id() {
+  return Customer_id;
+ }
+
+ public void setCustomer_id(String customer_id) {
+  Customer_id = customer_id;
  }
 
  public static double calculateIdealWeight(double heightInMeters) {

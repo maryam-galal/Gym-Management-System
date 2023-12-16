@@ -1,10 +1,14 @@
 package com.example.mainpage;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Coach extends Person {
 
     private int working_hours;
     private int Startinghour;
     private int Endinghour;
+    protected ArrayList<Customer> customerArrayList = new ArrayList<>();
 
     private static final int MAX_CUSTOMERS = 10;
     protected int numberOfCustomers = 0;
@@ -63,6 +67,19 @@ public class Coach extends Person {
 //            return false;
 //        }
 //    }
+public void assignCoachToCustomer(Customer customer) {
+    Collections.shuffle(MainApplication.coachArrayList);
+    for (Coach coach : MainApplication.coachArrayList) {
+         if(customerArrayList.size() < 11){
+            System.out.println(customer.getId());
+            System.out.println(coach.getId());
+            coach.customerArrayList.add(customer);
+            customer.setAssignedCoach(coach);
+            Subscription.setCoach_id(coach.getId());
+            break;
+        }
+    }
+}
 
     public void setWorking_hours(String working_hours) {
           this.working_hours= Integer.parseInt(working_hours);

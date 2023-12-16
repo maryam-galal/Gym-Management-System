@@ -69,6 +69,7 @@ public class AddNewCustomerController {
     final String type="customer";
     Membership_Plan plan = new Membership_Plan();
     InBody b = new InBody();
+    Coach c = new Coach();
 
     public void initialize() {
         genderChoiceBox.getItems().addAll("Male","Female");
@@ -175,13 +176,14 @@ public class AddNewCustomerController {
         }
 
         Load_to_Static_list();
-        Files.WriteInFile("Registration.csv",type);
+       // Files.WriteInFile("Registration.csv",type);
         //Files.Load_coach_customer(MainApplication.userList);
         Load_static_InBodyArraylist();
         Load_static_PlanArrayList();
-        Subscription.findAvailableCoach();
-        Files.WriteInFile("InBody.csv","customer");
-        Files.WriteInFile("Subscription.csv","customer");
+        //Subscription.findAvailableCoach();
+        c.assignCoachToCustomer(createCustomerInstance());
+      //  Files.WriteInFile("InBody.csv","customer");
+      //  Files.WriteInFile("Subscription.csv","customer");
 
 
     }
