@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import java.io.*;
 
 public class LoginController {
-    protected String userName;// updated by kenzy
+    protected String userName;
     @FXML
     private Button login;
     @FXML
@@ -23,7 +23,6 @@ public class LoginController {
     private Label passwordError;
     @FXML
     private Label usernameError;
-    protected String userName;
     MainApplication m =new MainApplication();
     LoginManager loginManager = new LoginManager();
     @FXML

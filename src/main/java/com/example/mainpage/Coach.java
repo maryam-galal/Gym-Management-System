@@ -1,19 +1,30 @@
 package com.example.mainpage;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.UUID;
 
 public class Coach extends Person {
     protected static ArrayList<AssignedCustomersToCoach> supscripedCustomers = new ArrayList<>();// updated by kenzy
     protected static String recievedName= new String();// updated by kenzy
 
+    public int getNumberOfCustomers() {
+        return numberOfCustomers;
+    }
+
+    public void setNumberOfCustomers(int numberOfCustomers) {
+        this.numberOfCustomers = numberOfCustomers;
+    }
+
+    protected int numberOfCustomers = 0;
     protected static ArrayList<Customer> customerInformationList= new ArrayList<>();// updated by kenzy
     protected static ArrayList<InBody> customerInBodyList = new ArrayList<>();// updated by kenzy
     private int working_hours;
     private int Startinghour;
     private int Endinghour;
     private static final int MAX_CUSTOMERS = 10;
-
-    protected int numberOfCustomers = 0;
+    protected ArrayList<Customer> customerArrayList = new ArrayList<>();
 
     public void setWorking_hours(int working_hours) {
         this.working_hours = working_hours;
@@ -39,20 +50,22 @@ public class Coach extends Person {
     }
 
     private static int coachCounter = 0;
-       public Coach() {
-           if (MainApplication.coachArrayList.size() > 0) {
-               // Increment the counter based on the size of the ArrayList
-               coachCounter = MainApplication.coachArrayList.size() + 1;
-           } else {
-               // Initialize the counter to 1 if the ArrayList is empty
-               coachCounter = 1;
-           }
+    public Coach() {
+        id = generateUniqueID();
+    }
+    protected String generateUniqueID() {
+        UUID uuid = UUID.randomUUID();
 
-           // Construct the unique ID
-           id = "A1" + coachCounter;
-       }
+        // Convert any Character with number
+        BigInteger decimalValue = new BigInteger(uuid.toString().replace("-", ""), 16);
+        BigInteger maxLimit = BigInteger.valueOf(999);
+        BigInteger limitedValue = decimalValue.mod(maxLimit);
+        String limitedDecimalString = limitedValue.toString();
+        return "A" + String.format("%03d", Integer.parseInt(limitedDecimalString));
 
-    public boolean canAcceptCustomer() {
+    }
+
+public boolean canAcceptCustomer() {
         if((numberOfCustomers < MAX_CUSTOMERS) && (working_hours < 10)) {
             working_hours++;
             numberOfCustomers++;
@@ -63,7 +76,7 @@ public class Coach extends Person {
         }
     }
     // updated by kenzy
-    public static String SearchforName(String name) {
+public static String SearchforName(String name) {
         // Use the 'name' received from LoginController here
         System.out.println("Received name in the coach class is: " + name);
         String coachId = new String();
@@ -89,6 +102,12 @@ public static ArrayList<AssignedCustomersToCoach> getSubscripedCustomers(){
             supscripedCustomers.add(acc);
         }
     }
+/*    for (Subscription s : MainApplication.subscriptionArrayList) {
+        if(s.getCoach_id().equals(Coachid)){
+            AssignedCustomersToCoach acc= new AssignedCustomersToCoach(s.getCustomer_id(),s.getCustomer_name());
+            System.out.println(acc.getCustId()+acc.getCustName());
+            supscripedCustomers.add(acc);
+        }}*/
 
    /* for ( AssignedCustomersToCoach str: supscripedCustomers){
         System.out.println(str.getCustId());
@@ -157,13 +176,23 @@ public static ArrayList<InBody> SearchforCustomerInbody (){
     return customerInBodyList;
 }
 
-    public void setWorking_hours(String working_hours) {
-          this.working_hours= Integer.parseInt(working_hours);
+public String assignCoachToCustomer(Customer customer) {
+        Collections.shuffle(MainApplication.coachArrayList);
+        for (Coach coach : MainApplication.coachArrayList) {
+            if(customerArrayList.size() < 11){
+                coach.customerArrayList.add(customer);
+                customer.setAssignedCoach(coach);
+                // Subscription s = new Subscription(customer.getId(),coach.getId());
+                System.out.println(customer.getId());
+                System.out.println(coach.getId());
+                return coach.getId();
+            }
+        } return null;
+
     }
 
     public static String getRecievedName() {
         return recievedName;
     }
-
 }
 

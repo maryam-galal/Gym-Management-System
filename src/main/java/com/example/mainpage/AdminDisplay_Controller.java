@@ -97,11 +97,24 @@ public class AdminDisplay_Controller implements Initializable {
             if (s.length > 4) {
                 String day = s[4].substring(8, 10);
                 if (day.equals(Day.getText()) || (day.startsWith("0") && day.substring(1).equals(Day.getText()))) {
-                    subscribed_customers.setVisible(true);
-                    Customer customer = new Customer();
-                    customer.setId(s[0]);
-                    customer.setUser_name(s[2]);
-                    subscribed_customers.getItems().add(customer);
+                    String customerId = s[0];
+                    boolean isProcessed = false;
+
+                    // Check if the customer ID has been processed
+                    for (Customer processedCustomer : subscribed_customers.getItems()) {
+                        if (processedCustomer.getId().equals(customerId)) {
+                            isProcessed = true;
+                            break;
+                        }
+                    }
+
+                    if (!isProcessed) {
+                        subscribed_customers.setVisible(true);
+                        Customer customer = new Customer();
+                        customer.setId(customerId);
+                        customer.setUser_name(s[2]);
+                        subscribed_customers.getItems().add(customer);
+                    }
                 }
             }
         }
@@ -235,16 +248,16 @@ public class AdminDisplay_Controller implements Initializable {
         Sub_History.getItems().clear();
 
         for(String [] s : MainApplication.Subscription_Data) {
-                if (s[0].equals(customerID.getText())){
-                    Sub_History.setVisible(true);
-                    Membership_Plan p = new Membership_Plan();
-                    p.setStart_date(s[4]);
-                    p.setChoice(s[3]);
-                    p.setNumber_of_months(Integer.parseInt(s[5]));
-                    p.setPlan_price(Double.parseDouble(s[7]));
-                    Sub_History.getItems().add(p);
-                }
+            if (s[0].equals(customerID.getText())){
+                Sub_History.setVisible(true);
+                Membership_Plan p = new Membership_Plan();
+                p.setStart_date(s[4]);
+                p.setChoice(s[3]);
+                p.setNumber_of_months(Integer.parseInt(s[5]));
+                p.setPlan_price(Double.parseDouble(s[7]));
+                Sub_History.getItems().add(p);
             }
         }
+    }
     //----------------------------------------------------------------------------------------------
 }

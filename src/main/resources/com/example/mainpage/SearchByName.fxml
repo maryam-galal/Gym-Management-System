@@ -58,32 +58,32 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="NameLabel" layoutX="70.0" layoutY="200.0" text="Label" textFill="#fcfafa">
+      <Label fx:id="NameLabel" layoutX="70.0" layoutY="200.0" text="Label" textFill="#fcfafa" visible="false">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="IDLabel" layoutX="708.0" layoutY="206.0" text="Label" textFill="#f7f6f6">
+      <Label fx:id="IDLabel" layoutX="708.0" layoutY="206.0" text="Label" textFill="#f7f6f6" visible="false">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="PhoneLabel" layoutX="70.0" layoutY="312.0" text="Label" textFill="#faf7f7">
+      <Label fx:id="PhoneLabel" layoutX="70.0" layoutY="312.0" text="Label" textFill="#faf7f7" visible="false">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="AddressLabel" layoutX="708.0" layoutY="312.0" text="Label" textFill="#f7f5f5">
+      <Label fx:id="AddressLabel" layoutX="708.0" layoutY="312.0" text="Label" textFill="#f7f5f5" visible="false">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="EmailLabel" layoutX="70.0" layoutY="450.0" text="Label" textFill="#fcfafa">
+      <Label fx:id="EmailLabel" layoutX="70.0" layoutY="450.0" text="Label" textFill="#fcfafa" visible="false">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="GenderLabel" layoutX="708.0" layoutY="450.0" text="Label" textFill="#faf7f7">
+      <Label fx:id="GenderLabel" layoutX="708.0" layoutY="450.0" text="Label" textFill="#faf7f7" visible="false">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="704.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.NameOptionsController">
    <children>
       <ImageView fitHeight="704.0" fitWidth="959.0">
@@ -24,7 +23,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="453.0" layoutY="649.0" mnemonicParsing="false" text="Back">
+      <Button layoutX="453.0" layoutY="649.0" mnemonicParsing="false" onMouseClicked="#Goback" text="Back">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

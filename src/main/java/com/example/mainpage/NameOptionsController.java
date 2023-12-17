@@ -2,6 +2,7 @@ package com.example.mainpage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
@@ -15,4 +16,10 @@ public class NameOptionsController {
     void GotToInbody(ActionEvent event) throws IOException {
         main.changeScene("SearchforInBody.fxml");
     }
+    @FXML
+    void Goback(MouseEvent event) throws IOException {
+        main.changeScene("coachPage.fxml");
+    }
+
+
 }
