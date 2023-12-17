@@ -11,31 +11,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.ResourceBundle;
-
-public class Edit_DeleteEquipmentController implements Initializable {
-
+public class Edit_DeleteEquipmentController {
     @FXML
     private TextField code;
     @FXML
     private TextArea entrydate;
-
     @FXML
     private Pane entrypane;
-
     @FXML
     private TextArea name;
-
     @FXML
     private TextArea quantity;
-
     @FXML
     private TextArea type;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(type.getText().equals("cardio")){
-            entrypane.setVisible(true);
-        }
-    }
     private void clearFields() {
         name.clear();
         type.clear();
@@ -47,7 +35,6 @@ public class Edit_DeleteEquipmentController implements Initializable {
     void DeleteEquipment(ActionEvent event) {
         String equipmentCode = code.getText();
         boolean equipmentFound = false;
-        // Iterate over CardioEquipment list
         Iterator<CardioEquipment> cardioIterator = MainApplication.cardioEquipments.iterator();
         while (cardioIterator.hasNext()) {
             CardioEquipment cardioEquipment = cardioIterator.next();
@@ -76,7 +63,6 @@ public class Edit_DeleteEquipmentController implements Initializable {
             clearFields();
         }
     }
-
     @FXML
     void GetEquipment(ActionEvent event) {
         boolean EquipmentFound=false;
@@ -86,7 +72,10 @@ public class Edit_DeleteEquipmentController implements Initializable {
                 name.setText(c.getEquipmentName());
                 quantity.setText(String.valueOf(c.getEquipmentQuantity()));
                 type.setText(c.EquipmentType);
+                entrypane.setVisible(true);
                 entrydate.setText(c.getEntryDate());
+                ((Equipments) c).maintenance(c.getEntryDate());
+                break;
             }
         }
         for(StrengthEquipment s :MainApplication.strengthEquipments){
@@ -95,6 +84,7 @@ public class Edit_DeleteEquipmentController implements Initializable {
                 name.setText(s.getEquipmentName());
                 quantity.setText(String.valueOf(s.getEquipmentQuantity()));
                 type.setText(s.EquipmentType);
+                break;
             }
         }
         if(!EquipmentFound){
@@ -108,7 +98,6 @@ public class Edit_DeleteEquipmentController implements Initializable {
         MainApplication m=new MainApplication();
         m.changeScene("adminPage.fxml");
     }
-
     @FXML
     void saveEditedEquipment(ActionEvent event) {
         for (CardioEquipment c : MainApplication.cardioEquipments) {
@@ -122,7 +111,6 @@ public class Edit_DeleteEquipmentController implements Initializable {
                 }
             }
         }
-
         for (StrengthEquipment s : MainApplication.strengthEquipments) {
             if (type.getText().equals("strength")) {
                 if (code.getText().equals(s.getEquipmentCode())) {

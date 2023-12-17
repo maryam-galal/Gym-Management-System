@@ -34,7 +34,6 @@ public class Files {
            }
        //}
     }
-
     public static void Load_ArrayList(String FileName) {
         //reading file info
         try (Scanner fileScanner = new Scanner(new File(FileName))) {
@@ -64,7 +63,6 @@ public class Files {
             e.printStackTrace();
         }
     }
-
     public static void Load_coach_customer() {
         for (String[] data : MainApplication.userList) {
             if (data.length >= 8 ) {

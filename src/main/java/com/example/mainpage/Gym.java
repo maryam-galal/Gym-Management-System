@@ -1,37 +1,23 @@
 package com.example.mainpage;
 
+import java.util.ArrayList;
+
 public class Gym {
-    private String name;
-    private String address;
-    private String phoneNumber;
-
-    public Gym(String name, String address, String phoneNumber) {
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
+    private final String name;
+    private final String address;
+    private final String phoneNumber ;
+    public Gym() {
+        name = "Fitness Gym";
+        address = "Cairo,Nasr city, Makram Ebeid";
+        phoneNumber = "01148272855";
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     public String getName() {
         return name;
     }
-
     public String getAddress() {
         return address;
     }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
 }

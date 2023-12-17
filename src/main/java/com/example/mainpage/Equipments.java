@@ -1,6 +1,6 @@
 package com.example.mainpage;
 
-public class Equipments {
+public abstract class Equipments {
     protected String EquipmentName;
     protected String EquipmentCode;
     protected int EquipmentQuantity;
@@ -53,4 +53,6 @@ public class Equipments {
     public void setEquipmentType(String equipmentType) {
         EquipmentType = equipmentType;
     }
+
+    public void maintenance(String entryDate){}
 }
