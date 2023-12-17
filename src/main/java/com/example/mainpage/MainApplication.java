@@ -55,7 +55,7 @@ public class MainApplication extends Application {
         System.out.println(Subscription_Data.size());
 
         // Set the application icon
-        stage.getIcons().add(new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
+        stage.getIcons().add(new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\Gym Icon.png"));
         stage.setTitle("Fitness Gym");
         stage.setScene(scene);
         stage.setResizable(false);
@@ -100,7 +100,7 @@ public class MainApplication extends Application {
 
         try {
             // Load your icon image
-            Image icon = new Image("file:C:\\Users\\Mariam\\IdeaProjects\\mainpage\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
+            Image icon = new Image("file:D:\\Projects\\2nd Year\\OOP\\GYM\\src\\main\\resources\\com\\example\\mainpage\\error_icon.png");
 
 
             ImageView imageView = new ImageView(icon);
