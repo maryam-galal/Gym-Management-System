@@ -81,7 +81,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Button layoutX="386.0" layoutY="548.0" mnemonicParsing="false" onAction="#Cancel" text="Cancel">
+      <Button layoutX="386.0" layoutY="548.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="30.0" prefWidth="118.0" text="Back">
          <font>
             <Font size="14.0" />
          </font>

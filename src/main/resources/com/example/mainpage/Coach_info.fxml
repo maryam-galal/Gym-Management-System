@@ -54,7 +54,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="329.0" layoutY="538.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="30.0" prefWidth="118.0" text="Cancel">
+      <Button layoutX="329.0" layoutY="538.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="30.0" prefWidth="118.0" text="Back">
          <font>
             <Font size="14.0" />
          </font>

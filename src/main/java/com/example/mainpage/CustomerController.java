@@ -76,25 +76,28 @@ public class CustomerController implements Initializable  {
        initializeTableView();
    }
 
-   private void initializeTableView() {
+    private void initializeTableView() {
         // Initialize TableColumn properties
         try {
-            equipmentTableView.getColumns().clear();
-            column_1.setCellValueFactory(data->new SimpleStringProperty(data.getValue()[0]));
-            column_2.setCellValueFactory(data->new SimpleStringProperty(data.getValue()[1]));
-            column_3.setCellValueFactory(data->new SimpleIntegerProperty(Integer.parseInt(data.getValue()[2])).asObject());
-            column_4.setCellValueFactory(data->new SimpleStringProperty(data.getValue()[3]));
+            if (equipmentTableView != null) {
+                equipmentTableView.getColumns().clear();
 
-            equipmentTableView.getColumns().addAll(column_1, column_2, column_3,column_4);
-            ObservableList<String[]> equipmentData = FXCollections.observableArrayList(MainApplication.EquipmentsFromFile);
-            equipmentTableView.setItems(equipmentData);
+                column_1.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()[0]));
+                column_2.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()[1]));
+                column_3.setCellValueFactory(data -> new SimpleIntegerProperty(Integer.parseInt(data.getValue()[2])).asObject());
+                column_4.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()[3]));
+
+                equipmentTableView.getColumns().addAll(column_1, column_2, column_3, column_4);
+
+                ObservableList<String[]> equipmentData = FXCollections.observableArrayList(MainApplication.EquipmentsFromFile);
+                equipmentTableView.setItems(equipmentData);
+            } else {
+               // System.err.println("equipmentTableView is null. Check your FXML file to ensure proper initialization.");
+            }
 
         } catch (Exception e) {
+            System.err.println("Exception during TableView initialization: " + e.getMessage());
             e.printStackTrace();
-
-            //Set properties for other columns
-//             equipmentTableView.getColumns().clear(); // Clear existing columns
-//             equipmentTableView.getColumns().addAll(column_1, column_2);
         }
     }
 
@@ -188,8 +191,6 @@ public class CustomerController implements Initializable  {
     }
     @FXML
     void display_member_buttom(ActionEvent event) {
-
-       // String memberId = member_id.getText();
         String get = Customer.get();
 
         System.out.println("Subscriptions for Customer ID: " + get);
@@ -198,7 +199,6 @@ public class CustomerController implements Initializable  {
         if (!MainApplication.Subscription_Data.isEmpty()) {
             for (String[] data : MainApplication.Subscription_Data) {
                 String idFromFile = data[0].trim();
-             //   System.out.println("Data ID: " + idFromFile); // Debug statement
 
                 if (idFromFile.equals(get)) {
                     label_8.setText(data[3].trim());
@@ -225,13 +225,10 @@ public class CustomerController implements Initializable  {
 
     @FXML
     void display_coach_info(ActionEvent event) {
-       // String memberId_for_coach_info = id_coach_info.getText();
         String get = Customer.get();
-       // System.out.println("Coach info by Customer ID: " + memberId_for_coach_info);
         for (String[] data : MainApplication.Subscription_Data) {
             String idFromFile = data[0].trim();
-            //   System.out.println("Data ID: " + idFromFile); // Debug statement
-            if (idFromFile.equals(get)) {// hena el beyhessll
+            if (idFromFile.equals(get)) {
                 for (String[] user_data : MainApplication.userList){
                     if (data[1].equals(user_data[0])){
                         label_coach_name.setText(user_data[1].trim());
@@ -253,7 +250,6 @@ public class CustomerController implements Initializable  {
 
     @FXML
     void display_kilos_to_reduced(ActionEvent event) {
-       // String id_for_kilos = kilos_id.getText();
         String get = Customer.get();
         for (String[] data : MainApplication.InBody_Data){
             String idFromFile = data[0].trim();

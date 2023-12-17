@@ -91,5 +91,10 @@
                 <Image url="@Cross Dumbbells.png" />
             </image>
         </ImageView>
+      <Button layoutX="357.0" layoutY="543.0" mnemonicParsing="false" onAction="#Cancel" style="-fx-background-color: Transparent;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Monotype Corsiva" size="42.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

@@ -70,5 +70,10 @@
             <Font size="18.0" />
          </font>
       </RadioButton>
+      <Button layoutX="323.0" layoutY="549.0" mnemonicParsing="false" onAction="#Cancel" style="-fx-background-color: Transparent;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Monotype Corsiva" size="42.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
