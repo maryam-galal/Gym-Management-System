@@ -1,5 +1,6 @@
 package com.example.mainpage;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -23,6 +24,7 @@ public class InBody_Membership_Controller {
     @FXML
     private TextField NumberOfMonths;
     Coach co = new Coach();
+
     public void initialize() {
         plan_ChoiceBox.getItems().addAll("Silver Plan \n (3 Days per Week)", "Gold Plan \n (6 Days per Week, with less session price + higher discount)");
     }
@@ -99,4 +101,5 @@ public class InBody_Membership_Controller {
         backTOlogIn.changeScene("LogInPage.fxml");
 
     }
+
 }

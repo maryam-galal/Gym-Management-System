@@ -20,11 +20,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="equipmentTableView" layoutX="71.0" layoutY="212.0" prefHeight="294.0" prefWidth="550.0">
+      <TableView fx:id="equipmentTableView" layoutX="31.0" layoutY="191.0" prefHeight="294.0" prefWidth="600.0">
         <columns>
-          <TableColumn minWidth="183.0" prefWidth="75.0" text="Name" />
-          <TableColumn minWidth="183.0" prefWidth="75.0" text="Id" />
-            <TableColumn minWidth="183.0" prefWidth="75.0" text="Quantity" />
+          <TableColumn fx:id="column_1" minWidth="150.0" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="column_2" minWidth="150.0" prefWidth="75.0" text="Id" />
+            <TableColumn fx:id="column_3" minWidth="150.0" prefWidth="75.0" text="Quantity" />
+            <TableColumn fx:id="column_4" minWidth="150.0" prefWidth="75.0" text="Equipment Type" />
         </columns>
       </TableView>
    </children>

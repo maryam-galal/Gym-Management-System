@@ -1,10 +1,14 @@
 package com.example.mainpage;
 
-public abstract class Equipments {
+public class Equipments {
     protected String EquipmentName;
     protected String EquipmentCode;
     protected int EquipmentQuantity;
     protected String EquipmentType;
+
+    public Equipments(){
+
+    }
 
 
     public Equipments(String EquimentName, String EquipmentId, int EquipmentQuantity){
@@ -44,5 +48,9 @@ public abstract class Equipments {
 
     public String getEquipmentType() {
         return EquipmentType;
+    }
+
+    public void setEquipmentType(String equipmentType) {
+        EquipmentType = equipmentType;
     }
 }

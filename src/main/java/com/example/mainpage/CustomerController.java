@@ -14,11 +14,18 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CustomerController {
+public class CustomerController implements Initializable  {
+    @FXML
+    private DatePicker inbody_datePicker2;
+    @FXML
+    private TextField BodyWeight2,Bodyfat2,Height2,Mass2,minerals2,protein2,water2;
     @FXML
     private Button okk;
 
@@ -26,59 +33,12 @@ public class CustomerController {
     private DatePicker specific_data;
 
     @FXML
-    private Label label_0;
-
-    @FXML
-    private Label label_1;
-
-    @FXML
-    private Label label_2;
-
-    @FXML
-    private Label label_3;
-
-    @FXML
-    private Label label_4;
-
-    @FXML
-    private Label label_5;
-
-    @FXML
-    private Label label_6;
-
-    @FXML
-    private Label label_7;
-    @FXML
-    private Label label_10;
-    @FXML
-    private Label label_12;
-
-    @FXML
-    private Label label_11;
-
-    @FXML
-    private Label label_8;
-
-    @FXML
-    private Label label_9;
-    @FXML
-    private Button member_buttom;
-
-    @FXML
-    private TextField member_id;
-    @FXML
-    private TextField id_coach_info;
-
+    private Label label_0, label_1, label_2, label_3, label_4, label_5, label_6, label_7, label_8, label_9, label_10, label_11, label_12 ;
     @FXML
     private Label label_coach_name;
 
     @FXML
     private Label label_coach_phone;
-    @FXML
-    private Button display_kilos;
-
-    @FXML
-    private TextField kilos_id;
     @FXML
     private Label label_target;
     @FXML
@@ -86,45 +46,76 @@ public class CustomerController {
 
     @FXML
     private Label label_coach_hours_start;
-  //  @FXML
-  //  private TableView<Equipments> equipmentTableView;
+    @FXML
+    TableColumn<String[], String> column_1 = new TableColumn<>("Name");
+    @FXML
+    TableColumn<String[], String> column_2 = new TableColumn<>("Id");
+    @FXML
+    TableColumn<String[], Integer> column_3 = new TableColumn<>("Quantity");
+    @FXML
+    TableColumn<String[], String> column_4 = new TableColumn<>("Equipment Type");
+    @FXML
+    public TableView<String []> equipmentTableView;
 
-   /* public void initialize() {
-        try {
-            for (String[] dataS : MainApplication.Equipment_array_list) {
-                column_1.setCellValueFactory(data -> new SimpleStringProperty(dataS[0]));
+    @FXML
+    private ChoiceBox<String> plan_ChoiceBox2;
+    @FXML
+    private DatePicker plan_DatePicker2;
+    @FXML
+    private TextField NumberOfMonths2;
 
-            }
-            // Assuming your equipmentList is already populated
-            ObservableList<String[]> equipmentData = FXCollections.observableArrayList(MainApplication.Equipment_array_list);
-            equipmentTableView.setItems(equipmentData);
-        }catch (Exception e){
-            e.getMessage();
-        }
-    }*/
-  /* @Override
-   public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    private RadioButton gold;
+    @FXML
+    private RadioButton silver;
+    Coach co = new Coach();
+
+
+   @Override
+    public void initialize(URL location, ResourceBundle resources) {
        initializeTableView();
    }
 
-    private void initializeTableView() {
+   private void initializeTableView() {
         // Initialize TableColumn properties
-        TableColumn<Equipments, String>  column_1 = new TableColumn<>("Name");
-        TableColumn<Equipments, Integer>  column_2 = new TableColumn<>("Id");
-       TableColumn<Equipments, Integer>  column_3 = new TableColumn<>("Quantity");
+        try {
+            equipmentTableView.getColumns().clear();
+            column_1.setCellValueFactory(data->new SimpleStringProperty(data.getValue()[0]));
+            column_2.setCellValueFactory(data->new SimpleStringProperty(data.getValue()[1]));
+            column_3.setCellValueFactory(data->new SimpleIntegerProperty(Integer.parseInt(data.getValue()[2])).asObject());
+            column_4.setCellValueFactory(data->new SimpleStringProperty(data.getValue()[3]));
 
-        column_1.setCellValueFactory(new PropertyValueFactory<>("EquipmentName"));
-        column_2.setCellValueFactory(new PropertyValueFactory<>("EquipmentId"));
-        column_3.setCellValueFactory(new PropertyValueFactory<>("EquipmentQuantity"));
+            equipmentTableView.getColumns().addAll(column_1, column_2, column_3,column_4);
+            ObservableList<String[]> equipmentData = FXCollections.observableArrayList(MainApplication.EquipmentsFromFile);
+            equipmentTableView.setItems(equipmentData);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            //Set properties for other columns
+//             equipmentTableView.getColumns().clear(); // Clear existing columns
+//             equipmentTableView.getColumns().addAll(column_1, column_2);
+        }
+    }
+
+   /* private void initialize_Equipmenttable() {
+        // Initialize TableColumn properties
+        TableColumn<Equipments, String> name_Col = new TableColumn<>("Name");
+        TableColumn<Equipments, String> id_Col = new TableColumn<>("Id");
+        TableColumn<Equipments, Integer>  quantity_Col = new TableColumn<>("Quantity");
+        TableColumn<Equipments, String> type_Col = new TableColumn<>("Equipment Type");
+
+
+        name_Col.setCellValueFactory(new PropertyValueFactory<>("EquipmentName"));
+        id_Col.setCellValueFactory(new PropertyValueFactory<>("EquipmentCode"));
+        quantity_Col.setCellValueFactory(new PropertyValueFactory<>("EquipmentQuantity"));
+        type_Col.setCellValueFactory(new PropertyValueFactory<>("EquipmentType"));
+
 
         // Set properties for other columns
-       // equipmentTableView.getColumns().clear(); // Clear existing columns
-      // equipmentTableView.getColumns().addAll(column_1, column_2);
+      //  equipmentTableView.getColumns().clear(); // Clear existing columns
+        equipmentTableView.getColumns().addAll(name_Col, id_Col, quantity_Col, type_Col);
     }*/
-
-
-
-
     MainApplication m = new MainApplication();
 
     @FXML
@@ -134,10 +125,16 @@ public class CustomerController {
 
     @FXML
     void gymequipment(ActionEvent event) throws IOException {
-      m.changeScene("Display_equ_arraylist.fxml");
-
-       // m.changeScene("display_equ_1.fxml");
-
+        m.changeScene("Display_equ_arraylist.fxml");
+      /*  equipmentTableView.getItems().clear();
+        for(String [] e: MainApplication.EquipmentsFromFile ){
+            Equipments equ = new Equipments();
+            equ.setEquipmentName(e[0]);
+            equ.setEquipmentCode(e[1]);
+            equ.setEquipmentQuantity(Integer.parseInt(e[2]));
+            equ.setEquipmentType(e[3]);
+            equipmentTableView.getItems().addAll(equ);
+        }*/
     }
 
     @FXML
@@ -150,14 +147,20 @@ public class CustomerController {
         m.changeScene("membership_plan.fxml");
 
     }
+
+    @FXML
+    void Renew_Subscription(ActionEvent event) throws IOException {
+        m.changeScene("Renew_Subscription.fxml");
+    }
     @FXML
     void Display_inbody(ActionEvent event) {
 
+        String get = Customer.get();
         boolean found = false;
         for (String[] data : MainApplication.InBody_Data) {
             if (data.length >= 9) {
                 String DataFromFile = data[1].trim();
-                if (specific_data.getValue().toString().equals(DataFromFile)) {
+                if (specific_data.getValue().toString().equals(DataFromFile) && data[0].equals(get)) {// 3yza azwed el condition el id
                     label_0.setText(data[1].trim());
                     label_1.setText(data[2].trim());
                     label_2.setText(data[3].trim());
@@ -186,9 +189,10 @@ public class CustomerController {
     @FXML
     void display_member_buttom(ActionEvent event) {
 
-        String memberId = member_id.getText();
+       // String memberId = member_id.getText();
+        String get = Customer.get();
 
-        System.out.println("Subscriptions for Customer ID: " + memberId);
+        System.out.println("Subscriptions for Customer ID: " + get);
         boolean memberplan_found = false;
 
         if (!MainApplication.Subscription_Data.isEmpty()) {
@@ -196,7 +200,7 @@ public class CustomerController {
                 String idFromFile = data[0].trim();
              //   System.out.println("Data ID: " + idFromFile); // Debug statement
 
-                if (idFromFile.equals(memberId)) {
+                if (idFromFile.equals(get)) {
                     label_8.setText(data[3].trim());
                     label_9.setText(data[4].trim());
                     label_10.setText(data[5].trim());
@@ -249,10 +253,11 @@ public class CustomerController {
 
     @FXML
     void display_kilos_to_reduced(ActionEvent event) {
-        String id_for_kilos = kilos_id.getText();
+       // String id_for_kilos = kilos_id.getText();
+        String get = Customer.get();
         for (String[] data : MainApplication.InBody_Data){
             String idFromFile = data[0].trim();
-            if(id_for_kilos.equals(idFromFile)){
+            if(get.equals(idFromFile)){
                 if(Double.valueOf(data[4]) - 100 > Double.valueOf(data[7])){
                     label_target.setText("You are underweight");
                 }else if(Double.valueOf(data[4]) - 100 < Double.valueOf(data[7])){
@@ -266,24 +271,172 @@ public class CustomerController {
         }
 
     }
+
+    @FXML
+    void Renew_inbody(ActionEvent event) throws IOException {
+        m.changeScene("Renew_inbody.fxml");
+    }
+
     @FXML
     void Cancel(ActionEvent event) throws IOException {
         m.changeScene("customerPage.fxml");
     }
-    @FXML
-    void next_page1(ActionEvent event) throws IOException {
-        m.changeScene("display_equ_2.fxml");
+    public InBody Create_Inbody_Instance2() {
+        InBody b = new InBody();
+        String get = Customer.get();
+        b.setCustomer_id(get);
+        b.height = Double.parseDouble(Height2.getText());
+        b.body_fat = Double.parseDouble(Bodyfat2.getText());
+        b.Date_of_InBody = String.valueOf(inbody_datePicker2.getValue());
+        b.mass = Double.parseDouble(Mass2.getText());
+        b.minerals_var = Double.parseDouble(minerals2.getText());
+        b.protein_var = Double.parseDouble(protein2.getText());
+        b.total_weight = Double.parseDouble(BodyWeight2.getText());
+        b.water_weight = Double.parseDouble(water2.getText());
+        return b;
     }
 
-
-    @FXML
-    void nest_page_2(ActionEvent event) throws IOException {
-        m.changeScene("display_equ_3.fxml");
+    public void AddTo_InBody2() {
+        InBody in = Create_Inbody_Instance2();
+        String[] Inbody_data = {
+                in.getCustomer_id(),
+                in.getDate_of_InBody(),
+                String.valueOf(in.getMass()),
+                String.valueOf(in.getBody_fat()),
+                String.valueOf(in.getHeight()),
+                String.valueOf(in.getMinerals_var()),
+                String.valueOf(in.getProtein_var()),
+                String.valueOf(in.getTotal_weight()),
+                String.valueOf(in.getWater_weight())
+        };
+        MainApplication.InBody_Data.add(Inbody_data);
+        MainApplication.InBodyList.add(in);
     }
 
     @FXML
-    void next_page3(ActionEvent event) throws IOException {
-        m.changeScene("display_equ_4.fxml");
+    void save_renew(ActionEvent event) throws IOException {
+
+        String get = Customer.get();
+        String dateBefore = "";
+
+        System.out.println("Subscriptions for Customer ID: " + get);
+        for (String[] data : MainApplication.InBody_Data) {
+            String idFromFile = data[0].trim();
+            if (idFromFile.equals(get)) {
+                dateBefore = data[1].trim();
+            }
+        }
+
+        if (!dateBefore.isEmpty()) {
+            LocalDate currentDate = inbody_datePicker2.getValue();
+            LocalDate inBodyDate = LocalDate.parse(dateBefore);
+            long daysDifference = ChronoUnit.DAYS.between(inBodyDate, currentDate);
+
+
+            if (daysDifference < 30) {
+                // Show an error message using Alert
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Date Difference Error");
+                alert.setHeaderText(null);
+                alert.setContentText("The difference between dates must be at least 30 days! \n you can't renew your inbody now");
+                alert.showAndWait();
+                m.changeScene("customerPage.fxml");
+            } else {
+                AddTo_InBody2();
+                System.out.println("Done");
+                m.changeScene("customerPage.fxml");
+            }
+        } else {
+            System.out.println("No previous InBody data found for the customer!");
+        }
+    }
+   @FXML
+   public Subscription Create_sub_instance2() {
+       String choice = "";
+       //Subscription s = new Subscription(c.getId(), co.getId());
+        Subscription s = new Subscription();
+        s.plan = new Membership_Plan();
+       String get = Customer.get();
+       String var ="";
+       String name = "";
+       for (String[] data : MainApplication.Subscription_Data){
+           if (data[0].equals(get)){
+               var = data[1];
+               name =data[2];
+           }
+       }
+       s.setCustomer_id(get);
+       s.setCoach_id(var);
+       s.setCustomer_name(name);
+
+
+
+        if(silver.isSelected()){
+            choice = "Silver Plan";
+        } else if (gold.isSelected()) {
+            choice = "Gold Plan";
+        }
+       //  String choice = plan_ChoiceBox2.getValue();
+        s.plan.choice = choice;
+        s.plan.start_date = String.valueOf(plan_DatePicker2.getValue());
+        s.plan.number_of_months = Integer.parseInt(NumberOfMonths2.getText());
+        s.plan.choose_plan();
+        return s;
+    }
+    public void AddTo_Subscription2() {
+        Subscription s = Create_sub_instance2();
+        String[]  sub_data = {
+                s.getCustomer_id(),
+                s.getCoach_id(),
+                s.getCustomer_name(),
+                s.plan.getChoice(),
+                s.plan.getStart_date(),
+                String.valueOf(s.plan.getNumber_of_months()),
+                String.valueOf(s.plan.getDays_per_week()),
+                String.valueOf(s.plan.getPlan_price())
+        };
+        MainApplication.Subscription_Data.add(sub_data);
+        MainApplication.subscriptionArrayList.add(s);
+    }
+
+    @FXML
+    void save_renew_Subscription(ActionEvent event) throws IOException {
+       //AddTo_Subscription2();
+        String get = Customer.get();
+        String dateBefore = "";
+        String number_of_month = "";
+
+        System.out.println("Subscriptions for Customer ID: " + get);
+        for (String[] data : MainApplication.Subscription_Data) {
+            String idFromFile = data[0].trim();
+            if (idFromFile.equals(get)) {
+                dateBefore = data[4].trim();
+                number_of_month = data[5].trim();
+            }
+        }
+
+        if (!dateBefore.isEmpty()) {
+            LocalDate currentDate = plan_DatePicker2.getValue();
+            LocalDate inBodyDate = LocalDate.parse(dateBefore);
+            long MonthsDifference = ChronoUnit.MONTHS.between(inBodyDate, currentDate);
+            System.out.println(MonthsDifference);
+
+            if (MonthsDifference < Long.parseLong(number_of_month)) {
+                // Show an error message using Alert
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Date Difference Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Your Subscription is still going");
+                alert.showAndWait();
+                m.changeScene("customerPage.fxml");
+            } else {
+                AddTo_Subscription2();
+                System.out.println("Done");
+                m.changeScene("customerPage.fxml");
+            }
+        } else {
+            System.out.println("No previous InBody data found for the customer!");
+        }
     }
 
 

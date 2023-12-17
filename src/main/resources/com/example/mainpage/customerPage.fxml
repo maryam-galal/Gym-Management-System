@@ -13,23 +13,33 @@
             <Image url="@black bg with quote .png" />
          </image>
       </ImageView>
-      <Button layoutX="181.0" layoutY="123.0" mnemonicParsing="false" onAction="#coachinformation" prefHeight="30.0" prefWidth="162.0" text="Coach information">
+      <Button layoutX="182.0" layoutY="77.0" mnemonicParsing="false" onAction="#coachinformation" prefHeight="30.0" prefWidth="162.0" text="Coach information">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutX="181.0" layoutY="221.0" mnemonicParsing="false" onAction="#gymequipment" prefHeight="30.0" prefWidth="162.0" text="Gym Equipment">
+      <Button layoutX="181.0" layoutY="151.0" mnemonicParsing="false" onAction="#gymequipment" prefHeight="30.0" prefWidth="162.0" text="Gym Equipment">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutX="181.0" layoutY="320.0" mnemonicParsing="false" onAction="#in_body_information" prefHeight="30.0" prefWidth="162.0" text="In-body information">
+      <Button layoutX="181.0" layoutY="240.0" mnemonicParsing="false" onAction="#in_body_information" prefHeight="30.0" prefWidth="162.0" text="In-body information">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutX="182.0" layoutY="411.0" mnemonicParsing="false" onAction="#membership_plan" prefHeight="30.0" prefWidth="162.0" text="Membership's plan">
+      <Button layoutX="181.0" layoutY="318.0" mnemonicParsing="false" onAction="#membership_plan" prefHeight="30.0" prefWidth="162.0" text="Membership's plan">
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button layoutX="182.0" layoutY="488.0" mnemonicParsing="false" onAction="#kilos_to_be_reduced" prefHeight="30.0" prefWidth="162.0" text="Kilos to be reduced">
+      <Button layoutX="182.0" layoutY="406.0" mnemonicParsing="false" onAction="#kilos_to_be_reduced" prefHeight="30.0" prefWidth="162.0" text="Kilos to be reduced">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="182.0" layoutY="482.0" mnemonicParsing="false" onAction="#Renew_inbody" prefHeight="30.0" prefWidth="162.0" text="Renew inbody">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="183.0" layoutY="560.0" mnemonicParsing="false" onAction="#Renew_Subscription" prefHeight="26.0" prefWidth="169.0" text="Renew Subscription ">
          <font>
             <Font size="14.0" />
          </font>

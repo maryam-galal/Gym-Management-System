@@ -40,7 +40,7 @@ public class LoginController {
                 m.changeScene("coachPage.fxml");
             } else if ("customer".equals(userType)) {
                 userName=usernameField.getText();// updated by maya
-                Customer.processName(userName);
+               Customer.processName(userName);
                 System.out.println("customer");
                 m.changeScene("customerPage.fxml");
             } else if (userType.equals("admin")) {
