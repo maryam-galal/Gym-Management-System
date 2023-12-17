@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="704.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.Gender_Controller">
+   <children>
+      <Text fill="#faf4f4" layoutX="296.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Searching By Gender">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="704.0" fitWidth="959.0">
+         <image>
+            <Image url="@Gym Background.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="#fcfcfc" layoutX="367.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose the Gender" wrappingWidth="197.60001220703123">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Button layoutX="375.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#ReturnGenderInfo" prefHeight="31.0" prefWidth="169.0" text="Display Information">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Button layoutX="450.0" layoutY="658.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="37.0" prefWidth="69.0" text="Back">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <RadioButton fx:id="MaleRB" layoutX="514.0" layoutY="116.0" mnemonicParsing="false" text="Male" textFill="#fcfafa">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="Genderrb" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="FemaleRB" layoutX="337.0" layoutY="116.0" mnemonicParsing="false" text="Female" textFill="#fcfafa" toggleGroup="$Genderrb">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </RadioButton>
+      <TableView fx:id="InformationTable" layoutX="176.0" layoutY="481.0" prefHeight="148.0" prefWidth="578.0">
+        <columns>
+          <TableColumn prefWidth="125.59998321533203" text="Name" />
+          <TableColumn prefWidth="96.0" text="ID" />
+            <TableColumn prefWidth="132.0" text="Phone Number" />
+            <TableColumn minWidth="0.0" prefWidth="79.20001220703125" text="Address" />
+            <TableColumn prefWidth="144.79995727539062" text="Email" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
