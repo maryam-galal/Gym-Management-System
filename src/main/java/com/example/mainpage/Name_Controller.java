@@ -70,7 +70,6 @@ public static ArrayList<String> getCustomerNames(){
                 IDLabel.setText(c.getId());
                 PhoneLabel.setText(c.getPhone_number());
                 GenderLabel.setText(c.getGender());
-
             }
         }
     }

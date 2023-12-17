@@ -1,9 +1,7 @@
 "Customer ID","Coach ID","Customer Name","Plan Choice","Start Date","Number of Months","Days Per Week","Plan Price"
-B089,A198,Menna,Gold Plan,2023-12-01,3,6,2268.00
-B214,A949,Roaa,Gold Plan,2024-01-03,2,6,2160.00
-B114,A949,Maryam,Gold Plan,2024-02-14,4,6,3024.00
-B867,A949,Maya,Silver Plan,2023-12-20,1,3,600.00
-B484,A198,Omar,Silver Plan,2024-01-02,2,3,1200.00
-B140,A949,Hanya,Gold Plan,2024-01-02,6,6,4536.00
-B486,A198,Zeyad,Gold Plan,2023-12-04,3,6,2268.00
-B054,A949,Amir,Gold Plan,2023-12-01,2,6,2160.00
+B534,A024,Abdullah,Gold Plan,2023-12-19,6,6,6804.00
+B616,A024,Hagar,Silver Plan,2023-12-17,1,3,600.00
+B936,A024,Salma,Silver Plan,2023-12-11,3,3,1440.00
+B200,A767,Amira,Silver Plan,2023-12-20,3,3,1440.00
+B278,A202,Hussien,Silver Plan,2023-12-17,2,3,1200.00
+B524,A767,hanan,Gold Plan,2023-12-15,3,6,2268.00

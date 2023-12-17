@@ -39,20 +39,6 @@ public class LoginManager {
                 }
             }
         }
-//        for (String[] data : login_Application.return_userList()) {
-//            if (data.length >= 8) {
-//                String usernameFromList = data[1].trim();
-//                String passwordFromList = data[2].trim();
-//                userType = data[7].trim();
-//                if (username.equals(usernameFromList)) {
-//                    usernameFound = true;
-//                    if (password.equals(passwordFromList)) {
-//                        passwordMatched = true;
-//                    }
-//                    break;
-//                }
-//            }
-        //}
 
         if (!usernameFound) {
             throw new IncorrectUsernameException();

@@ -54,15 +54,17 @@ public class SearchforInBodyController {
     void DisplayInbody(ActionEvent event) {
         for(Customer c : MainApplication.customerArrayList){
             if(name.getText().equals(c.getUser_name())){
-                for(InBody in : MainApplication.InBodyList){
-                    DateOfInBodyLabel.setText(in.getDate_of_InBody());
-                    TotalWeightLabel.setText(String.valueOf(in.getTotal_weight()));
-                    WaterWeightLabel.setText(String.valueOf(in.getWater_weight()));
-                    BodyFatLabel.setText(String.valueOf(in.getBody_fat()));
-                    MineralsLabel.setText(String.valueOf(in.getMinerals_var()));
-                    Heightlabel.setText(String.valueOf(in.getHeight()));
-                    ProteinLabel.setText(String.valueOf(in.getProtein_var()));
-                    MassLabel.setText(String.valueOf(in.getMass()));
+                for(InBody in : MainApplication.InBodyList) {
+                    if (in.getCustomer_id().equals(c.getId())) {
+                        DateOfInBodyLabel.setText(in.getDate_of_InBody());
+                        TotalWeightLabel.setText(String.valueOf(in.getTotal_weight()));
+                        WaterWeightLabel.setText(String.valueOf(in.getWater_weight()));
+                        BodyFatLabel.setText(String.valueOf(in.getBody_fat()));
+                        MineralsLabel.setText(String.valueOf(in.getMinerals_var()));
+                        Heightlabel.setText(String.valueOf(in.getHeight()));
+                        ProteinLabel.setText(String.valueOf(in.getProtein_var()));
+                        MassLabel.setText(String.valueOf(in.getMass()));
+                    }
                 }
 
             }

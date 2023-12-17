@@ -46,15 +46,9 @@ public class Gender_Controller implements Initializable{
         InformationTable.getItems().clear();
         ArrayList <Customer> returnedCustomers=Coach.SearchforCustomerData();
 
-        for(int i=0;i<returnedCustomers.size()/2;i++){
-            if (FemaleRB.isSelected() &&returnedCustomers.get(i).getGender().equals("Female") ){
-                InformationTable.getItems().add(returnedCustomers.get(i));
+        for(int i=0;i<returnedCustomers.size()/2;i++) {
 
-                // for(Customer customer:returnedCustomers) {
-                //   InformationTable.getItems().add(customer);
-                //}
-            }
-            else if (MaleRB.isSelected() && returnedCustomers.get(i).getGender().equals("Male")) {
+            if (MaleRB.isSelected() && returnedCustomers.get(i).getGender().equals("Male")) {
                 InformationTable.getItems().add(returnedCustomers.get(i));
 
                 //for (Customer customer : returnedCustomers) {
@@ -62,7 +56,17 @@ public class Gender_Controller implements Initializable{
                 //}
             }
         }
-    }
+        for(int i=0;i<returnedCustomers.size()/2;i++) {
+            if (FemaleRB.isSelected() && returnedCustomers.get(i).getGender().equals("Female")) {
+                InformationTable.getItems().add(returnedCustomers.get(i));
+
+                // for(Customer customer:returnedCustomers) {
+                //   InformationTable.getItems().add(customer);
+                //}
+            }
+        }
+
+        }
     @FXML
     void GoBack(ActionEvent event) throws IOException {
         main.changeScene("coachPage.fxml");

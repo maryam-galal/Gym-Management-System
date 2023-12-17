@@ -2,7 +2,8 @@ package com.example.mainpage;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
-public class CardioEquipment extends Equipments{
+public class
+CardioEquipment extends Equipments{
 private String entryDate;
     public CardioEquipment(String EquimentName, String EquipmentCode, int EquipmentQuantity){
     super(EquimentName,EquipmentCode,EquipmentQuantity);

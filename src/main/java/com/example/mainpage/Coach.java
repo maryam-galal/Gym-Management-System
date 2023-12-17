@@ -102,17 +102,7 @@ public static ArrayList<AssignedCustomersToCoach> getSubscripedCustomers(){
             supscripedCustomers.add(acc);
         }
     }
-/*    for (Subscription s : MainApplication.subscriptionArrayList) {
-        if(s.getCoach_id().equals(Coachid)){
-            AssignedCustomersToCoach acc= new AssignedCustomersToCoach(s.getCustomer_id(),s.getCustomer_name());
-            System.out.println(acc.getCustId()+acc.getCustName());
-            supscripedCustomers.add(acc);
-        }}*/
 
-   /* for ( AssignedCustomersToCoach str: supscripedCustomers){
-        System.out.println(str.getCustId());
-        System.out.println(str.getCustName());
-    }*/
     return supscripedCustomers;
 }
 public static ArrayList<Customer> SearchforCustomerData(){

@@ -96,6 +96,7 @@ public class Edit_DeleteCoachController {
             clearFields();
         } else {
             System.out.println("Coach with ID " + coachIdToDelete + " not found.");
+            MainApplication.showAlert("Coach not Found");
         }
     }
 

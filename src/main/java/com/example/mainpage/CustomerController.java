@@ -101,24 +101,7 @@ public class CustomerController implements Initializable  {
         }
     }
 
-   /* private void initialize_Equipmenttable() {
-        // Initialize TableColumn properties
-        TableColumn<Equipments, String> name_Col = new TableColumn<>("Name");
-        TableColumn<Equipments, String> id_Col = new TableColumn<>("Id");
-        TableColumn<Equipments, Integer>  quantity_Col = new TableColumn<>("Quantity");
-        TableColumn<Equipments, String> type_Col = new TableColumn<>("Equipment Type");
 
-
-        name_Col.setCellValueFactory(new PropertyValueFactory<>("EquipmentName"));
-        id_Col.setCellValueFactory(new PropertyValueFactory<>("EquipmentCode"));
-        quantity_Col.setCellValueFactory(new PropertyValueFactory<>("EquipmentQuantity"));
-        type_Col.setCellValueFactory(new PropertyValueFactory<>("EquipmentType"));
-
-
-        // Set properties for other columns
-      //  equipmentTableView.getColumns().clear(); // Clear existing columns
-        equipmentTableView.getColumns().addAll(name_Col, id_Col, quantity_Col, type_Col);
-    }*/
     MainApplication m = new MainApplication();
 
     @FXML
@@ -129,15 +112,6 @@ public class CustomerController implements Initializable  {
     @FXML
     void gymequipment(ActionEvent event) throws IOException {
         m.changeScene("Display_equ_arraylist.fxml");
-      /*  equipmentTableView.getItems().clear();
-        for(String [] e: MainApplication.EquipmentsFromFile ){
-            Equipments equ = new Equipments();
-            equ.setEquipmentName(e[0]);
-            equ.setEquipmentCode(e[1]);
-            equ.setEquipmentQuantity(Integer.parseInt(e[2]));
-            equ.setEquipmentType(e[3]);
-            equipmentTableView.getItems().addAll(equ);
-        }*/
     }
 
     @FXML
@@ -161,9 +135,8 @@ public class CustomerController implements Initializable  {
         String get = Customer.get();
         boolean found = false;
         for (String[] data : MainApplication.InBody_Data) {
-            if (data.length >= 9) {
                 String DataFromFile = data[1].trim();
-                if (specific_data.getValue().toString().equals(DataFromFile) && data[0].equals(get)) {// 3yza azwed el condition el id
+                if (specific_data.getValue().toString().equals(DataFromFile) && data[0].equals(get)) {
                     label_0.setText(data[1].trim());
                     label_1.setText(data[2].trim());
                     label_2.setText(data[3].trim());
@@ -173,7 +146,6 @@ public class CustomerController implements Initializable  {
                     label_6.setText(data[7].trim());
                     label_7.setText(data[8].trim());
                     found = true;
-                }
            }
         }
         if (!found){
