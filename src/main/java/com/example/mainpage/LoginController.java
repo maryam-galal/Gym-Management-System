@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import java.io.*;
 
 public class LoginController {
+    protected String userName;// updated by kenzy
     @FXML
     private Button login;
     @FXML
@@ -35,6 +36,12 @@ public class LoginController {
             usernameError.setVisible(false);
             // Handle the userType and change scene accordingly
             if ("coach".equals(userType)) {
+                //updated by kenzy
+                userName=usernameField.getText();
+                Coach.SearchforName(userName);
+                Coach.getSubscripedCustomers();
+                Coach.SearchforCustomerData();
+                Coach.SearchforCustomerInbody ();
                 System.out.println("coach");
                 m.changeScene("coachPage.fxml");
             } else if ("customer".equals(userType)) {

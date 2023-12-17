@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.CoachController">
+<AnchorPane prefHeight="704.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainpage.CoachController">
    <children>
-      <Button layoutX="149.0" layoutY="122.0" mnemonicParsing="false" prefHeight="129.0" prefWidth="243.0" text="Button" />
+      <ImageView fitHeight="704.0" fitWidth="959.0">
+         <image>
+            <Image url="@CoachScene2.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="580.0" layoutY="359.0" mnemonicParsing="false" onAction="#search_by_name" prefHeight="46.0" prefWidth="210.0" text="Search By Name" textFill="#2e2b2b">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button layoutX="207.0" layoutY="359.0" mnemonicParsing="false" onAction="#search_by_gender" prefHeight="46.0" prefWidth="210.0" text="Search By Gender" textFill="#1e1c1c">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Button>
+      <Text fill="#faf9f9" layoutX="289.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Searching For Your Customers">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
