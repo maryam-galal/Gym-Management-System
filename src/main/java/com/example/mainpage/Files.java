@@ -133,20 +133,6 @@ public class Files {
         }
     }
 
-  /* public static void LoadEquipments(ArrayList<String[]> GymEquipments_list ){
-        Equipments Equipment = new Equipments();
-        for (String [] data:GymEquipments_list)
-        {
-            if(data.length<=3){
-                Equipment.setEquipmentName(data[0].trim());
-                Equipment.setEquipmentId(Integer.parseInt(data[1].trim()));
-                Equipment.setEquipmentQuantity(Integer.parseInt(data[2].trim()));
-                MainApplication.equipmentList .add(Equipment);
-            }
-
-        }
-        System.out.println("Equipment added");
-    }*/
 
     public static void updateFile(String fileName) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName,false))) {

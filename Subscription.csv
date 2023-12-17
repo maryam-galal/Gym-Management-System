@@ -1,5 +1,6 @@
 "Customer ID","Coach ID","Customer Name","Plan Choice","Start Date","Number of Months","Days Per Week","Plan Price"
 B410,A669,Amira,Gold Plan,2023-12-19,2,6,2160.00
+B165,A750,Menna,Gold Plan,2024-01-04,3,6,2268.00
 B111,A669,maya,Silver Plan,2023-12-14,4,3,1920.00
 B111,A669,maya,Gold Plan,2023-12-01,1,6,1080.00
 B849,A830,Roaa,Silver Plan,2023-12-14,4,3,1920.00

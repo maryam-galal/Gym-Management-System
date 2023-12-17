@@ -41,7 +41,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="subscribed_customers" layoutX="704.0" layoutY="76.0" prefHeight="118.0" prefWidth="162.0">
+      <TableView fx:id="subscribed_customers" layoutX="704.0" layoutY="76.0" prefHeight="118.0" prefWidth="162.0" visible="false">
         <columns>
           <TableColumn prefWidth="76.0" text="Customer ID" />
           <TableColumn prefWidth="103.2000732421875" text="User Name" />
@@ -65,8 +65,8 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Rectangle fx:id="income_frame" arcHeight="5.0" arcWidth="5.0" fill="#ffffff26" height="53.0" layoutX="149.0" layoutY="308.0" stroke="#771d8c" strokeType="INSIDE" width="132.0" />
-      <Label fx:id="income" layoutX="149.0" layoutY="315.0" prefHeight="38.0" prefWidth="201.0" textFill="#fcfcfc">
+      <Rectangle fx:id="income_frame" arcHeight="5.0" arcWidth="5.0" fill="#ffffff26" height="53.0" layoutX="149.0" layoutY="308.0" stroke="#771d8c" strokeType="INSIDE" visible="false" width="132.0" />
+      <Label fx:id="income" layoutX="149.0" layoutY="315.0" prefHeight="38.0" prefWidth="201.0" textFill="#fcfcfc" visible="false">
          <font>
             <Font name="Monotype Corsiva" size="28.0" />
          </font>
@@ -83,7 +83,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="Customers_forCoach" layoutX="106.0" layoutY="502.0" prefHeight="118.0" prefWidth="162.0">
+      <TableView fx:id="Customers_forCoach" layoutX="106.0" layoutY="502.0" prefHeight="118.0" prefWidth="162.0" visible="false">
          <columns>
             <TableColumn prefWidth="74.4000244140625" text="Customer ID" />
             <TableColumn prefWidth="104.800048828125" text="User Name" />
@@ -94,7 +94,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="Coaches" layoutX="704.0" layoutY="225.0" prefHeight="118.0" prefWidth="162.0">
+      <TableView fx:id="Coaches" layoutX="704.0" layoutY="225.0" prefHeight="118.0" prefWidth="162.0" visible="false">
          <columns>
             <TableColumn prefWidth="72.0" text="Coach ID" />
             <TableColumn prefWidth="90.39996337890625" text="User Name" />
@@ -108,12 +108,12 @@
          </font>
       </Label>
       <TextField fx:id="customerID" layoutX="453.0" layoutY="408.0" promptText="Enter Coach ID" />
-      <Button fx:id="display_month112" blendMode="HARD_LIGHT" layoutX="453.0" layoutY="446.0" mnemonicParsing="false" onMouseClicked="#display_customers" prefHeight="38.0" prefWidth="322.0" text="Display Subscription History For This Customer" wrapText="true">
+      <Button fx:id="display_month112" blendMode="HARD_LIGHT" layoutX="453.0" layoutY="446.0" mnemonicParsing="false" onMouseClicked="#display_SubHistory" prefHeight="38.0" prefWidth="322.0" text="Display Subscription History For This Customer" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TableView fx:id="Sub_History" layoutX="495.0" layoutY="502.0" prefHeight="118.0" prefWidth="339.0">
+      <TableView fx:id="Sub_History" layoutX="495.0" layoutY="502.0" prefHeight="118.0" prefWidth="339.0" visible="false">
          <columns>
             <TableColumn prefWidth="86.4000244140625" text="Start Date" />
             <TableColumn prefWidth="60.0" text="Plan" />
